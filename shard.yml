@@ -1,0 +1,9 @@
+name: selenium
+version: 0.1.0
+
+authors:
+  - Matthew McGarvey <matthew.mcgarvey@daveramsey.com>
+
+crystal: 0.34.0
+
+license: MIT
