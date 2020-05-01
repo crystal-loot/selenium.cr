@@ -1,3 +1,4 @@
+require "json"
 require "./selenium/command"
 
 module Selenium
