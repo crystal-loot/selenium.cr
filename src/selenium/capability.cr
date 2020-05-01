@@ -1,6 +1,9 @@
 class Selenium::Capability
   include JSON::Serializable
 
+  def initialize
+  end
+
   @[JSON::Field(key: "browserName")]
   property browser_name : String?
 

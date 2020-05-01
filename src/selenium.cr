@@ -1,5 +1,7 @@
 require "json"
-require "./selenium/command"
+require "uuid"
+require "uuid/json"
+require "./selenium/**"
 
 module Selenium
   VERSION = "0.1.0"

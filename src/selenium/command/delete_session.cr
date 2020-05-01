@@ -1,5 +1,5 @@
-class Selenium::Command::NewSession
-  def initialize(@session_id)
+class Selenium::Command::DeleteSession
+  def initialize(@session_id : UUID)
     @method = "DELETE"
     @route = "/session/#{@session_id}"
   end
