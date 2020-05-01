@@ -1,5 +1,7 @@
+alias Selenium::SessionId = UUID
+
 class Selenium::Session
-  getter session_id : UUID
+  getter session_id : SessionId
 
   def initialize(@session_id)
   end

@@ -1,3 +1,6 @@
+require "./driver/**"
+
 module Selenium::Driver
-  abstract def post(path : String, body : String) : String
+  include Postable
+  include Deleteable
 end
