@@ -1,6 +1,11 @@
 class Selenium::Command::GetTimeouts
-  def initialize(@session_id : UUID)
-    @method = "GET"
-    @route = "/session/#{@session_id}/timeouts"
+  getter driver : Driver::Getable
+  def initialize(@driver)
+  end
+
+  # GET
+  # /session/:session_id/timeouts
+  def execute
+    raise "Not implemented"
   end
 end

@@ -1,6 +1,11 @@
 class Selenium::Command::SetTimeouts
-  def initialize(@session_id : UUID)
-    @method = "POST"
-    @route = "/session/#{@session_id}/timeouts"
+  getter driver : Driver::Postable
+  def initialize(@driver)
+  end
+
+  # POST
+  # /session/:session_id/timeouts
+  def execute
+    raise "Not implemented yet"
   end
 end

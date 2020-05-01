@@ -10,6 +10,10 @@ class Selenium::HttpDriver
     HTTP::Client.delete(base_path + path)
   end
 
+  def get(path) : String
+    HTTP::Client.get(path).body
+  end
+
   def base_path
     "localhost:4444/wd/hub"
   end
