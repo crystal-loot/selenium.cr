@@ -1,17 +1,6 @@
 require "../../spec_helper"
 
 module Selenium::Command
-
-  class TestDriver
-    include Driver::Postable
-
-    property response_body : String = ""
-
-    def post(path, body) : String
-      response_body
-    end
-  end
-
   describe NewSession do
     it "works" do
       driver = TestDriver.new

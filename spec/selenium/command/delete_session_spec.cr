@@ -1,16 +1,6 @@
 require "../../spec_helper"
 
 module Selenium::Command
-
-  class TestDriver
-    include Driver::Deleteable
-    property path : String?
-
-    def delete(path : String)
-      self.path = path
-    end
-  end
-
   describe DeleteSession do
     it "works" do
       driver = TestDriver.new
@@ -19,7 +9,7 @@ module Selenium::Command
   
       delete_session.execute
 
-      driver.path.should eq("/session/#{session_id}")
+      driver.request_path.should eq("/session/#{session_id}")
     end
   end
 end

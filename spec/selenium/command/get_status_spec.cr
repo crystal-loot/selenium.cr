@@ -1,23 +1,13 @@
 require "../../spec_helper"
 
 module Selenium::Command
-  class TestDriver
-    include Driver::Getable
-
-    property path : String?
-
-    def get(path : String) : String
-      self.path = path
-      {
-        ready: true,
-        message: "This is fake"
-      }.to_json
-    end
-  end
-
   describe GetStatus do
     it "works" do
       driver = TestDriver.new
+      driver.response_body = {
+        ready: true,
+        message: "This is fake"
+      }.to_json
 
       command = GetStatus.new(driver)
 
@@ -25,6 +15,7 @@ module Selenium::Command
 
       result.ready?.should be_true
       result.message.should eq("This is fake")
+      driver.request_path.should eq("/status")
     end
   end
 end
