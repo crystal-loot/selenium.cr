@@ -1,6 +1,21 @@
 class Selenium::Command::FindElementsFromElement
-  def initialize(@session_id : UUID, @element_id)
-    @method = "POST"
-    @route = "/session/#{@session_id}/element/#{@element_id}/elements"
+  def initialize(
+    @driver : Driver::Postable, 
+    @session_id : SessionId, 
+    @parent_element_id : ElementId)
+  end
+
+  def execute(using : LocationStrategy, value : String) : Array(ElementId)
+    response_body = @driver.post(
+      "/session/#{@session_id}/element/#{@parent_element_id}/elements",
+      body: {
+        using: using,
+        value: value,
+      }.to_json
+    )
+
+    JSON.parse(response_body)
+      .as_a
+      .map { |entry| ElementId.new(entry.as_h.first_value.as_s) }
   end
 end
