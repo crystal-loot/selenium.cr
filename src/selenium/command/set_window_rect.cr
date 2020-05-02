@@ -6,10 +6,10 @@ class Selenium::Command::SetWindowRect
     response_body = @driver.post(
       "/session/#{@session_id}/window/rect",
       body: {
-        width: width,
+        width:  width,
         height: height,
-        x: x,
-        y: y
+        x:      x,
+        y:      y,
       }.to_json
     )
 

@@ -10,7 +10,7 @@ module Selenium::Command
       command.execute("abc")
 
       driver.request_path.should eq("/session/#{session_id}/window")
-      driver.request_body.should eq({ handle: "abc" }.to_json)
+      driver.request_body.should eq({handle: "abc"}.to_json)
     end
   end
 end

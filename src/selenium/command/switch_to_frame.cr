@@ -5,7 +5,7 @@ class Selenium::Command::SwitchToFrame
   def execute(id : Int32?)
     @driver.post(
       "/session/#{@session_id}/frame",
-      body: { id: id }.to_json
+      body: {id: id}.to_json
     )
   end
 end

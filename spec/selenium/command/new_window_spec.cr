@@ -6,7 +6,7 @@ module Selenium::Command
       driver = TestDriver.new
       driver.response_body = {
         handle: "abc",
-        type: "tab"
+        type:   "tab",
       }.to_json
       session_id = SessionId.random
       command = NewWindow.new(driver, session_id)

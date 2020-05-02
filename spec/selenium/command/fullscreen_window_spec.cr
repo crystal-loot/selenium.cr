@@ -1,7 +1,7 @@
 require "../../spec_helper"
 
 module Selenium::Command
-  describe MaximizeWindow do
+  describe FullscreenWindow do
     it "works" do
       driver = TestDriver.new
       driver.response_body = {
@@ -11,11 +11,11 @@ module Selenium::Command
         height: 660,
       }.to_json
       session_id = SessionId.random
-      command = MaximizeWindow.new(driver, session_id)
+      command = FullscreenWindow.new(driver, session_id)
 
       result = command.execute
 
-      driver.request_path.should eq("/session/#{session_id}/window/maximize")
+      driver.request_path.should eq("/session/#{session_id}/window/fullscreen")
       result.x.should eq(100)
       result.y.should eq(120)
       result.width.should eq(400)

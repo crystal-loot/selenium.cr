@@ -5,10 +5,10 @@ module Selenium::Command
     it "works" do
       driver = TestDriver.new
       driver.response_body = {
-        x: 100,
-        y: 120,
-        width: 400,
-        height: 660
+        x:      100,
+        y:      120,
+        width:  400,
+        height: 660,
       }.to_json
       session_id = SessionId.random
       command = GetWindowRect.new(driver, session_id)

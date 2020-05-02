@@ -10,7 +10,7 @@ module Selenium::Command
       command.execute(123)
 
       driver.request_path.should eq("/session/#{session_id}/frame")
-      driver.request_body.should eq({ id: 123 }.to_json)
+      driver.request_body.should eq({id: 123}.to_json)
     end
   end
 end
