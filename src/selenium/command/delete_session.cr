@@ -1,10 +1,10 @@
 class Selenium::Command::DeleteSession
   getter driver : Driver::Deleteable
 
-  def initialize(@driver)
+  def initialize(@driver, @session_id : SessionId)
   end
 
-  def execute(session_id : SessionId)
-    driver.delete("/session/#{session_id}")
+  def execute
+    driver.delete("/session/#{@session_id}")
   end
 end
