@@ -1,10 +1,10 @@
 class Selenium::Status
-  include JSON::Serializable
+  getter message : String
 
-  property ready : Bool
-  property message : String
+  def initialize(@ready : Bool, @message)
+  end
 
   def ready?
-    ready
+    @ready
   end
 end

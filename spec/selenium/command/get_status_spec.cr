@@ -4,10 +4,10 @@ module Selenium::Command
   describe GetStatus do
     it "works" do
       driver = TestDriver.new
-      driver.response_body = {
-        ready:   true,
-        message: "This is fake",
-      }.to_json
+      driver.response_value({
+        ready: true,
+        message: "This is fake"
+      })
 
       command = GetStatus.new(driver)
 

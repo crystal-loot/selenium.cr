@@ -1,7 +1,7 @@
 require "../spec_helper"
 
 module Selenium::Command
-  describe "elements", tags: "feature", focus: true do
+  describe "elements", tags: "feature" do
     it "can be targeted individually" do
       driver = HttpDriver.new
       TestServer.route "/home", "<span id='heading'>Home</span>"

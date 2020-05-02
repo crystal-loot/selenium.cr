@@ -5,7 +5,7 @@ class Selenium::Command::NewSession
   end
 
   def execute(capabilities : Hash(String, _) = {} of String => String) : SessionId
-    result = driver.post("/session", {capabilities: capabilities}.to_json)
-    JSON.parse(result)["sessionId"].as_s
+    response_body = driver.post("/session", {capabilities: capabilities}.to_json)
+    response_body.dig("value", "sessionId").as_s
   end
 end

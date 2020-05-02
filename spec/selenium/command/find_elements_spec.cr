@@ -6,10 +6,10 @@ module Selenium::Command
       driver = TestDriver.new
       element_id_a = UUID.random
       element_id_b = UUID.random
-      driver.response_body = [
+      driver.response_value([
         {"element-1" => element_id_a},
         {"element-2" => element_id_b}
-      ].to_json
+      ])
       session_id = "c913bd4a033f9932a84bcd921f30793d"
       command = FindElements.new(driver, session_id)
 

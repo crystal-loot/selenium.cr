@@ -5,7 +5,7 @@ class Selenium::Command::GetActiveElement
   def execute : ElementId
     response_body = @driver.get("/session/#{@session_id}/element/active")
 
-    entry = JSON.parse(response_body)
-    ElementId.new(entry.as_h.first_value.as_s)
+    entry = response_body["value"].as_h
+    ElementId.new(entry.first_value.as_s)
   end
 end

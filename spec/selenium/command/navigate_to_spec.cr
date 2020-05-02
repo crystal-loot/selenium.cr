@@ -10,7 +10,7 @@ module Selenium::Command
       command.execute("https://example.com")
 
       driver.request_path.should eq("/session/#{session_id}/url")
-      driver.parsed_request_body["url"].should eq("https://example.com")
+      driver.request_body.should eq({url: "https://example.com"}.to_json)
     end
   end
 end

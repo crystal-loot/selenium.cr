@@ -4,7 +4,7 @@ module Selenium::Command
   describe GetWindowHandle do
     it "works" do
       driver = TestDriver.new
-      driver.response_body = {value: "Window 1"}.to_json
+      driver.response_value("Window 1")
       session_id = "c913bd4a033f9932a84bcd921f30793d"
       command = GetWindowHandle.new(driver, session_id)
 

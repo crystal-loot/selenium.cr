@@ -18,6 +18,11 @@ class Selenium::Command::SetWindowRect
       }.to_json
     )
 
-    WindowRect.from_json(response_body)
+    new_x = response_body.dig("value", "x").as_i
+    new_y = response_body.dig("value", "y").as_i
+    new_width = response_body.dig("value", "width").as_i
+    new_height = response_body.dig("value", "height").as_i
+
+    WindowRect.new(new_x, new_y, new_width, new_height)
   end
 end

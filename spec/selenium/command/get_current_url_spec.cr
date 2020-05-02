@@ -4,7 +4,7 @@ module Selenium::Command
   describe GetCurrentUrl do
     it "works" do
       driver = TestDriver.new
-      driver.response_body = {url: "https://example.com"}.to_json
+      driver.response_value({ url: "https://example.com"})
       session_id = "c913bd4a033f9932a84bcd921f30793d"
       command = GetCurrentUrl.new(driver, session_id)
 

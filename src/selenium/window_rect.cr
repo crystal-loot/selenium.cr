@@ -1,8 +1,9 @@
 struct Selenium::WindowRect
-  include JSON::Serializable
+  getter x : Int32
+  getter y : Int32
+  getter width : Int32
+  getter height : Int32
 
-  property x : Int32
-  property y : Int32
-  property width : Int32
-  property height : Int32
+  def initialize(@x, @y, @width, @height)
+  end
 end

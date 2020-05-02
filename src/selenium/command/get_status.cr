@@ -5,6 +5,11 @@ class Selenium::Command::GetStatus
   end
 
   def execute : Status
-    Status.from_json(driver.get("/status"))
+    response_body = driver.get("/status")
+
+    ready = response_body.dig("value", "ready").as_bool
+    message = response_body.dig("value", "message").as_s
+
+    Status.new(ready, message)
   end
 end

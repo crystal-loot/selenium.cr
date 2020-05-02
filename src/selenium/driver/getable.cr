@@ -1,3 +1,3 @@
 module Selenium::Driver::Getable
-  abstract def get(path : String) : String
+  abstract def get(path : String) : JSON::Any
 end

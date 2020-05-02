@@ -14,7 +14,7 @@ class Selenium::Command::FindElementsFromElement
       }.to_json
     )
 
-    JSON.parse(response_body)
+    response_body["value"]
       .as_a
       .map { |entry| ElementId.new(entry.as_h.first_value.as_s) }
   end

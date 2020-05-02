@@ -4,12 +4,12 @@ module Selenium::Command
   describe GetWindowRect do
     it "works" do
       driver = TestDriver.new
-      driver.response_body = {
+      driver.response_value({
         x:      100,
         y:      120,
         width:  400,
         height: 660,
-      }.to_json
+      })
       session_id = "c913bd4a033f9932a84bcd921f30793d"
       command = GetWindowRect.new(driver, session_id)
 

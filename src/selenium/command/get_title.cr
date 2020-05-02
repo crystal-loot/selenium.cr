@@ -1,11 +1,9 @@
 class Selenium::Command::GetTitle
   def initialize(@driver : Driver::Getable, @session_id : SessionId)
-    @method = "GET"
-    @route = "/session/#{@session_id}/title"
   end
 
   def execute : String
     response_body = @driver.get("/session/#{@session_id}/title")
-    JSON.parse(response_body)["title"].as_s
+    response_body.dig("value", "title").as_s
   end
 end

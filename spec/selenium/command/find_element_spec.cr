@@ -5,7 +5,7 @@ module Selenium::Command
     it "works" do
       driver = TestDriver.new
       element_id = ElementId.random
-      driver.response_body = { "element-1" => element_id }.to_json
+      driver.response_value({ "element-1" => element_id })
       session_id = "c913bd4a033f9932a84bcd921f30793d"
       command = FindElement.new(driver, session_id)
 
