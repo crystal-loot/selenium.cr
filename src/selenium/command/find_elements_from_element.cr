@@ -1,8 +1,9 @@
 class Selenium::Command::FindElementsFromElement
   def initialize(
-    @driver : Driver::Postable, 
-    @session_id : SessionId, 
-    @parent_element_id : ElementId)
+    @driver : Driver::Postable,
+    @session_id : SessionId,
+    @parent_element_id : ElementId
+  )
   end
 
   def execute(using : LocationStrategy, value : String) : Array(ElementId)

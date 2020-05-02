@@ -8,7 +8,7 @@ module Selenium::Command
       element_id_b = UUID.random
       driver.response_value([
         {"element-1" => element_id_a},
-        {"element-2" => element_id_b}
+        {"element-2" => element_id_b},
       ])
       session_id = "c913bd4a033f9932a84bcd921f30793d"
       command = FindElements.new(driver, session_id)

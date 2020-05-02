@@ -1,5 +1,5 @@
 class Selenium::TestDriver
-  EMPTY_RESPONSE = JSON.parse({ value: nil }.to_json)
+  EMPTY_RESPONSE = JSON.parse({value: nil}.to_json)
   include Driver
 
   property request_path : String?
