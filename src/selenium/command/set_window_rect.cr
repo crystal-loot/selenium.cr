@@ -2,7 +2,12 @@ class Selenium::Command::SetWindowRect
   def initialize(@driver : Driver::Postable, @session_id : SessionId)
   end
 
-  def execute(width : Int32?, height : Int32?, x : Int32?, y : Int32?) : WindowRect
+  def execute(
+    width : Int32? = nil,
+    height : Int32? = nil,
+    x : Int32? = nil,
+    y : Int32? = nil
+  ) : WindowRect
     response_body = @driver.post(
       "/session/#{@session_id}/window/rect",
       body: {

@@ -6,6 +6,6 @@ class Selenium::Command::GetWindowHandle
 
   def execute : WindowHandle
     response_body = @driver.get("/session/#{@session_id}/window")
-    JSON.parse(response_body)["identifier"].as_s
+    JSON.parse(response_body)["value"].as_s
   end
 end

@@ -12,7 +12,7 @@ class Selenium::HttpDriver
   end
 
   def get(path) : String
-    HTTP::Client.get(path).body
+    HTTP::Client.get(base_path + path).body
   end
 
   def base_path
