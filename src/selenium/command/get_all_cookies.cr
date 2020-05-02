@@ -1,6 +1,10 @@
 class Selenium::Command::GetAllCookies
-  def initialize(@session_id : UUID)
-    @method = "GET"
-    @route = "/session/#{@session_id}/cookie"
+  def initialize(@driver : Driver::Getable, @session_id : SessionId)
+  end
+
+  def execute : Array(Cookie)
+    response_body = @driver.get("/session/#{@session_id}/cookie")
+
+    Array(Cookie).from_json(response_body["value"].to_json)
   end
 end

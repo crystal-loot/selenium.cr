@@ -1,4 +1,4 @@
-class Selenium::Cookie
+struct Selenium::Cookie
   include JSON::Serializable
 
   getter name : String
