@@ -4,4 +4,5 @@ module Selenium
   alias ElementId = UUID
   alias WindowRect = Rect
   alias ElementRect = Rect
+  alias ActionSequence = Array(InputSourceActionSequence)
 end
