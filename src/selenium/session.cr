@@ -1,5 +1,3 @@
-alias Selenium::SessionId = UUID
-
 class Selenium::Session
   getter session_id : SessionId
 

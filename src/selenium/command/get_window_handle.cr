@@ -1,6 +1,11 @@
 class Selenium::Command::GetWindowHandle
-  def initialize(@session_id : UUID)
+  def initialize(@driver : Driver::Getable, @session_id : UUID)
     @method = "GET"
     @route = "/session/#{@session_id}/window"
+  end
+
+  def execute : WindowHandle
+    response_body = @driver.get("/session/#{@session_id}/window")
+    JSON.parse(response_body)["identifier"].as_s
   end
 end
