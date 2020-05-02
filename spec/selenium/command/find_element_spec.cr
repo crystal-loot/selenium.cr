@@ -4,9 +4,8 @@ module Selenium::Command
   describe FindElement do
     it "works" do
       driver = TestDriver.new
-      driver.response_body = {
-        "element-6066-11e4-a52e-4f735466cecf" => "bec4cae4-4468-470d-9bea-8b516c2fa2c5"
-      }.to_json
+      element_id = ElementId.random
+      driver.response_body = { "element-1" => element_id }.to_json
       session_id = "c913bd4a033f9932a84bcd921f30793d"
       command = FindElement.new(driver, session_id)
 
@@ -17,7 +16,7 @@ module Selenium::Command
         using: "link text",
         value: "foo",
       }.to_json)
-      result.should eq("bec4cae4-4468-470d-9bea-8b516c2fa2c5")
+      result.should eq(element_id)
     end
   end
 end

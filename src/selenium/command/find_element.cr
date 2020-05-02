@@ -11,6 +11,7 @@ class Selenium::Command::FindElement
       }.to_json
     )
 
-    JSON.parse(response_body).as_h.first_value.as_s
+    entry = JSON.parse(response_body)
+    ElementId.new(entry.as_h.first_value.as_s)
   end
 end
