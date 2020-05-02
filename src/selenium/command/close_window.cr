@@ -1,6 +1,8 @@
 class Selenium::Command::CloseWindow
-  def initialize(@session_id : UUID)
-    @method = "DELETE"
-    @route = "/session/#{@session_id}/window"
+  def initialize(@driver : Driver::Deleteable, @session_id : SessionId)
+  end
+
+  def execute
+    @driver.delete("/session/#{@session_id}/window")
   end
 end
