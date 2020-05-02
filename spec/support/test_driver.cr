@@ -19,4 +19,8 @@ class Selenium::TestDriver
     self.request_body = body
     response_body
   end
+
+  def parsed_request_body : JSON::Any
+    JSON.parse(request_body.not_nil!)
+  end
 end
