@@ -7,7 +7,7 @@ class Selenium::Command::FindElement
       "/session/#{@session_id}/element",
       body: {
         using: using,
-        value: value
+        value: value,
       }.to_json
     )
 

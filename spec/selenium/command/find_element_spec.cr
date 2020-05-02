@@ -6,8 +6,8 @@ module Selenium::Command
       driver = TestDriver.new
       driver.response_body = [
         {
-          id: "abc"
-        }
+          id: "abc",
+        },
       ].to_json
       session_id = SessionId.random
       command = FindElement.new(driver, session_id)
@@ -17,7 +17,7 @@ module Selenium::Command
       driver.request_path.should eq("/session/#{session_id}/element")
       driver.request_body.should eq({
         using: "link text",
-        value: "foo"
+        value: "foo",
       }.to_json)
       result.size.should eq(1)
       result.first.id.should eq("abc")
