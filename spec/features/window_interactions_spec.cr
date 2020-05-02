@@ -1,6 +1,6 @@
 require "../spec_helper"
 
-describe "window" do
+describe "window", tags: "feature" do
   it "can be interacted with" do
     driver = Selenium::HttpDriver.new
 
