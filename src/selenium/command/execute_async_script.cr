@@ -1,6 +1,16 @@
 class Selenium::Command::ExecuteAsyncScript
-  def initialize(@session_id : UUID)
-    @method = "POST"
-    @route = "/session/#{@session_id}/execute/async"
+  def initialize(@driver : Driver::Postable, @session_id : SessionId)
+  end
+
+  def execute(script : String, args : Array(_) = [] of String) : String
+    response_body = @driver.post(
+      "/session/#{@session_id}/execute/async",
+      body: {
+        script: script,
+        args:   args,
+      }.to_json
+    )
+
+    response_body["value"].as_s
   end
 end
