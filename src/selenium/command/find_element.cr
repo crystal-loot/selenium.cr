@@ -2,7 +2,7 @@ class Selenium::Command::FindElement
   def initialize(@driver : Driver::Postable, @session_id : SessionId)
   end
 
-  def execute(using : LocationStrategy, value : String) : Array(Element)
+  def execute(using : LocationStrategy, value : String) : ElementId
     response_body = @driver.post(
       "/session/#{@session_id}/element",
       body: {
@@ -11,6 +11,6 @@ class Selenium::Command::FindElement
       }.to_json
     )
 
-    Array(Element).from_json(response_body)
+    JSON.parse(response_body).as_h.first_value.as_s
   end
 end
