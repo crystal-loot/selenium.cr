@@ -1,7 +1,7 @@
 class Selenium::HttpDriver
   include Driver
 
-  def post(path, body) : String
+  def post(path, body = nil) : String
     response = HTTP::Client.post(base_path + path, body: body)
     response.body
   end

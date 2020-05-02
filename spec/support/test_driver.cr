@@ -14,7 +14,7 @@ class Selenium::TestDriver
     response_body
   end
 
-  def post(path, body) : String
+  def post(path, body = nil) : String
     self.request_path = path
     self.request_body = body
     response_body
