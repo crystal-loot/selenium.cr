@@ -1,6 +1,13 @@
 class Selenium::Command::SwitchToFrame
-  def initialize(@session_id : UUID)
+  def initialize(@driver : Driver::Postable, @session_id : SessionId)
     @method = "POST"
     @route = "/session/#{@session_id}/frame"
+  end
+
+  def execute(id : Int32? )
+    @driver.post(
+      "/session/#{@session_id}/frame",
+      body: { id: id }.to_json
+    )
   end
 end
