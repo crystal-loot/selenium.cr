@@ -10,7 +10,7 @@ module Selenium::Command
         width:  400,
         height: 660,
       }.to_json
-      session_id = SessionId.random
+      session_id = "c913bd4a033f9932a84bcd921f30793d"
       command = GetWindowRect.new(driver, session_id)
 
       result = command.execute

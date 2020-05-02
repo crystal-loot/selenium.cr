@@ -16,7 +16,3 @@ end
 spawn do
   server.listen
 end
-
-def visit_page_with(html) : LuckyFlow
-  TestServer.route "/home", html
-end

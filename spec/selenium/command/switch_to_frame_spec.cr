@@ -4,7 +4,7 @@ module Selenium::Command
   describe SwitchToFrame do
     it "works" do
       driver = TestDriver.new
-      session_id = SessionId.random
+      session_id = "c913bd4a033f9932a84bcd921f30793d"
       command = SwitchToFrame.new(driver, session_id)
 
       command.execute(123)

@@ -1,9 +1,10 @@
 class Selenium::HttpDriver
   include Driver
 
-  def post(path, body = nil) : String
-    response = HTTP::Client.post(base_path + path, body: body)
-    response.body
+  def post(path, body = "{}") : String
+    url = base_path + path
+    response = HTTP::Client.post(url, body: body)
+    JSON.parse(response.body)["value"].to_json
   end
 
   def delete(path)

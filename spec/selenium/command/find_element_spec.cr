@@ -9,7 +9,7 @@ module Selenium::Command
           id: "abc",
         },
       ].to_json
-      session_id = SessionId.random
+      session_id = "c913bd4a033f9932a84bcd921f30793d"
       command = FindElement.new(driver, session_id)
 
       result = command.execute(using: LocationStrategy::LINK_TEXT, value: "foo")

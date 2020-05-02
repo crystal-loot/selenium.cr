@@ -1,5 +1,5 @@
 class Selenium::Command::GetTitle
-  def initialize(@driver : Driver::Getable, @session_id : UUID)
+  def initialize(@driver : Driver::Getable, @session_id : SessionId)
     @method = "GET"
     @route = "/session/#{@session_id}/title"
   end

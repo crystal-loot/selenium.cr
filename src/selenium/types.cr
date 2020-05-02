@@ -1,5 +1,5 @@
 module Selenium
-  alias SessionId = UUID
+  alias SessionId = String
   alias WindowHandle = String
   alias ElementId = String
 end
