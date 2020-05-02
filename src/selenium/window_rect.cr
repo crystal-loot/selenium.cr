@@ -1,4 +1,4 @@
-struct Selenium::WindowRect
+struct Selenium::Rect
   getter x : Int32
   getter y : Int32
   getter width : Int32

@@ -2,7 +2,7 @@ class Selenium::Command::GetElementRect
   def initialize(@driver : Driver::Getable, @session_id : SessionId)
   end
 
-  def execute(element_id : ElementId) : WindowRect
+  def execute(element_id : ElementId) : ElementRect
     response_body = @driver.get("/session/#{@session_id}/element/#{element_id}/rect")
 
     x = response_body.dig("value", "x").as_i
@@ -10,6 +10,6 @@ class Selenium::Command::GetElementRect
     width = response_body.dig("value", "width").as_i
     height = response_body.dig("value", "height").as_i
 
-    WindowRect.new(x, y, width, height)
+    ElementRect.new(x, y, width, height)
   end
 end
