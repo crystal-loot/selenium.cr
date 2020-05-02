@@ -6,8 +6,8 @@ module Selenium::Command
       driver = TestDriver.new
       driver.response_body = {
         value: {
-          sessionId: SessionId.new("117900cd-262a-4266-889b-5e9ddb5968f6")
-        }
+          sessionId: SessionId.new("117900cd-262a-4266-889b-5e9ddb5968f6"),
+        },
       }.to_json
       new_session = NewSession.new(driver)
 

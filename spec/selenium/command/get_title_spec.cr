@@ -4,7 +4,7 @@ module Selenium::Command
   describe GetTitle do
     it "works" do
       driver = TestDriver.new
-      driver.response_body = { title: "Foo" }.to_json
+      driver.response_body = {title: "Foo"}.to_json
       session_id = SessionId.random
       command = GetTitle.new(driver, session_id)
 

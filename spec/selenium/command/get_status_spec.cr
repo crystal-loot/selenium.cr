@@ -5,8 +5,8 @@ module Selenium::Command
     it "works" do
       driver = TestDriver.new
       driver.response_body = {
-        ready: true,
-        message: "This is fake"
+        ready:   true,
+        message: "This is fake",
       }.to_json
 
       command = GetStatus.new(driver)

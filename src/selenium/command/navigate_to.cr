@@ -3,7 +3,7 @@ class Selenium::Command::NavigateTo
   end
 
   def execute(url)
-    body = { url: url }.to_json
+    body = {url: url}.to_json
     @driver.post("/session/#{@session_id}/url", body)
   end
 end

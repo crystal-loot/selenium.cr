@@ -1,5 +1,6 @@
 class Selenium::Command::GetTimeouts
   getter driver : Driver::Getable
+
   def initialize(@driver)
   end
 
