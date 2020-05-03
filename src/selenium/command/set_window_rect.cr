@@ -1,5 +1,5 @@
 class Selenium::Command::SetWindowRect
-  def initialize(@driver : Driver, @session_id : SessionId)
+  def initialize(@http_client : HttpClient, @session_id : SessionId)
   end
 
   def execute(
@@ -8,7 +8,7 @@ class Selenium::Command::SetWindowRect
     x : Int32? = nil,
     y : Int32? = nil
   ) : WindowRect
-    response_body = @driver.post(
+    response_body = @http_client.post(
       "/session/#{@session_id}/window/rect",
       body: {
         width:  width,

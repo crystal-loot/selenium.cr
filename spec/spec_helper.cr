@@ -17,9 +17,9 @@ spawn do
   server.listen
 end
 
-def with_session(driver : Selenium::Driver)
-  session_id = Selenium::Command::NewSession.new(driver).execute
+def with_session(http_client : Selenium::HttpClient)
+  session_id = Selenium::Command::NewSession.new(http_client).execute
   yield(session_id)
 ensure
-  Selenium::Command::DeleteSession.new(driver, session_id).execute unless session_id.nil?
+  Selenium::Command::DeleteSession.new(http_client, session_id).execute unless session_id.nil?
 end

@@ -3,16 +3,16 @@ require "../../spec_helper"
 module Selenium::Command
   describe FindElement do
     it "works" do
-      driver = TestDriver.new
+      http_client = TestHttpClient.new
       element_id = ElementId.random
-      driver.response_value({"element-1" => element_id})
+      http_client.response_value({"element-1" => element_id})
       session_id = "c913bd4a033f9932a84bcd921f30793d"
-      command = FindElement.new(driver, session_id)
+      command = FindElement.new(http_client, session_id)
 
       result = command.execute(using: LocationStrategy::LINK_TEXT, value: "foo")
 
-      driver.request_path.should eq("/session/#{session_id}/element")
-      driver.request_body.should eq({
+      http_client.request_path.should eq("/session/#{session_id}/element")
+      http_client.request_body.should eq({
         using: "link text",
         value: "foo",
       }.to_json)

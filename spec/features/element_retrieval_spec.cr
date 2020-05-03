@@ -14,13 +14,13 @@ module Selenium::Command
       </ul>
       HTML
 
-      driver = Driver.new
+      http_client = HttpClient.new
 
-      with_session(driver) do |session_id|
-        NavigateTo.new(driver, session_id).execute("localhost:3002/home")
-        element_id = FindElement.new(driver, session_id).execute(using: LocationStrategy::CSS, value: "[data-testid=\"item-1\"]")
-        child_element_id = FindElementFromElement.new(driver, session_id, element_id).execute(using: LocationStrategy::CSS, value: "#words")
-        element_text = GetElementText.new(driver, session_id).execute(element_id)
+      with_session(http_client) do |session_id|
+        NavigateTo.new(http_client, session_id).execute("localhost:3002/home")
+        element_id = FindElement.new(http_client, session_id).execute(using: LocationStrategy::CSS, value: "[data-testid=\"item-1\"]")
+        child_element_id = FindElementFromElement.new(http_client, session_id, element_id).execute(using: LocationStrategy::CSS, value: "#words")
+        element_text = GetElementText.new(http_client, session_id).execute(element_id)
 
         element_text.should eq("Second Item")
       end
@@ -39,18 +39,18 @@ module Selenium::Command
       </ul>
       HTML
 
-      driver = Driver.new
+      http_client = HttpClient.new
 
-      with_session(driver) do |session_id|
-        NavigateTo.new(driver, session_id).execute("localhost:3002/home")
-        element_ids = FindElements.new(driver, session_id).execute(using: LocationStrategy::CSS, value: "#words")
+      with_session(http_client) do |session_id|
+        NavigateTo.new(http_client, session_id).execute("localhost:3002/home")
+        element_ids = FindElements.new(http_client, session_id).execute(using: LocationStrategy::CSS, value: "#words")
         element_ids.size.should eq(2)
 
-        element_id = FindElement.new(driver, session_id).execute(using: LocationStrategy::CSS, value: "[data-testid=\"item-0\"]")
-        child_element_ids = FindElementsFromElement.new(driver, session_id, element_id).execute(using: LocationStrategy::CSS, value: "p")
+        element_id = FindElement.new(http_client, session_id).execute(using: LocationStrategy::CSS, value: "[data-testid=\"item-0\"]")
+        child_element_ids = FindElementsFromElement.new(http_client, session_id, element_id).execute(using: LocationStrategy::CSS, value: "p")
         child_element_ids.size.should eq(2)
         child_element_texts = child_element_ids.map do |child_element_id|
-          GetElementText.new(driver, session_id).execute(child_element_id)
+          GetElementText.new(http_client, session_id).execute(child_element_id)
         end
         child_element_texts.should contain("First Item")
         child_element_texts.should contain("Sub Text")

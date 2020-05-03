@@ -1,8 +1,8 @@
 class Selenium::Command::ReleaseActions
-  def initialize(@driver : Driver, @session_id : SessionId)
+  def initialize(@http_client : HttpClient, @session_id : SessionId)
   end
 
   def execute
-    @driver.delete("/session/#{@session_id}/actions")
+    @http_client.delete("/session/#{@session_id}/actions")
   end
 end

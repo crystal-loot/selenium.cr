@@ -1,8 +1,8 @@
 class Selenium::Command::SwitchToParentFrame
-  def initialize(@driver : Driver, @session_id : SessionId)
+  def initialize(@http_client : HttpClient, @session_id : SessionId)
   end
 
   def execute
-    @driver.post("/session/#{@session_id}/frame/parent")
+    @http_client.post("/session/#{@session_id}/frame/parent")
   end
 end

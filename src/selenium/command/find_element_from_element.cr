@@ -1,13 +1,13 @@
 class Selenium::Command::FindElementFromElement
   def initialize(
-    @driver : Driver,
+    @http_client : HttpClient,
     @session_id : SessionId,
     @parent_element_id : ElementId
   )
   end
 
   def execute(using : LocationStrategy, value : String) : ElementId
-    response_body = @driver.post(
+    response_body = @http_client.post(
       "/session/#{@session_id}/element/#{@parent_element_id}/element",
       body: {
         using: using,

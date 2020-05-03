@@ -3,15 +3,15 @@ require "../../spec_helper"
 module Selenium::Command
   describe IsElementEnabled do
     it "works" do
-      driver = TestDriver.new
-      driver.response_value(true)
+      http_client = TestHttpClient.new
+      http_client.response_value(true)
       element_id = ElementId.random
       session_id = "c913bd4a033f9932a84bcd921f30793d"
-      command = IsElementEnabled.new(driver, session_id)
+      command = IsElementEnabled.new(http_client, session_id)
 
       result = command.execute(element_id)
 
-      driver.request_path.should eq("/session/#{session_id}/element/#{element_id}/enabled")
+      http_client.request_path.should eq("/session/#{session_id}/element/#{element_id}/enabled")
       result.should be_true
     end
   end

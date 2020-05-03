@@ -1,4 +1,4 @@
-class Selenium::Driver
+class Selenium::HttpClient
   def post(path, body = "{}") : JSON::Any
     url = base_path + path
     response = HTTP::Client.post(url, body: body)

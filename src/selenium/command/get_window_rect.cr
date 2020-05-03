@@ -1,9 +1,9 @@
 class Selenium::Command::GetWindowRect
-  def initialize(@driver : Driver, @session_id : SessionId)
+  def initialize(@http_client : HttpClient, @session_id : SessionId)
   end
 
   def execute : WindowRect
-    response_body = @driver.get("/session/#{@session_id}/window/rect")
+    response_body = @http_client.get("/session/#{@session_id}/window/rect")
 
     x = response_body.dig("value", "x").as_i
     y = response_body.dig("value", "y").as_i

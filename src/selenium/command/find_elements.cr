@@ -1,9 +1,9 @@
 class Selenium::Command::FindElements
-  def initialize(@driver : Driver, @session_id : SessionId)
+  def initialize(@http_client : HttpClient, @session_id : SessionId)
   end
 
   def execute(using : LocationStrategy, value : String) : Array(ElementId)
-    response_body = @driver.post(
+    response_body = @http_client.post(
       "/session/#{@session_id}/elements",
       body: {
         using: using,

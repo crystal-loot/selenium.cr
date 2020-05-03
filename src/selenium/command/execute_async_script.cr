@@ -1,10 +1,10 @@
 class Selenium::Command::ExecuteAsyncScript
-  def initialize(@driver : Driver, @session_id : SessionId)
+  def initialize(@http_client : HttpClient, @session_id : SessionId)
   end
 
   # the response is the result of the script so it could be anything
   def execute(script : String, args : Array(_) = [] of String) : String
-    response_body = @driver.post(
+    response_body = @http_client.post(
       "/session/#{@session_id}/execute/async",
       body: {
         script: script,

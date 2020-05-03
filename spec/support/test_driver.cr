@@ -1,4 +1,4 @@
-class Selenium::TestDriver < Selenium::Driver
+class Selenium::TestHttpClient < Selenium::HttpClient
   EMPTY_RESPONSE = JSON.parse({value: nil}.to_json)
 
   property request_path : String?

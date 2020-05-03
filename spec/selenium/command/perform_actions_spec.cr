@@ -3,9 +3,9 @@ require "../../spec_helper"
 module Selenium::Command
   describe PerformActions do
     it "works" do
-      driver = TestDriver.new
+      http_client = TestHttpClient.new
       session_id = "c913bd4a033f9932a84bcd921f30793d"
-      command = PerformActions.new(driver, session_id)
+      command = PerformActions.new(http_client, session_id)
 
       input_action_sequence = InputSourceActionSequence.new(
         type: "key",
@@ -18,8 +18,8 @@ module Selenium::Command
 
       command.execute([input_action_sequence])
 
-      driver.request_path.should eq("/session/#{session_id}/actions")
-      driver.request_body.should eq({
+      http_client.request_path.should eq("/session/#{session_id}/actions")
+      http_client.request_body.should eq({
         actions: [
           {
             type:    "key",

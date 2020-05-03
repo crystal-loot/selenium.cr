@@ -1,9 +1,9 @@
 class Selenium::Command::GetStatus
-  def initialize(@driver : Driver)
+  def initialize(@http_client : HttpClient)
   end
 
   def execute : Status
-    response_body = @driver.get("/status")
+    response_body = @http_client.get("/status")
 
     ready = response_body.dig("value", "ready").as_bool
     message = response_body.dig("value", "message").as_s

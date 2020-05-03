@@ -1,9 +1,9 @@
 class Selenium::Command::SetTimeouts
-  def initialize(@driver : Driver, @session_id : SessionId)
+  def initialize(@http_client : HttpClient, @session_id : SessionId)
   end
 
   def execute(timeout_configuration : TimeoutConfiguration)
-    @driver.post(
+    @http_client.post(
       "/session/#{@session_id}/timeouts",
       body: timeout_configuration.to_json
     )

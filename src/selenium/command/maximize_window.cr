@@ -1,9 +1,9 @@
 class Selenium::Command::MaximizeWindow
-  def initialize(@driver : Driver, @session_id : SessionId)
+  def initialize(@http_client : HttpClient, @session_id : SessionId)
   end
 
   def execute : WindowRect
-    response_body = @driver.post("/session/#{@session_id}/window/maximize")
+    response_body = @http_client.post("/session/#{@session_id}/window/maximize")
 
     x = response_body.dig("value", "x").as_i
     y = response_body.dig("value", "y").as_i
