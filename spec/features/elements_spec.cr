@@ -3,7 +3,6 @@ require "../spec_helper"
 module Selenium::Command
   describe "elements", tags: "feature" do
     it "can be targeted individually" do
-      driver = HttpDriver.new
       TestServer.route "/home", "<span id='heading'>Home</span>"
       TestServer.route "/home", <<-HTML
       <ul>
@@ -16,15 +15,16 @@ module Selenium::Command
       </ul>
       HTML
 
-      session_id = NewSession.new(driver).execute
-      NavigateTo.new(driver, session_id).execute("localhost:3002/home")
-      element_id = FindElement.new(driver, session_id).execute(using: LocationStrategy::CSS, value: "[data-testid=\"item-1\"]")
-      child_element_id = FindElementFromElement.new(driver, session_id, element_id).execute(using: LocationStrategy::CSS, value: "#words")
-      element_text = GetElementText.new(driver, session_id).execute(element_id)
+      driver = HttpDriver.new
 
-      element_text.should eq("Second Item")
+      with_session(driver) do |session_id|
+        NavigateTo.new(driver, session_id).execute("localhost:3002/home")
+        element_id = FindElement.new(driver, session_id).execute(using: LocationStrategy::CSS, value: "[data-testid=\"item-1\"]")
+        child_element_id = FindElementFromElement.new(driver, session_id, element_id).execute(using: LocationStrategy::CSS, value: "#words")
+        element_text = GetElementText.new(driver, session_id).execute(element_id)
 
-      DeleteSession.new(driver, session_id).execute
+        element_text.should eq("Second Item")
+      end
     end
   end
 end
