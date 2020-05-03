@@ -7,9 +7,11 @@ module Selenium::Command
       TestServer.route "/home", <<-HTML
         <a href="/next-page">Click Me!</a>
       HTML
-      http_client = HttpClient.new
+      driver = Driver.new
+      http_client = driver.http_client
 
-      with_session(http_client) do |session_id|
+      with_session(driver) do |session|
+        session_id = session.id
         NavigateTo.new(http_client, session_id).execute("localhost:3002/home")
         element_id = FindElement.new(http_client, session_id)
           .execute(using: LocationStrategy::LINK_TEXT, value: "Click Me!")
@@ -25,9 +27,11 @@ module Selenium::Command
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="John">
       HTML
-      http_client = HttpClient.new
+      driver = Driver.new
+      http_client = driver.http_client
 
-      with_session(http_client) do |session_id|
+      with_session(driver) do |session|
+        session_id = session.id
         NavigateTo.new(http_client, session_id).execute("localhost:3002/home")
         element_id = FindElement.new(http_client, session_id).execute(using: LocationStrategy::CSS, value: "#name")
         ElementClear.new(http_client, session_id).execute(element_id)
@@ -40,9 +44,11 @@ module Selenium::Command
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="">
       HTML
-      http_client = HttpClient.new
+      driver = Driver.new
+      http_client = driver.http_client
 
-      with_session(http_client) do |session_id|
+      with_session(driver) do |session|
+        session_id = session.id
         NavigateTo.new(http_client, session_id).execute("localhost:3002/home")
         element_id = FindElement.new(http_client, session_id).execute(using: LocationStrategy::CSS, value: "#name")
         ElementClear.new(http_client, session_id).execute(element_id)

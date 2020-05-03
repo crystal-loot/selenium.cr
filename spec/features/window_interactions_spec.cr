@@ -3,9 +3,11 @@ require "../spec_helper"
 module Selenium::Command
   describe "window", tags: "feature" do
     it "can be interacted with" do
-      http_client = HttpClient.new
+      driver = Driver.new
+      http_client = driver.http_client
 
-      with_session(http_client) do |session_id|
+      with_session(driver) do |session|
+        session_id = session.id
         status = GetStatus.new(http_client).execute
         status.ready?.should be_true
         FullscreenWindow.new(http_client, session_id).execute

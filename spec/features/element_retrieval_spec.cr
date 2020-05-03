@@ -14,9 +14,11 @@ module Selenium::Command
       </ul>
       HTML
 
-      http_client = HttpClient.new
+      driver = Driver.new
+      http_client = driver.http_client
 
-      with_session(http_client) do |session_id|
+      with_session(driver) do |session|
+        session_id = session.id
         NavigateTo.new(http_client, session_id).execute("localhost:3002/home")
         element_id = FindElement.new(http_client, session_id).execute(using: LocationStrategy::CSS, value: "[data-testid=\"item-1\"]")
         child_element_id = FindElementFromElement.new(http_client, session_id, element_id).execute(using: LocationStrategy::CSS, value: "#words")
@@ -39,9 +41,11 @@ module Selenium::Command
       </ul>
       HTML
 
-      http_client = HttpClient.new
+      driver = Driver.new
+      http_client = driver.http_client
 
-      with_session(http_client) do |session_id|
+      with_session(driver) do |session|
+        session_id = session.id
         NavigateTo.new(http_client, session_id).execute("localhost:3002/home")
         element_ids = FindElements.new(http_client, session_id).execute(using: LocationStrategy::CSS, value: "#words")
         element_ids.size.should eq(2)

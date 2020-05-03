@@ -10,9 +10,11 @@ module Selenium::Command
       </head>
       <h1>About</h1>
       HTML
-      http_client = HttpClient.new
+      driver = Driver.new
+      http_client = driver.http_client
 
-      with_session(http_client) do |session_id|
+      with_session(driver) do |session|
+        session_id = session.id
         NavigateTo.new(http_client, session_id).execute("localhost:3002/home")
         NavigateTo.new(http_client, session_id).execute("localhost:3002/about")
         GoBack.new(http_client, session_id).execute

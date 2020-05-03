@@ -1,6 +1,11 @@
 class Selenium::Session
-  getter session_id : SessionId
+  getter http_client : HttpClient
+  getter id : SessionId
 
-  def initialize(@session_id)
+  def initialize(@http_client, @id)
+  end
+
+  def delete
+    Command::DeleteSession.new(http_client, id).execute
   end
 end
