@@ -8,18 +8,13 @@ module Selenium::Command
         <a href="/next-page">Click Me!</a>
       HTML
       driver = Driver.new
-      http_client = driver.http_client
 
       with_session(driver) do |session|
         session_id = session.id
-        NavigateTo.new(http_client, session_id).execute("localhost:3002/home")
-        element_id = FindElement.new(http_client, session_id)
-          .execute(using: LocationStrategy::LINK_TEXT, value: "Click Me!")
-        ElementClick.new(http_client, session_id).execute(element_id)
-
-        current_url = GetCurrentUrl.new(http_client, session_id).execute
-
-        current_url.should eq("http://localhost:3002/next-page")
+        session.navigate_to("localhost:3002/home")
+        element = session.find_element(LocationStrategy::LINK_TEXT, "Click Me!")
+        element.click
+        session.current_url.should eq("http://localhost:3002/next-page")
       end
     end
 
@@ -28,15 +23,12 @@ module Selenium::Command
         <input type="text" id="name" value="John">
       HTML
       driver = Driver.new
-      http_client = driver.http_client
 
       with_session(driver) do |session|
-        session_id = session.id
-        NavigateTo.new(http_client, session_id).execute("localhost:3002/home")
-        element_id = FindElement.new(http_client, session_id).execute(using: LocationStrategy::CSS, value: "#name")
-        ElementClear.new(http_client, session_id).execute(element_id)
-        value = GetElementAttribute.new(http_client, session_id).execute(element_id, "value")
-        value.should be_empty
+        session.navigate_to("localhost:3002/home")
+        element = session.find_element(LocationStrategy::CSS, "#name")
+        element.clear
+        element.attribute("value").should be_empty
       end
     end
 
@@ -45,16 +37,12 @@ module Selenium::Command
         <input type="text" id="name" value="">
       HTML
       driver = Driver.new
-      http_client = driver.http_client
 
       with_session(driver) do |session|
-        session_id = session.id
-        NavigateTo.new(http_client, session_id).execute("localhost:3002/home")
-        element_id = FindElement.new(http_client, session_id).execute(using: LocationStrategy::CSS, value: "#name")
-        ElementClear.new(http_client, session_id).execute(element_id)
-        ElementSendKeys.new(http_client, session_id).execute(element_id, ["Jenny", :space, "Smith"])
-        value = GetElementAttribute.new(http_client, session_id).execute(element_id, "value")
-        value.should eq("Jenny Smith")
+        session.navigate_to("localhost:3002/home")
+        element = session.find_element(LocationStrategy::CSS, "#name")
+        element.send_keys(["Jenny", :space, "Smith"])
+        element.attribute("value").should eq("Jenny Smith")
       end
     end
   end

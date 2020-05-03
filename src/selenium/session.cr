@@ -20,4 +20,13 @@ class Selenium::Session
   def document_manager
     DocumentManager.new(self)
   end
+
+  def find_element(using, value)
+    element_id = Command::FindElement.new(http_client, id).execute(using, value)
+    Element.new(self, element_id)
+  end
+
+  def current_url
+    Command::GetCurrentUrl.new(http_client, id).execute
+  end
 end
