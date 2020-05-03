@@ -1,5 +1,5 @@
 class Selenium::Command::PerformActions
-  def initialize(@driver : Driver::Postable, @session_id : SessionId)
+  def initialize(@driver : Driver, @session_id : SessionId)
   end
 
   def execute(action_sequence : ActionSequence)

@@ -1,5 +1,5 @@
 class Selenium::Command::TakeElementScreenshot
-  def initialize(@driver : Driver::Getable, @session_id : SessionId, @element_id : ElementId)
+  def initialize(@driver : Driver, @session_id : SessionId, @element_id : ElementId)
   end
 
   def execute : Bytes

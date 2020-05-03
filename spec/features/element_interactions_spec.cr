@@ -7,7 +7,7 @@ module Selenium::Command
       TestServer.route "/home", <<-HTML
         <a href="/next-page">Click Me!</a>
       HTML
-      driver = HttpDriver.new
+      driver = Driver.new
 
       with_session(driver) do |session_id|
         NavigateTo.new(driver, session_id).execute("localhost:3002/home")
@@ -25,7 +25,7 @@ module Selenium::Command
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="John">
       HTML
-      driver = HttpDriver.new
+      driver = Driver.new
 
       with_session(driver) do |session_id|
         NavigateTo.new(driver, session_id).execute("localhost:3002/home")
@@ -40,7 +40,7 @@ module Selenium::Command
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="">
       HTML
-      driver = HttpDriver.new
+      driver = Driver.new
 
       with_session(driver) do |session_id|
         NavigateTo.new(driver, session_id).execute("localhost:3002/home")

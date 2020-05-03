@@ -14,7 +14,7 @@ module Selenium::Command
       </ul>
       HTML
 
-      driver = HttpDriver.new
+      driver = Driver.new
 
       with_session(driver) do |session_id|
         NavigateTo.new(driver, session_id).execute("localhost:3002/home")
@@ -39,7 +39,7 @@ module Selenium::Command
       </ul>
       HTML
 
-      driver = HttpDriver.new
+      driver = Driver.new
 
       with_session(driver) do |session_id|
         NavigateTo.new(driver, session_id).execute("localhost:3002/home")

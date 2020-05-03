@@ -1,5 +1,5 @@
 class Selenium::Command::NewSession
-  def initialize(@driver : Driver::Postable)
+  def initialize(@driver : Driver)
   end
 
   def execute(capabilities : Hash(String, _) = {} of String => String) : SessionId

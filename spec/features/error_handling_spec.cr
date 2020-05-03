@@ -4,7 +4,7 @@ module Selenium::Command
   describe "error handling", tags: "feature" do
     it "raises exceptions when trying to find element that does not exist" do
       TestServer.route "/home", "<h1>The Title</h1>"
-      driver = HttpDriver.new
+      driver = Driver.new
 
       with_session(driver) do |session_id|
         NavigateTo.new(driver, session_id).execute("localhost:3002/home")
@@ -20,7 +20,7 @@ module Selenium::Command
     it "raises exceptions when trying to find element within element that no longer exists" do
       TestServer.route "/home", "<div id=\"parent\"><a href=\"/about\">Click</a></div>"
       TestServer.route "/about", "<h1>The Title</h1>"
-      driver = HttpDriver.new
+      driver = Driver.new
 
       with_session(driver) do |session_id|
         NavigateTo.new(driver, session_id).execute("localhost:3002/home")
@@ -38,7 +38,7 @@ module Selenium::Command
     it "raises exceptions when trying to find element within element that no longer exists" do
       TestServer.route "/home", "<div id=\"parent\"><a href=\"/about\">Click</a></div>"
       TestServer.route "/about", "<h1>The Title</h1>"
-      driver = HttpDriver.new
+      driver = Driver.new
 
       with_session(driver) do |session_id|
         NavigateTo.new(driver, session_id).execute("localhost:3002/home")
@@ -56,7 +56,7 @@ module Selenium::Command
 
     it "raises exception when making get command" do
       TestServer.route "/home", "<h1 id=\"title\">Title</h1>"
-      driver = HttpDriver.new
+      driver = Driver.new
 
       with_session(driver) do |session_id|
         NavigateTo.new(driver, session_id).execute("localhost:3002/home")
@@ -70,7 +70,7 @@ module Selenium::Command
     end
 
     it "raises exception when making delete command" do
-      driver = HttpDriver.new
+      driver = Driver.new
 
       expect_raises(Error, "invalid session id") do
         CloseWindow.new(driver, "invalidsessionid").execute

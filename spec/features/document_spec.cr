@@ -4,7 +4,7 @@ module Selenium::Command
   describe "document", tags: "feature" do
     it "has source that can be fetched" do
       TestServer.route "/home", "<h1>The Title</h1>"
-      driver = HttpDriver.new
+      driver = Driver.new
 
       with_session(driver) do |session_id|
         NavigateTo.new(driver, session_id).execute("localhost:3002/home")
@@ -16,7 +16,7 @@ module Selenium::Command
 
     it "can execute scripts" do
       TestServer.route "/home", "<h1 id=\"title\">The Title</h1>"
-      driver = HttpDriver.new
+      driver = Driver.new
 
       with_session(driver) do |session_id|
         NavigateTo.new(driver, session_id).execute("localhost:3002/home")

@@ -1,5 +1,5 @@
 class Selenium::Command::GetWindowHandles
-  def initialize(@driver : Driver::Getable, @session_id : SessionId)
+  def initialize(@driver : Driver, @session_id : SessionId)
     @method = "GET"
     @route = "/session/#{@session_id}/window/handles"
   end

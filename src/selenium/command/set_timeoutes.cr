@@ -1,5 +1,5 @@
 class Selenium::Command::SetTimeouts
-  def initialize(@driver : Driver::Postable, @session_id : SessionId)
+  def initialize(@driver : Driver, @session_id : SessionId)
   end
 
   def execute(timeout_configuration : TimeoutConfiguration)

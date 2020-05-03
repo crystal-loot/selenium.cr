@@ -1,5 +1,5 @@
 class Selenium::Command::FindElement
-  def initialize(@driver : Driver::Postable, @session_id : SessionId)
+  def initialize(@driver : Driver, @session_id : SessionId)
   end
 
   def execute(using : LocationStrategy, value : String) : ElementId

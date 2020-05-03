@@ -1,6 +1,6 @@
 class Selenium::Command::FindElementFromElement
   def initialize(
-    @driver : Driver::Postable,
+    @driver : Driver,
     @session_id : SessionId,
     @parent_element_id : ElementId
   )

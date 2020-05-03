@@ -1,5 +1,5 @@
 class Selenium::Command::IsElementSelected
-  def initialize(@driver : Driver::Getable, @session_id : SessionId)
+  def initialize(@driver : Driver, @session_id : SessionId)
   end
 
   def execute(element_id : ElementId) : Bool

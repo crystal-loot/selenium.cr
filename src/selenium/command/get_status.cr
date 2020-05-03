@@ -1,5 +1,5 @@
 class Selenium::Command::GetStatus
-  def initialize(@driver : Driver::Getable)
+  def initialize(@driver : Driver)
   end
 
   def execute : Status
