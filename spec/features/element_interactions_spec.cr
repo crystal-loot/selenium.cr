@@ -35,5 +35,21 @@ module Selenium::Command
         value.should be_empty
       end
     end
+
+    it "can send keys" do
+      TestServer.route "/home", <<-HTML
+        <input type="text" id="name" value="">
+      HTML
+      driver = HttpDriver.new
+
+      with_session(driver) do |session_id|
+        NavigateTo.new(driver, session_id).execute("localhost:3002/home")
+        element_id = FindElement.new(driver, session_id).execute(using: LocationStrategy::CSS, value: "#name")
+        ElementClear.new(driver, session_id).execute(element_id)
+        ElementSendKeys.new(driver, session_id).execute(element_id, ["Jenny"])
+        value = GetElementAttribute.new(driver, session_id).execute(element_id, "value")
+        value.should eq("Jenny")
+      end
+    end
   end
 end

@@ -11,7 +11,7 @@ module Selenium::Command
       result = command.execute(element_id, ["hi!"])
 
       driver.request_path.should eq("/session/#{session_id}/element/#{element_id}/value")
-      driver.request_body.should eq({value: ["hi!"]}.to_json)
+      driver.request_body.should eq({text: "hi!"}.to_json)
     end
   end
 end

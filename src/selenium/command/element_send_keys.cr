@@ -3,13 +3,13 @@ class Selenium::Command::ElementSendKeys
   end
 
   def execute(element_id : ElementId, keys : Array(String | Symbol))
-    @driver.post(
+    response_body = @driver.post(
       "/session/#{@session_id}/element/#{element_id}/value",
-      body: {value: encode(keys)}.to_json
+      body: {text: encode(keys).join}.to_json
     )
   end
 
-  private def encode(keys : Array(String | Symbol))
+  private def encode(keys : Array(String | Symbol)) : Array(String)
     keys.map { |key| encode(key) }
   end
 
