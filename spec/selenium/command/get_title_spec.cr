@@ -4,7 +4,7 @@ module Selenium::Command
   describe GetTitle do
     it "works" do
       driver = TestDriver.new
-      driver.response_value({title: "Foo"})
+      driver.response_value("Foo")
       session_id = "c913bd4a033f9932a84bcd921f30793d"
       command = GetTitle.new(driver, session_id)
 
