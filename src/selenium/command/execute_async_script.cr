@@ -12,6 +12,8 @@ class Selenium::Command::ExecuteAsyncScript
       }.to_json
     )
 
-    response_body["value"].to_json
+    value = response_body["value"]
+
+    value.as_s? || value.to_json
   end
 end

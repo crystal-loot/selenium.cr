@@ -4,9 +4,7 @@ module Selenium::Command
   describe GetWindowHandles do
     it "works" do
       driver = TestDriver.new
-      driver.response_value({
-        handles: ["Window 1", "Window 2"],
-      })
+      driver.response_value(["Window 1", "Window 2"])
       session_id = "c913bd4a033f9932a84bcd921f30793d"
       command = GetWindowHandles.new(driver, session_id)
 

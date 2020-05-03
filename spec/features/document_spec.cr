@@ -28,8 +28,8 @@ module Selenium::Command
         arguments[arguments.length - 1](document.getElementById("title").textContent)
         JS
         result = ExecuteAsyncScript.new(driver, session_id).execute(async_script)
-        
-        result.should eq("\"The Title\"")
+
+        result.should eq("The Title")
       end
     end
   end
