@@ -1,3 +1,4 @@
+require "base64"
 require "json"
 require "uuid"
 require "uuid/json"
