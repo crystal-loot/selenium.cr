@@ -11,7 +11,7 @@ module Selenium::Command
           <p id="words">First Item</p>
         </li>
         <li data-testid="item-1">
-          <p id="words">First Item</p>
+          <p id="words">Second Item</p>
         </li>
       </ul>
       HTML
@@ -20,6 +20,9 @@ module Selenium::Command
       NavigateTo.new(driver, session_id).execute("localhost:3002/home")
       element_id = FindElement.new(driver, session_id).execute(using: LocationStrategy::CSS, value: "[data-testid=\"item-1\"]")
       child_element_id = FindElementFromElement.new(driver, session_id, element_id).execute(using: LocationStrategy::CSS, value: "#words")
+      element_text = GetElementText.new(driver, session_id).execute(element_id)
+
+      element_text.should eq("Second Item")
 
       DeleteSession.new(driver, session_id).execute
     end
