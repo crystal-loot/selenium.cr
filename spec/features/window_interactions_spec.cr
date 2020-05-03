@@ -4,22 +4,22 @@ module Selenium::Command
   describe "window", tags: "feature" do
     it "can be interacted with" do
       driver = Driver.new
-      http_client = driver.http_client
 
       with_session(driver) do |session|
-        session_id = session.id
         driver.status.ready?.should be_true
-        FullscreenWindow.new(http_client, session_id).execute
-        MaximizeWindow.new(http_client, session_id).execute
-        window_handle_a = GetWindowHandle.new(http_client, session_id).execute
-        window_handle_b = NewWindow.new(http_client, session_id).execute
-        window_handles = GetWindowHandles.new(http_client, session_id).execute
+        window_manager = session.window_manager
+        window_manager.fullscreen
+        window_manager.maximize
+        window_handle_a = window_manager.window_handle
+        window_handle_b = window_manager.new_window
+        window_handles = window_manager.window_handles
         window_handles.should contain(window_handle_a)
         window_handles.should contain(window_handle_b)
-        SwitchToWindow.new(http_client, session_id).execute(window_handle_a)
-        SetWindowRect.new(http_client, session_id).execute(width: 100, height: 300)
-
-        CloseWindow.new(http_client, session_id).execute
+        window_manager.window_handle.should eq(window_handle_a)
+        window_manager.switch_to_window(window_handle_b)
+        window_manager.window_handle.should eq(window_handle_b)
+        window_manager.set_window_rect(width: 100, height: 300)
+        window_manager.close_window
       end
     end
   end

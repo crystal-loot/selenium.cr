@@ -8,4 +8,12 @@ class Selenium::Session
   def delete
     Command::DeleteSession.new(http_client, id).execute
   end
+
+  def window_manager
+    WindowManager.new(self)
+  end
+
+  def new_window : WindowHandle
+    
+  end
 end
