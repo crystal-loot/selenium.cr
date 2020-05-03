@@ -5,6 +5,6 @@ class Selenium::Command::GetCurrentUrl
   def execute : String
     response_body = @driver.get("/session/#{@session_id}/url")
 
-    response_body.dig("value", "url").as_s
+    response_body["value"].as_s
   end
 end
