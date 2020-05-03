@@ -1,8 +1,8 @@
 require "../spec_helper"
 
 module Selenium::Command
-  describe "elements", tags: "feature" do
-    it "can be targeted individually" do
+  describe "element retrieval", tags: "feature" do
+    it "can retrieve a single element" do
       TestServer.route "/home", <<-HTML
       <ul>
         <li data-testid="item-0">
@@ -26,7 +26,7 @@ module Selenium::Command
       end
     end
 
-    it "can be targeted collectively" do
+    it "can retrieve multiple elements" do
       TestServer.route "/home", <<-HTML
       <ul>
         <li data-testid="item-0">
