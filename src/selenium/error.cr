@@ -1,14 +1,12 @@
-struct Selenium::Error
+class Selenium::Error < Exception
   JSON.mapping(
-    value: ErrorValue
+    error: String,
+    error_message: {type: String, key: "message"},
+    stacktrace: String,
+    data: JSON::Any?
   )
 
-  struct ErrorValue
-    JSON.mapping(
-      error: String,
-      message: String,
-      stacktrace: String,
-      data: JSON::Any?
-    )
+  def message
+    @error_message
   end
 end

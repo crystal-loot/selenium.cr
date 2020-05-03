@@ -19,7 +19,6 @@ module Selenium::Command
         SetWindowRect.new(driver, session_id).execute(width: 100, height: 300)
 
         CloseWindow.new(driver, session_id).execute
-        CloseWindow.new(driver, session_id).execute
       end
     end
   end
