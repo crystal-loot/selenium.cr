@@ -22,8 +22,7 @@ class Selenium::Action
     @x = nil,
     @y = nil
   )
-
-  @_value = value.try &.to_s
+    @_value = value.try &.to_s
   end
 
   def value : Char?

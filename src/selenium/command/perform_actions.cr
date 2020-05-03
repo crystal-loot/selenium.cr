@@ -5,7 +5,7 @@ class Selenium::Command::PerformActions
   def execute(action_sequence : ActionSequence)
     @driver.post(
       "/session/#{@session_id}/actions",
-      body: { actions: action_sequence }.to_json
+      body: {actions: action_sequence}.to_json
     )
   end
 end
