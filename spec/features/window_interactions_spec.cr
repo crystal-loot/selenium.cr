@@ -8,8 +8,7 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session_id = session.id
-        status = GetStatus.new(http_client).execute
-        status.ready?.should be_true
+        driver.status.ready?.should be_true
         FullscreenWindow.new(http_client, session_id).execute
         MaximizeWindow.new(http_client, session_id).execute
         window_handle_a = GetWindowHandle.new(http_client, session_id).execute

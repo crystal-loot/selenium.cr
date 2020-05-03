@@ -5,8 +5,12 @@ class Selenium::Driver
   end
 
   def create_session : Session
-    session_id = Selenium::Command::NewSession.new(http_client).execute
+    session_id = Command::NewSession.new(http_client).execute
 
     Session.new(http_client, session_id)
+  end
+
+  def status : Status
+    Command::GetStatus.new(http_client).execute
   end
 end
