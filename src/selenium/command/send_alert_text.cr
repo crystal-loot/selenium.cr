@@ -1,6 +1,11 @@
 class Selenium::Command::SendAlertText
-  def initialize(@session_id : UUID)
-    @method = "POST"
-    @route = "/session/#{@session_id}/alert/text"
+  def initialize(@driver : Driver::Postable, @session_id : SessionId)
+  end
+
+  def execute(text : String)
+    @driver.post(
+      "/session/#{@session_id}/alert/text",
+      body: {text: text}.to_json
+    )
   end
 end

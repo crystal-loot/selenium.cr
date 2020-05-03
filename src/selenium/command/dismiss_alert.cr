@@ -1,6 +1,8 @@
 class Selenium::Command::DismissAlert
-  def initialize(@session_id : UUID)
-    @method = "POST"
-    @route = "/session/#{@session_id}/alert/dismiss"
+  def initialize(@driver : Driver::Postable, @session_id : SessionId)
+  end
+
+  def execute
+    @driver.post("/session/#{@session_id}/alert/dismiss")
   end
 end

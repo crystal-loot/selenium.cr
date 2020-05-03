@@ -1,6 +1,8 @@
 class Selenium::Command::AcceptAlert
-  def initialize(@session_id : UUID)
-    @method = "POST"
-    @route = "/session/#{@session_id}/alert/accept"
+  def initialize(@driver : Driver::Postable, @session_id : SessionId)
+  end
+
+  def execute
+    @driver.post("/session/#{@session_id}/alert/accept")
   end
 end
