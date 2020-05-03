@@ -13,7 +13,11 @@ class Selenium::Session
     WindowManager.new(self)
   end
 
-  def new_window : WindowHandle
-    
+  def navigate_to(url)
+    Command::NavigateTo.new(http_client, id).execute(url)
+  end
+
+  def document_manager
+    DocumentManager.new(self)
   end
 end
