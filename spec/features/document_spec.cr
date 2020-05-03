@@ -9,7 +9,7 @@ module Selenium::Command
       with_session(driver) do |session|
         session.navigate_to("localhost:3002/home")
         page_source = session.document_manager.page_source
-        
+
         page_source.should eq("<html><head></head><body><h1>The Title</h1></body></html>")
       end
     end
