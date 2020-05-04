@@ -26,6 +26,11 @@ class Selenium::Session
     Element.new(self, element_id)
   end
 
+  def find_elements(using, value)
+    element_ids = Command::FindElements.new(http_client, id).execute(using, value)
+    element_ids.map { |element_id| Element.new(self, element_id) }
+  end
+
   def current_url
     Command::GetCurrentUrl.new(http_client, id).execute
   end

@@ -25,6 +25,20 @@ class Selenium::Element
     Command::ElementSendKeys.new(http_client, session_id).execute(id, keys)
   end
 
+  def find_child_element(using, value)
+    element_id = Command::FindElementFromElement.new(http_client, session_id, id).execute(using, value)
+    Element.new(session, element_id)
+  end
+
+  def find_child_elements(using, value)
+    element_ids = Command::FindElementsFromElement.new(http_client, session_id, id).execute(using, value)
+    element_ids.map { |element_id| Element.new(session, element_id) }
+  end
+
+  def text
+    Command::GetElementText.new(http_client, session_id).execute(id)
+  end
+
   private def http_client
     session.http_client
   end
