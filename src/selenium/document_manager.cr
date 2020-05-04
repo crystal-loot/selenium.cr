@@ -1,26 +1,34 @@
 class Selenium::DocumentManager
   getter session : Session
+  getter command_handler : CommandHandler
 
-  def initialize(@session)
+  def initialize(@session, @command_handler)
   end
 
   def page_source
-    Command::GetPageSource.new(http_client, session_id).execute
+    data = command_handler.execute(:get_page_source, path_variables)
+    data["value"].as_s
   end
 
   def execute_script(script, args : Array(_) = [] of String)
-    Command::ExecuteScript.new(http_client, session_id).execute(script, args)
+    parameters = {
+      script: script,
+      args:   args,
+    }.to_json
+    data = command_handler.execute(:execute_script, path_variables, parameters)
+    data["value"].as_s? || data["value"].to_json
   end
 
   def execute_async_script(script, args : Array(_) = [] of String)
-    Command::ExecuteAsyncScript.new(http_client, session_id).execute(script, args)
+    parameters = {
+      script: script,
+      args:   args,
+    }.to_json
+    data = command_handler.execute(:execute_async_script, path_variables, parameters)
+    data["value"].as_s? || data["value"].to_json
   end
 
-  private def http_client
-    session.http_client
-  end
-
-  private def session_id
-    session.id
+  def path_variables
+    {":session_id" => session.id}
   end
 end

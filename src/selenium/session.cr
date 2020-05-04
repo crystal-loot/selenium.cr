@@ -11,7 +11,7 @@ class Selenium::Session
   end
 
   def document_manager
-    DocumentManager.new(self)
+    DocumentManager.new(self, command_handler)
   end
 
   def navigation_manager
