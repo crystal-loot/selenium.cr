@@ -6,10 +6,6 @@ class Selenium::Session
   def initialize(@http_client, @command_handler, @id)
   end
 
-  def delete
-    command_handler.execute(:delete_session, path_variables)
-  end
-
   def window_manager
     WindowManager.new(self)
   end
@@ -20,6 +16,10 @@ class Selenium::Session
 
   def navigation_manager
     NavigationManager.new(self)
+  end
+
+  def delete
+    command_handler.execute(:delete_session, path_variables)
   end
 
   def navigate_to(url)
@@ -50,11 +50,13 @@ class Selenium::Session
   end
 
   def current_url
-    Command::GetCurrentUrl.new(http_client, id).execute
+    data = command_handler.execute(:get_current_url, path_variables)
+    data["value"].as_s
   end
 
   def title
-    Command::GetTitle.new(http_client, id).execute
+    data = command_handler.execute(:get_title, path_variables)
+    data["value"].as_s
   end
 
   private def path_variables
