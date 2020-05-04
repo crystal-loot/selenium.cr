@@ -58,6 +58,6 @@ class Selenium::Session
   end
 
   private def path_variables
-    { ":session_id" => id }
+    {":session_id" => id}
   end
 end
