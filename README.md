@@ -1,6 +1,6 @@
-# selenium
+# selenium.cr
 
-TODO: Write a description here
+Selenium client for interacting with webpages using webdrivers.
 
 ## Installation
 
@@ -9,7 +9,7 @@ TODO: Write a description here
    ```yaml
    dependencies:
      selenium:
-       github: your-github-user/selenium
+       github: matthewmcgarvey/selenium.cr
    ```
 
 2. Run `shards install`
@@ -28,7 +28,7 @@ TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/selenium/fork>)
+1. Fork it (<https://github.com/matthewmcgarvey/selenium.cr/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -36,4 +36,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [Matthew McGarvey](https://github.com/your-github-user) - creator and maintainer
+- [Matthew McGarvey](https://github.com/matthewmcgarvey) - creator and maintainer
