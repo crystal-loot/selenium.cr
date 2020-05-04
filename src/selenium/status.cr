@@ -1,8 +1,8 @@
 class Selenium::Status
-  getter message : String
-
-  def initialize(@ready : Bool, @message)
-  end
+  JSON.mapping(
+    ready: Bool,
+    message: String
+  )
 
   def ready?
     @ready
