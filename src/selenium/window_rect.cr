@@ -5,7 +5,7 @@ struct Selenium::Rect
     width: Int32,
     height: Int32
   )
-  
+
   def initialize(@x, @y, @width, @height)
   end
 end
