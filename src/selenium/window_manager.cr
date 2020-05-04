@@ -1,31 +1,42 @@
 class Selenium::WindowManager
   getter session : Session
+  getter command_handler : CommandHandler
 
-  def initialize(@session)
+  def initialize(@session, @command_handler)
   end
 
   def fullscreen
-    Command::FullscreenWindow.new(http_client, session_id).execute
+    data = command_handler.execute(:fullscreen_window, path_variables)
+    WindowRect.from_json(data["value"].to_json)
   end
 
   def maximize
-    Command::MaximizeWindow.new(http_client, session_id).execute
+    data = command_handler.execute(:maximize_window, path_variables)
+    WindowRect.from_json(data["value"].to_json)
+  end
+
+  def minimize
+    data = command_handler.execute(:minimize_window, path_variables)
+    WindowRect.from_json(data["value"].to_json)
   end
 
   def window_handle
-    Command::GetWindowHandle.new(http_client, session_id).execute
+    data = command_handler.execute(:get_window_handle, path_variables)
+    data["value"].as_s
   end
 
   def window_handles
-    Command::GetWindowHandles.new(http_client, session_id).execute
+    data = command_handler.execute(:get_window_handles, path_variables)
+    data["value"].as_a.map &.as_s
   end
 
   def new_window
-    Command::NewWindow.new(http_client, session_id).execute
+    data = command_handler.execute(:new_window, path_variables)
+    data.dig("value", "handle").as_s
   end
 
   def switch_to_window(window_handle)
-    Command::SwitchToWindow.new(http_client, session_id).execute(window_handle)
+    command_handler.execute(:switch_to_window, path_variables, {handle: window_handle}.to_json)
   end
 
   def set_window_rect(
@@ -34,19 +45,21 @@ class Selenium::WindowManager
     x : Int32? = nil,
     y : Int32? = nil
   ) : WindowRect
-    Command::SetWindowRect.new(http_client, session_id)
-      .execute(width: width, height: height, x: x, y: y)
+    parameters = {
+      width:  width,
+      height: height,
+      x:      x,
+      y:      y,
+    }.to_json
+    data = command_handler.execute(:set_window_rect, path_variables, parameters)
+    WindowRect.from_json(data["value"].to_json)
   end
 
   def close_window
-    Command::CloseWindow.new(http_client, session_id).execute
+    command_handler.execute(:close_window, path_variables)
   end
 
-  private def http_client
-    session.http_client
-  end
-
-  private def session_id
-    session.id
+  private def path_variables
+    {":session_id" => session.id}
   end
 end

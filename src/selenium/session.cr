@@ -7,7 +7,7 @@ class Selenium::Session
   end
 
   def window_manager
-    WindowManager.new(self)
+    WindowManager.new(self, command_handler)
   end
 
   def document_manager

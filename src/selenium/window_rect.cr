@@ -1,9 +1,11 @@
 struct Selenium::Rect
-  getter x : Int32
-  getter y : Int32
-  getter width : Int32
-  getter height : Int32
-
+  JSON.mapping(
+    x: Int32,
+    y: Int32,
+    width: Int32,
+    height: Int32
+  )
+  
   def initialize(@x, @y, @width, @height)
   end
 end
