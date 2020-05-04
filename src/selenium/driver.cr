@@ -9,7 +9,7 @@ class Selenium::Driver
   def create_session(capabilities : Hash(String, _) = {} of String => String) : Session
     data = command_handler.execute(:new_session, parameters: {capabilities: capabilities}.to_json)
 
-    Session.new(http_client, data.dig("value", "sessionId").as_s)
+    Session.new(http_client, command_handler, data.dig("value", "sessionId").as_s)
   end
 
   def status : Status

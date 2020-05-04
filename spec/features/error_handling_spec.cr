@@ -50,9 +50,10 @@ module Selenium::Command
 
     it "raises exception when making delete command" do
       driver = Driver.new
+      command_handler = CommandHandler.new(driver.http_client)
 
       expect_raises(Error, "invalid session id") do
-        Session.new(driver.http_client, "invalidsessionid").window_manager.close_window
+        Session.new(driver.http_client, command_handler, "invalidsessionid").window_manager.close_window
       end
     end
   end

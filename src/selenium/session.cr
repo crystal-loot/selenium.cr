@@ -1,20 +1,17 @@
 class Selenium::Session
   getter http_client : HttpClient
+  getter command_handler : CommandHandler
   getter id : SessionId
 
-  def initialize(@http_client, @id)
+  def initialize(@http_client, @command_handler, @id)
   end
 
   def delete
-    Command::DeleteSession.new(http_client, id).execute
+    command_handler.execute(:delete_session, path_variables)
   end
 
   def window_manager
     WindowManager.new(self)
-  end
-
-  def navigate_to(url)
-    Command::NavigateTo.new(http_client, id).execute(url)
   end
 
   def document_manager
@@ -25,13 +22,30 @@ class Selenium::Session
     NavigationManager.new(self)
   end
 
+  def navigate_to(url)
+    command_handler.execute(:navigate_to, path_variables, {url: url}.to_json)
+  end
+
   def find_element(using, value)
-    element_id = Command::FindElement.new(http_client, id).execute(using, value)
+    data = command_handler.execute(:find_element, path_variables, {
+      using: using,
+      value: value,
+    }.to_json)
+
+    entry = data["value"].as_h
+    element_id = ElementId.new(entry.first_value.as_s)
     Element.new(self, element_id)
   end
 
   def find_elements(using, value)
-    element_ids = Command::FindElements.new(http_client, id).execute(using, value)
+    data = command_handler.execute(:find_elements, path_variables, {
+      using: using,
+      value: value,
+    }.to_json)
+
+    element_ids = data["value"]
+      .as_a
+      .map { |entry| ElementId.new(entry.as_h.first_value.as_s) }
     element_ids.map { |element_id| Element.new(self, element_id) }
   end
 
@@ -41,5 +55,9 @@ class Selenium::Session
 
   def title
     Command::GetTitle.new(http_client, id).execute
+  end
+
+  private def path_variables
+    { ":session_id" => id }
   end
 end
