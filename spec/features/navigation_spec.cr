@@ -11,26 +11,21 @@ module Selenium::Command
       <h1>About</h1>
       HTML
       driver = Driver.new
-      http_client = driver.http_client
 
       with_session(driver) do |session|
-        session_id = session.id
-        NavigateTo.new(http_client, session_id).execute("localhost:3002/home")
-        NavigateTo.new(http_client, session_id).execute("localhost:3002/about")
-        GoBack.new(http_client, session_id).execute
-        current_url = GetCurrentUrl.new(http_client, session_id).execute
-        current_url.should eq("http://localhost:3002/home")
+        session.navigate_to("localhost:3002/home")
+        session.navigate_to("localhost:3002/about")
+        navigation_manager = session.navigation_manager
+        navigation_manager.go_back
+        session.current_url.should eq("http://localhost:3002/home")
 
-        GoForward.new(http_client, session_id).execute
-        current_url = GetCurrentUrl.new(http_client, session_id).execute
-        current_url.should eq("http://localhost:3002/about")
+        navigation_manager.go_forward
+        session.current_url.should eq("http://localhost:3002/about")
 
-        Refresh.new(http_client, session_id).execute
-        current_url = GetCurrentUrl.new(http_client, session_id).execute
-        current_url.should eq("http://localhost:3002/about")
+        navigation_manager.refresh
+        session.current_url.should eq("http://localhost:3002/about")
 
-        title = GetTitle.new(http_client, session_id).execute
-        title.should eq("Test: About")
+        session.title.should eq("Test: About")
       end
     end
   end

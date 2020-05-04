@@ -21,6 +21,10 @@ class Selenium::Session
     DocumentManager.new(self)
   end
 
+  def navigation_manager
+    NavigationManager.new(self)
+  end
+
   def find_element(using, value)
     element_id = Command::FindElement.new(http_client, id).execute(using, value)
     Element.new(self, element_id)
@@ -33,5 +37,9 @@ class Selenium::Session
 
   def current_url
     Command::GetCurrentUrl.new(http_client, id).execute
+  end
+
+  def title
+    Command::GetTitle.new(http_client, id).execute
   end
 end
