@@ -5,9 +5,6 @@ class Selenium::Command::GetStatus
   def execute : Status
     response_body = @http_client.get("/status")
 
-    ready = response_body.dig("value", "ready").as_bool
-    message = response_body.dig("value", "message").as_s
-
-    Status.new(ready, message)
+    Status.from_json(response_body["value"].to_json)
   end
 end

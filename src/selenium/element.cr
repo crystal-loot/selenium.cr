@@ -1,49 +1,63 @@
 class Selenium::Element
-  getter session : Session
+  getter command_handler : CommandHandler
+  getter session_id : SessionId
   getter id : ElementId
 
-  def initialize(@session, @id)
+  def initialize(@command_handler, @session_id, @id)
   end
 
   def click
-    Command::ElementClick.new(http_client, session_id).execute(id)
+    command_handler.execute(:element_click, path_variables)
   end
 
   def clear
-    Command::ElementClear.new(http_client, session_id).execute(id)
+    command_handler.execute(:element_clear, path_variables)
   end
 
   def attribute(name)
-    Command::GetElementAttribute.new(http_client, session_id).execute(id, name)
+    data = command_handler.execute(:get_element_attribute, path_variables.merge({":name" => name}))
+    data["value"].as_s
   end
 
   def property(name)
-    Command::GetElementProperty.new(http_client, session_id).execute(id, name)
+    data = command_handler.execute(:get_element_property, path_variables.merge({":name" => name}))
+    data["value"].as_s
   end
 
   def send_keys(keys)
-    Command::ElementSendKeys.new(http_client, session_id).execute(id, keys)
+    parameters = {text: SendKeyConverter.encode(keys)}.to_json
+    command_handler.execute(:element_send_keys, path_variables, parameters)
   end
 
   def find_child_element(using, value)
-    element_id = Command::FindElementFromElement.new(http_client, session_id, id).execute(using, value)
-    Element.new(session, element_id)
+    parameters = {
+      using: using,
+      value: value,
+    }.to_json
+    data = command_handler.execute(:find_element_from_element, path_variables, parameters)
+    entry = data["value"].as_h
+    element_id = ElementId.new(entry.first_value.as_s)
+    Element.new(command_handler, session_id, element_id)
   end
 
   def find_child_elements(using, value)
-    element_ids = Command::FindElementsFromElement.new(http_client, session_id, id).execute(using, value)
-    element_ids.map { |element_id| Element.new(session, element_id) }
+    parameters = {
+      using: using,
+      value: value,
+    }.to_json
+    data = command_handler.execute(:find_elements_from_element, path_variables, parameters)
+    data["value"]
+      .as_a
+      .map { |entry| ElementId.new(entry.as_h.first_value.as_s) }
+      .map { |element_id| Element.new(command_handler, session_id, element_id) }
   end
 
   def text
-    Command::GetElementText.new(http_client, session_id).execute(id)
+    data = command_handler.execute(:get_element_text, path_variables)
+    data["value"].as_s
   end
 
-  private def http_client
-    session.http_client
-  end
-
-  private def session_id
-    session.id
+  private def path_variables
+    {":session_id" => session_id, ":element_id" => id.to_s}
   end
 end

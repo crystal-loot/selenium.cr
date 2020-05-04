@@ -7,7 +7,7 @@ class Selenium::CommandHandler
 
   def execute(command : Symbol, path_variables : Hash(String, String) = {} of String => String, parameters = "{}") : JSON::Any
     method, path = DEFAULT_COMMANDS[command]
-    full_path = path_variables.reduce(path) { |acc, entry| path.sub(entry.first, entry.last) }
+    full_path = path_variables.reduce(path) { |acc, entry| acc.sub(entry.first, entry.last) }
 
     execute(method, full_path, parameters)
   end

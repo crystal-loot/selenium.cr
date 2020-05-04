@@ -43,7 +43,7 @@ module Selenium::Command
 
         expected_message = "stale element reference: element is not attached to the page document"
         expect_raises(Error, expected_message) do
-          Element.new(session, ElementId.random).property("id")
+          Element.new(session.command_handler, session.id, ElementId.random).property("id")
         end
       end
     end

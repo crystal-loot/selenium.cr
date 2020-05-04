@@ -7,15 +7,15 @@ class Selenium::Session
   end
 
   def window_manager
-    WindowManager.new(self, command_handler)
+    WindowManager.new(command_handler, id)
   end
 
   def document_manager
-    DocumentManager.new(self, command_handler)
+    DocumentManager.new(command_handler, id)
   end
 
   def navigation_manager
-    NavigationManager.new(self, command_handler)
+    NavigationManager.new(command_handler, id)
   end
 
   def delete
@@ -34,7 +34,7 @@ class Selenium::Session
 
     entry = data["value"].as_h
     element_id = ElementId.new(entry.first_value.as_s)
-    Element.new(self, element_id)
+    Element.new(command_handler, id, element_id)
   end
 
   def find_elements(using, value)
@@ -46,7 +46,7 @@ class Selenium::Session
     element_ids = data["value"]
       .as_a
       .map { |entry| ElementId.new(entry.as_h.first_value.as_s) }
-    element_ids.map { |element_id| Element.new(self, element_id) }
+    element_ids.map { |element_id| Element.new(command_handler, id, element_id) }
   end
 
   def current_url

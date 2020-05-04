@@ -1,8 +1,8 @@
 class Selenium::NavigationManager
-  getter session : Session
   getter command_handler : CommandHandler
+  getter session_id : SessionId
 
-  def initialize(@session, @command_handler)
+  def initialize(@command_handler, @session_id)
   end
 
   def go_back
@@ -18,6 +18,6 @@ class Selenium::NavigationManager
   end
 
   private def path_variables
-    {":session_id" => session.id}
+    {":session_id" => session_id}
   end
 end
