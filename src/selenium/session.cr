@@ -15,7 +15,7 @@ class Selenium::Session
   end
 
   def navigation_manager
-    NavigationManager.new(self)
+    NavigationManager.new(self, command_handler)
   end
 
   def delete

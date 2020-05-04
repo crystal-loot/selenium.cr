@@ -1,26 +1,23 @@
 class Selenium::NavigationManager
   getter session : Session
+  getter command_handler : CommandHandler
 
-  def initialize(@session)
+  def initialize(@session, @command_handler)
   end
 
   def go_back
-    Command::GoBack.new(http_client, session_id).execute
+    command_handler.execute(:back, path_variables)
   end
 
   def go_forward
-    Command::GoForward.new(http_client, session_id).execute
+    command_handler.execute(:forward, path_variables)
   end
 
   def refresh
-    Command::Refresh.new(http_client, session_id).execute
+    command_handler.execute(:refresh, path_variables)
   end
 
-  private def http_client
-    session.http_client
-  end
-
-  private def session_id
-    session.id
+  private def path_variables
+    {":session_id" => session.id}
   end
 end
