@@ -48,8 +48,8 @@ module Selenium::Command
 
     it "can determine if element is enabled" do
       TestServer.route "/home", <<-HTML
-        <input type="text" id="enabled-input" value="">
-        <input type="text" id="disabled-input" value="" disabled>
+      <input type="text" id="enabled-input" value="">
+      <input type="text" id="disabled-input" value="" disabled>
       HTML
       driver = Driver.new
 
@@ -59,6 +59,24 @@ module Selenium::Command
         element.enabled?.should be_true
         element = session.find_element(LocationStrategy::CSS, "#disabled-input")
         element.enabled?.should be_false
+      end
+    end
+
+    it "can determine if element is selected" do
+      TestServer.route "/home", <<-HTML
+      <select>
+        <option id="option-a" value="foo">Option A</option>
+        <option id="option-b" value="bar" selected>Option B</option>
+      </select>
+      HTML
+      driver = Driver.new
+
+      with_session(driver) do |session|
+        session.navigate_to("localhost:3002/home")
+        element = session.find_element(LocationStrategy::CSS, "#option-a")
+        element.selected?.should be_false
+        element = session.find_element(LocationStrategy::CSS, "#option-b")
+        element.selected?.should be_true
       end
     end
   end

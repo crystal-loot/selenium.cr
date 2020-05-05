@@ -79,6 +79,12 @@ class Selenium::Element
     data["value"].as_bool
   end
 
+  def selected?
+    data = command_handler.execute(:is_element_selected, path_variables)
+
+    data["value"].as_bool
+  end
+
   private def path_variables
     {":session_id" => session_id, ":element_id" => id.to_s}
   end
