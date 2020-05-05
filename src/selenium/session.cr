@@ -97,6 +97,20 @@ class Selenium::Session
     command_handler.execute(:release_actions, path_variables)
   end
 
+  # TODO: write test once it is understood:
+  # - how to know/acquire the frame id
+  # - what a frame is
+  # - what switching frames will do
+  def switch_to_frame(id)
+    parameters = {id: id}.to_json
+    command_handler.execute(:switch_to_frame, path_variables, parameters)
+  end
+
+  # TODO: reference switch_to_frame
+  def switch_to_parent_frame
+    command_handler.execute(:switch_to_parent_frame, path_variables)
+  end
+
   private def path_variables
     {":session_id" => id}
   end
