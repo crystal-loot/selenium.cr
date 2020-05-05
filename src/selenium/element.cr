@@ -62,6 +62,11 @@ class Selenium::Element
     data["value"].as_s
   end
 
+  def screenshot(file_path : String | File)
+    data = command_handler.execute(:take_element_screenshot, path_variables)
+    File.write(file_path.to_s, Base64.decode(data["value"].as_s))
+  end
+
   private def path_variables
     {":session_id" => session_id, ":element_id" => id.to_s}
   end
