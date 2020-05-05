@@ -18,6 +18,10 @@ class Selenium::Session
     NavigationManager.new(command_handler, id)
   end
 
+  def cookie_manager
+    CookieManager.new(command_handler, id)
+  end
+
   def delete
     command_handler.execute(:delete_session, path_variables)
   end
