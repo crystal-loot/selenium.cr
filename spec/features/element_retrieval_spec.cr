@@ -17,7 +17,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         element = session.find_element(LocationStrategy::CSS, "[data-testid=\"item-1\"]")
         child_element = element.find_child_element(LocationStrategy::CSS, "#words")
         child_element.text.should eq("Second Item")
@@ -42,7 +42,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         elements = session.find_elements(LocationStrategy::CSS, "#words")
         elements.size.should eq(2)
 
@@ -63,7 +63,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         element = session.find_element(LocationStrategy::CSS, "[data-testid=\"btn\"]")
         element.click
         active_element = session.active_element

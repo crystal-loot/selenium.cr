@@ -10,7 +10,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         session.find_element(LocationStrategy::CSS, "#label").click
         input_action_sequence = InputSourceActionSequence.new(
           type: "key",

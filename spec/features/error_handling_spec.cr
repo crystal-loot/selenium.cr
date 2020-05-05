@@ -7,7 +7,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
 
         expected_message = "no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"#missing-element\"}"
         expect_raises(Error, expected_message) do
@@ -22,7 +22,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         parent_element = session.find_element(LocationStrategy::CSS, "#parent")
         child_element = parent_element.find_child_element(LocationStrategy::LINK_TEXT, "Click")
         child_element.click
@@ -39,7 +39,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
 
         expected_message = "stale element reference: element is not attached to the page document"
         expect_raises(Error, expected_message) do

@@ -11,7 +11,7 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session_id = session.id
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         element = session.find_element(LocationStrategy::LINK_TEXT, "Click Me!")
         element.click
         session.current_url.should eq("http://localhost:3002/next-page")
@@ -25,7 +25,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         element = session.find_element(LocationStrategy::CSS, "#name")
         element.clear
         element.attribute("value").should be_empty
@@ -39,7 +39,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         element = session.find_element(LocationStrategy::CSS, "#name")
         element.send_keys(["Jenny", :space, "Smith"])
         element.attribute("value").should eq("Jenny Smith")
@@ -54,7 +54,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         element = session.find_element(LocationStrategy::CSS, "#enabled-input")
         element.enabled?.should be_true
         element = session.find_element(LocationStrategy::CSS, "#disabled-input")
@@ -72,7 +72,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         element = session.find_element(LocationStrategy::CSS, "#option-a")
         element.selected?.should be_false
         element = session.find_element(LocationStrategy::CSS, "#option-b")

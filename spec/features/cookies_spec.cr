@@ -7,7 +7,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         cookie_manager = session.cookie_manager
         cookie_manager.add_cookie(Cookie.new(name: "foo", value: "bar"))
         cookie = cookie_manager.get_cookie("foo")

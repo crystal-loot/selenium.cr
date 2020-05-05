@@ -9,7 +9,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         session.screenshot("result.png")
         File.exists?("result.png").should be_true
       end
@@ -25,7 +25,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         element = session.find_element(LocationStrategy::CSS, "#target")
         element.screenshot("result.png")
         File.exists?("result.png").should be_true

@@ -13,8 +13,8 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
-        session.navigate_to("localhost:3002/about")
+        session.navigate_to("http://localhost:3002/home")
+        session.navigate_to("http://localhost:3002/about")
         navigation_manager = session.navigation_manager
         navigation_manager.go_back
         session.current_url.should eq("http://localhost:3002/home")

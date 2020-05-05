@@ -7,7 +7,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         page_source = session.document_manager.page_source
 
         page_source.should eq("<html><head></head><body><h1>The Title</h1></body></html>")
@@ -19,7 +19,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         document_manager = session.document_manager
         result = document_manager.execute_script("return 1 + 1;")
         result.should eq("2")

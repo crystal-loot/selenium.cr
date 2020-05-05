@@ -7,7 +7,7 @@ module Selenium::Command
       driver = Driver.new
 
       with_session(driver) do |session|
-        session.navigate_to("localhost:3002/home")
+        session.navigate_to("http://localhost:3002/home")
         document_manager = session.document_manager
         alert_manager = session.alert_manager
         document_manager.execute_script("window.prompt(\"Test Input\");")
