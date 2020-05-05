@@ -1,6 +1,11 @@
 class Selenium::HttpClient
+  getter base_url : String
+
+  def initialize(@base_url)
+  end
+
   def post(path, body = "{}") : JSON::Any
-    url = base_path + path
+    url = base_url + path
     response = HTTP::Client.post(url, body: body)
     parsed_response = JSON.parse(response.body)
 
@@ -11,7 +16,7 @@ class Selenium::HttpClient
   end
 
   def delete(path) : JSON::Any
-    response = HTTP::Client.delete(base_path + path)
+    response = HTTP::Client.delete(base_url + path)
     parsed_response = JSON.parse(response.body)
 
     if has_error?(parsed_response)
@@ -21,17 +26,13 @@ class Selenium::HttpClient
   end
 
   def get(path) : JSON::Any
-    response = HTTP::Client.get(base_path + path)
+    response = HTTP::Client.get(base_url + path)
     parsed_response = JSON.parse(response.body)
 
     if has_error?(parsed_response)
       raise Error.from_json(parsed_response["value"].to_json)
     end
     parsed_response
-  end
-
-  def base_path
-    "localhost:4444/wd/hub"
   end
 
   private def has_error?(response_body)

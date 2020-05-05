@@ -2,7 +2,8 @@ class Selenium::Remote::Driver
   getter http_client : HttpClient
   getter command_handler : CommandHandler
 
-  def initialize(opts, @http_client = HttpClient.new)
+  def initialize(opts)
+    @http_client = HttpClient.new(base_url: opts[:base_url])
     @command_handler = CommandHandler.new(@http_client)
   end
 
