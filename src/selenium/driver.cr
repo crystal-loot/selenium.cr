@@ -6,8 +6,9 @@ class Selenium::Driver
     @command_handler = CommandHandler.new(@http_client)
   end
 
-  def create_session(capabilities : Hash(String, _) = {} of String => String) : Session
-    data = command_handler.execute(:new_session, parameters: {capabilities: capabilities}.to_json)
+  def create_session(capabilities) : Session
+    parameters = {capabilities: {alwaysMatch: capabilities}}.to_json
+    data = command_handler.execute(:new_session, parameters: parameters)
 
     Session.new(http_client, command_handler, data.dig("value", "sessionId").as_s)
   end
