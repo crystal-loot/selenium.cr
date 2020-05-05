@@ -55,6 +55,5 @@ module Selenium::DefaultCommands
     send_alert_text:            {:post, "/session/:session_id/alert/text"},
     take_screenshot:            {:get, "/session/:session_id/screenshot"},
     take_element_screenshot:    {:get, "/session/:session_id/element/:element_id/screenshot"},
-    print_page:                 {:post, "/session/:session_id/print"},
   }
 end
