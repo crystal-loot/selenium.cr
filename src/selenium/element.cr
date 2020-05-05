@@ -57,6 +57,11 @@ class Selenium::Element
     data["value"].as_s
   end
 
+  def tag_name
+    data = command_handler.execute(:get_element_tag_name, path_variables)
+    data["value"].as_s
+  end
+
   private def path_variables
     {":session_id" => session_id, ":element_id" => id.to_s}
   end

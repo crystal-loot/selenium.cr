@@ -21,6 +21,7 @@ module Selenium::Command
         element = session.find_element(LocationStrategy::CSS, "[data-testid=\"item-1\"]")
         child_element = element.find_child_element(LocationStrategy::CSS, "#words")
         child_element.text.should eq("Second Item")
+        child_element.tag_name.should eq("p")
       end
     end
 
