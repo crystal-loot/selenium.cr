@@ -79,6 +79,15 @@ class Selenium::Session
     File.write(file_path.to_s, Base64.decode(data["value"].as_s))
   end
 
+  def timeouts
+    data = command_handler.execute(:get_timeouts, path_variables)
+    TimeoutConfiguration.from_json(data["value"].to_json)
+  end
+
+  def set_timeouts(timeouts)
+    command_handler.execute(:set_timeouts, path_variables, timeouts.to_json)
+  end
+
   private def path_variables
     {":session_id" => id}
   end
