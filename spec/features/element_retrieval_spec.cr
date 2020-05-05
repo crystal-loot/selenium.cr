@@ -67,6 +67,7 @@ module Selenium::Command
         element.click
         active_element = session.active_element
         active_element.text.should eq("Click Me")
+        active_element.rect.should_not be_nil
       end
     end
   end

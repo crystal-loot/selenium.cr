@@ -67,6 +67,12 @@ class Selenium::Element
     File.write(file_path.to_s, Base64.decode(data["value"].as_s))
   end
 
+  def rect
+    data = command_handler.execute(:get_element_rect, path_variables)
+
+    ElementRect.from_json(data["value"].to_json)
+  end
+
   private def path_variables
     {":session_id" => session_id, ":element_id" => id.to_s}
   end
