@@ -22,6 +22,10 @@ class Selenium::Session
     CookieManager.new(command_handler, id)
   end
 
+  def alert_manager
+    AlertManager.new(command_handler, id)
+  end
+
   def delete
     command_handler.execute(:delete_session, path_variables)
   end
