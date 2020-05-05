@@ -4,7 +4,7 @@ module Selenium::Command
   describe "cookies", tags: "feature" do
     it "works" do
       TestServer.route "/home", "<h1>The Title</h1>"
-      driver = Driver.new
+      driver = Driver.for(:chrome)
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")

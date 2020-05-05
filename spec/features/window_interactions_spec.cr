@@ -3,7 +3,7 @@ require "../spec_helper"
 module Selenium::Command
   describe "window", tags: "feature" do
     it "can be interacted with" do
-      driver = Driver.new
+      driver = Driver.for(:chrome)
 
       with_session(driver) do |session|
         driver.status.ready?.should be_true

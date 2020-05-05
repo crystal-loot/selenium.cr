@@ -20,7 +20,7 @@ end
 CHROME_HEADLESS = Selenium::Chrome::Capabilities.new
 CHROME_HEADLESS.args(["--no-sandbox", "--headless", "--disable-gpu"])
 
-def with_session(driver : Selenium::Driver, capabilities = CHROME_HEADLESS)
+def with_session(driver, capabilities = CHROME_HEADLESS)
   session = driver.create_session(capabilities)
   yield(session)
 ensure

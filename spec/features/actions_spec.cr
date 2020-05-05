@@ -7,7 +7,7 @@ module Selenium::Command
       <label id="label" for="foo">Foo</label>
       <input type="text" id="foo">
       HTML
-      driver = Driver.new
+      driver = Driver.for(:chrome)
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")

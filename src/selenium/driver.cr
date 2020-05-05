@@ -1,21 +1,14 @@
-class Selenium::Driver
-  getter http_client : HttpClient
-  getter command_handler : CommandHandler
-
-  def initialize(@http_client = HttpClient.new)
-    @command_handler = CommandHandler.new(@http_client)
-  end
-
-  def create_session(capabilities) : Session
-    parameters = {capabilities: {alwaysMatch: capabilities}}.to_json
-    data = command_handler.execute(:new_session, parameters: parameters)
-
-    Session.new(http_client, command_handler, data.dig("value", "sessionId").as_s)
-  end
-
-  def status : Status
-    data = command_handler.execute(:status)
-
-    Status.from_json(data["value"].to_json)
+module Selenium::Driver
+  def self.for(browser, opts = nil)
+    case browser
+    when :chrome
+      Chrome::Driver.new(opts)
+    when :firefox, :gecko
+      Firefox::Driver.new(opts)
+    when :remote
+      Remote::Driver.new(opts)
+    else
+      raise ArgumentError.new "unknown driver: #{browser}"
+    end
   end
 end

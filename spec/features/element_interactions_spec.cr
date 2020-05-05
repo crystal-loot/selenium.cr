@@ -7,7 +7,7 @@ module Selenium::Command
       TestServer.route "/home", <<-HTML
         <a href="/next-page">Click Me!</a>
       HTML
-      driver = Driver.new
+      driver = Driver.for(:chrome)
 
       with_session(driver) do |session|
         session_id = session.id
@@ -22,7 +22,7 @@ module Selenium::Command
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="John">
       HTML
-      driver = Driver.new
+      driver = Driver.for(:chrome)
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
@@ -36,7 +36,7 @@ module Selenium::Command
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="">
       HTML
-      driver = Driver.new
+      driver = Driver.for(:chrome)
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
@@ -52,7 +52,7 @@ module Selenium::Command
       <input type="text" id="enabled-input" value="">
       <input type="text" id="disabled-input" value="" disabled>
       HTML
-      driver = Driver.new
+      driver = Driver.for(:chrome)
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
@@ -70,7 +70,7 @@ module Selenium::Command
         <option id="option-b" value="bar" selected>Option B</option>
       </select>
       HTML
-      driver = Driver.new
+      driver = Driver.for(:chrome)
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
@@ -86,7 +86,7 @@ module Selenium::Command
       <input type="text" id="visible-input" value="">
       <input type="hidden" id="hidden-input" value="">
       HTML
-      driver = Driver.new
+      driver = Driver.for(:chrome)
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")

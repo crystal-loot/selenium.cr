@@ -6,7 +6,7 @@ module Selenium::Command
 
     it "can be taken of whole page" do
       TestServer.route "/home", "<h1>The Title</h1>"
-      driver = Driver.new
+      driver = Driver.for(:chrome)
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
@@ -22,7 +22,7 @@ module Selenium::Command
         <p id="target">Second Element</p>
       </div>
       HTML
-      driver = Driver.new
+      driver = Driver.for(:chrome)
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
