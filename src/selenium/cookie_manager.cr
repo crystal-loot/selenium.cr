@@ -22,6 +22,11 @@ class Selenium::CookieManager
     command_handler.execute(:add_cookie, path_variables, parameters)
   end
 
+  def add_cookie(name, value)
+    cookie = Cookie.new(name, value)
+    add_cookie(cookie)
+  end
+
   def delete_cookie(name)
     command_handler.execute(:delete_cookie, path_variables.merge({":name" => name}))
   end

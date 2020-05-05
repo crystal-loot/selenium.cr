@@ -39,20 +39,24 @@ class Selenium::WindowManager
     command_handler.execute(:switch_to_window, path_variables, {handle: window_handle}.to_json)
   end
 
+  def set_window_rect(window_rect)
+    parameters = window_rect.to_json
+    data = command_handler.execute(:set_window_rect, path_variables, parameters)
+    WindowRect.from_json(data["value"].to_json)
+  end
+
   def set_window_rect(
     width : Int32? = nil,
     height : Int32? = nil,
     x : Int32? = nil,
     y : Int32? = nil
   ) : WindowRect
-    parameters = {
-      width:  width,
-      height: height,
-      x:      x,
-      y:      y,
-    }.to_json
-    data = command_handler.execute(:set_window_rect, path_variables, parameters)
-    WindowRect.from_json(data["value"].to_json)
+    window_rect = WindowRect.new(width: width, height: height, x: x, y: y)
+    set_window_rect(window_rect)
+  end
+
+  def resize_window(width : Int32? = nil, height : Int32? = nil)
+    set_window_rect(width, height)
   end
 
   def window_rect

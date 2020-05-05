@@ -18,7 +18,7 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
-        element = session.find_element(LocationStrategy::CSS, "[data-testid=\"item-1\"]")
+        element = session.find_element(:css, "[data-testid=\"item-1\"]")
         child_element = element.find_child_element(LocationStrategy::CSS, "#words")
         child_element.text.should eq("Second Item")
         child_element.tag_name.should eq("p")
@@ -46,7 +46,7 @@ module Selenium::Command
         elements = session.find_elements(LocationStrategy::CSS, "#words")
         elements.size.should eq(2)
 
-        element = session.find_element(LocationStrategy::CSS, "[data-testid=\"item-0\"]")
+        element = session.find_element(:css, "[data-testid=\"item-0\"]")
         child_elements = element.find_child_elements(LocationStrategy::CSS, "p")
         child_elements.size.should eq(2)
         child_element_texts = child_elements.map &.text
@@ -64,7 +64,7 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
-        element = session.find_element(LocationStrategy::CSS, "[data-testid=\"btn\"]")
+        element = session.find_element(:css, "[data-testid=\"btn\"]")
         element.click
         active_element = session.active_element
         active_element.text.should eq("Click Me")

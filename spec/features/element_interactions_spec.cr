@@ -26,7 +26,7 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
-        element = session.find_element(LocationStrategy::CSS, "#name")
+        element = session.find_element(:css, "#name")
         element.clear
         element.attribute("value").should be_empty
       end
@@ -40,8 +40,9 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
-        element = session.find_element(LocationStrategy::CSS, "#name")
-        element.send_keys(["Jenny", :space, "Smith"])
+        element = session.find_element(:css, "#name")
+        element.send_keys(["Jenny", :space])
+        element.send_keys("Smith")
         element.attribute("value").should eq("Jenny Smith")
       end
     end
@@ -55,9 +56,9 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
-        element = session.find_element(LocationStrategy::CSS, "#enabled-input")
+        element = session.find_element(:css, "#enabled-input")
         element.enabled?.should be_true
-        element = session.find_element(LocationStrategy::CSS, "#disabled-input")
+        element = session.find_element(:css, "#disabled-input")
         element.enabled?.should be_false
       end
     end
@@ -73,9 +74,9 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
-        element = session.find_element(LocationStrategy::CSS, "#option-a")
+        element = session.find_element(:css, "#option-a")
         element.selected?.should be_false
-        element = session.find_element(LocationStrategy::CSS, "#option-b")
+        element = session.find_element(:css, "#option-b")
         element.selected?.should be_true
       end
     end
@@ -89,9 +90,9 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
-        element = session.find_element(LocationStrategy::CSS, "#visible-input")
+        element = session.find_element(:css, "#visible-input")
         element.displayed?.should be_true
-        element = session.find_element(LocationStrategy::CSS, "#hidden-input")
+        element = session.find_element(:css, "#hidden-input")
         element.displayed?.should be_false
       end
     end

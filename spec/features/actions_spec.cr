@@ -11,7 +11,7 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
-        session.find_element(LocationStrategy::CSS, "#label").click
+        session.find_element(:css, "#label").click
         input_action_sequence = InputSourceActionSequence.new(
           type: "key",
           id: "action-sequence-key",
@@ -21,7 +21,7 @@ module Selenium::Command
           ]
         )
         session.perform_actions([input_action_sequence])
-        input_element = session.find_element(LocationStrategy::CSS, "#foo")
+        input_element = session.find_element(:css, "#foo")
         input_element.property("value").should eq("a")
 
         session.release_actions

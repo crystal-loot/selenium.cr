@@ -12,7 +12,7 @@ module Selenium::Command
         cookie_manager.add_cookie(Cookie.new(name: "foo", value: "bar"))
         cookie = cookie_manager.get_cookie("foo")
         cookie.value.should eq("bar")
-        cookie_manager.add_cookie(Cookie.new(name: "fizz", value: "buzz"))
+        cookie_manager.add_cookie("fizz", "buzz")
         cookies = cookie_manager.get_all_cookies
         cookies.size.should eq(2)
         cookie_manager.delete_cookie("fizz")

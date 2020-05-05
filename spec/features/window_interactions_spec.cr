@@ -17,9 +17,8 @@ module Selenium::Command
         window_manager.window_handle.should eq(window_handle_a)
         window_manager.switch_to_window(window_handle_b)
         window_manager.window_handle.should eq(window_handle_b)
-        window_manager.set_window_rect(width: 1600, height: 700)
-        window_rect = window_manager.window_rect
-        window_rect.width.should eq(1600)
+        window_manager.resize_window(width: 1600, height: 700)
+        window_manager.window_rect.width.should eq(1600)
         window_manager.close_window
       end
     end

@@ -26,7 +26,7 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
-        element = session.find_element(LocationStrategy::CSS, "#target")
+        element = session.find_element(:css, "#target")
         element.screenshot("result.png")
         File.exists?("result.png").should be_true
       end

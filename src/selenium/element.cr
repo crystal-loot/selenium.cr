@@ -29,9 +29,13 @@ class Selenium::Element
     data["value"].as_s
   end
 
-  def send_keys(keys)
+  def send_keys(keys : Array(String | Symbol))
     parameters = {text: SendKeyConverter.encode(keys)}.to_json
     command_handler.execute(:element_send_keys, path_variables, parameters)
+  end
+
+  def send_keys(key : String)
+    send_keys [key]
   end
 
   def find_child_element(using, value)

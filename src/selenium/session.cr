@@ -34,7 +34,7 @@ class Selenium::Session
     command_handler.execute(:navigate_to, path_variables, {url: url}.to_json)
   end
 
-  def find_element(using, value)
+  def find_element(using : LocationStrategy, value)
     data = command_handler.execute(:find_element, path_variables, {
       using: using,
       value: value,
@@ -43,6 +43,10 @@ class Selenium::Session
     entry = data["value"].as_h
     element_id = ElementId.new(entry.first_value.as_s)
     Element.new(command_handler, id, element_id)
+  end
+
+  def find_element(using : Symbol, value)
+    find_element(LocationStrategy.from_symbol(using), value)
   end
 
   def find_elements(using, value)

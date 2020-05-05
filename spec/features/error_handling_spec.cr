@@ -11,7 +11,7 @@ module Selenium::Command
 
         expected_message = "no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"#missing-element\"}"
         expect_raises(Error, expected_message) do
-          session.find_element(LocationStrategy::CSS, "#missing-element")
+          session.find_element(:css, "#missing-element")
         end
       end
     end
@@ -23,7 +23,7 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
-        parent_element = session.find_element(LocationStrategy::CSS, "#parent")
+        parent_element = session.find_element(:css, "#parent")
         child_element = parent_element.find_child_element(LocationStrategy::LINK_TEXT, "Click")
         child_element.click
 
