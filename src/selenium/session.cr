@@ -93,6 +93,10 @@ class Selenium::Session
     command_handler.execute(:perform_actions, path_variables, parameters)
   end
 
+  def release_actions
+    command_handler.execute(:release_actions, path_variables)
+  end
+
   private def path_variables
     {":session_id" => id}
   end

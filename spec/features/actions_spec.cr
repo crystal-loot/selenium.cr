@@ -23,6 +23,8 @@ module Selenium::Command
         session.perform_actions([input_action_sequence])
         input_element = session.find_element(LocationStrategy::CSS, "#foo")
         input_element.property("value").should eq("a")
+
+        session.release_actions
       end
     end
   end
