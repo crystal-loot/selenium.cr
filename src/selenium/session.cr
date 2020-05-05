@@ -49,7 +49,7 @@ class Selenium::Session
     find_element(LocationStrategy.from_symbol(using), value)
   end
 
-  def find_elements(using, value)
+  def find_elements(using : LocationStrategy, value)
     data = command_handler.execute(:find_elements, path_variables, {
       using: using,
       value: value,
@@ -59,6 +59,10 @@ class Selenium::Session
       .as_a
       .map { |entry| ElementId.new(entry.as_h.first_value.as_s) }
     element_ids.map { |element_id| Element.new(command_handler, id, element_id) }
+  end
+
+  def find_elements(using : Symbol, value)
+    find_elements(LocationStrategy.from_symbol(using), value)
   end
 
   def active_element

@@ -12,7 +12,7 @@ module Selenium::Command
       with_session(driver) do |session|
         session_id = session.id
         session.navigate_to("http://localhost:3002/home")
-        element = session.find_element(LocationStrategy::LINK_TEXT, "Click Me!")
+        element = session.find_element(:link_text, "Click Me!")
         element.click
         session.current_url.should eq("http://localhost:3002/next-page")
       end

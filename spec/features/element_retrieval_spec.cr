@@ -19,7 +19,7 @@ module Selenium::Command
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:css, "[data-testid=\"item-1\"]")
-        child_element = element.find_child_element(LocationStrategy::CSS, "#words")
+        child_element = element.find_child_element(:css, "#words")
         child_element.text.should eq("Second Item")
         child_element.tag_name.should eq("p")
         child_element.css_value("text-align").should eq("center")
@@ -43,11 +43,11 @@ module Selenium::Command
 
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
-        elements = session.find_elements(LocationStrategy::CSS, "#words")
+        elements = session.find_elements(:css, "#words")
         elements.size.should eq(2)
 
         element = session.find_element(:css, "[data-testid=\"item-0\"]")
-        child_elements = element.find_child_elements(LocationStrategy::CSS, "p")
+        child_elements = element.find_child_elements(:css, "p")
         child_elements.size.should eq(2)
         child_element_texts = child_elements.map &.text
         child_element_texts.should contain("First Item")

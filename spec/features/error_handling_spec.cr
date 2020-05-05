@@ -24,12 +24,12 @@ module Selenium::Command
       with_session(driver) do |session|
         session.navigate_to("http://localhost:3002/home")
         parent_element = session.find_element(:css, "#parent")
-        child_element = parent_element.find_child_element(LocationStrategy::LINK_TEXT, "Click")
+        child_element = parent_element.find_child_element(:link_text, "Click")
         child_element.click
 
         expected_message = "stale element reference: element is not attached to the page document"
         expect_raises(Error, expected_message) do
-          parent_element.find_child_element(LocationStrategy::LINK_TEXT, "Click")
+          parent_element.find_child_element(:link_text, "Click")
         end
       end
     end

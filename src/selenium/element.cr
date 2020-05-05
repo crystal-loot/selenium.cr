@@ -38,7 +38,7 @@ class Selenium::Element
     send_keys [key]
   end
 
-  def find_child_element(using, value)
+  def find_child_element(using : LocationStrategy, value)
     parameters = {
       using: using,
       value: value,
@@ -49,7 +49,11 @@ class Selenium::Element
     Element.new(command_handler, session_id, element_id)
   end
 
-  def find_child_elements(using, value)
+  def find_child_element(using : Symbol, value)
+    find_child_element(LocationStrategy.from_symbol(using), value)
+  end
+
+  def find_child_elements(using : LocationStrategy, value)
     parameters = {
       using: using,
       value: value,
@@ -59,6 +63,10 @@ class Selenium::Element
       .as_a
       .map { |entry| ElementId.new(entry.as_h.first_value.as_s) }
       .map { |element_id| Element.new(command_handler, session_id, element_id) }
+  end
+
+  def find_child_elements(using : Symbol, value)
+    find_child_elements(LocationStrategy.from_symbol(using), value)
   end
 
   def text
