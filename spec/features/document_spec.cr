@@ -4,9 +4,8 @@ module Selenium::Command
   describe "document", tags: "feature" do
     it "has source that can be fetched" do
       TestServer.route "/home", "<h1>The Title</h1>"
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         page_source = session.document_manager.page_source
 
@@ -16,9 +15,8 @@ module Selenium::Command
 
     it "can execute scripts" do
       TestServer.route "/home", "<h1 id=\"title\">The Title</h1>"
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         document_manager = session.document_manager
         result = document_manager.execute_script("return 1 + 1;")

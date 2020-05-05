@@ -7,9 +7,8 @@ module Selenium::Command
       TestServer.route "/home", <<-HTML
         <a href="/next-page">Click Me!</a>
       HTML
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session_id = session.id
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:link_text, "Click Me!")
@@ -36,9 +35,8 @@ module Selenium::Command
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="">
       HTML
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:css, "#name")
         element.send_keys(["Jenny", :space])
@@ -86,9 +84,8 @@ module Selenium::Command
       <input type="text" id="visible-input" value="">
       <input type="hidden" id="hidden-input" value="">
       HTML
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:css, "#visible-input")
         element.displayed?.should be_true

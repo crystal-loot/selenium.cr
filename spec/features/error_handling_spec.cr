@@ -4,9 +4,8 @@ module Selenium::Command
   describe "error handling", tags: "feature" do
     it "raises exceptions when trying to find element that does not exist" do
       TestServer.route "/home", "<h1>The Title</h1>"
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
 
         expected_message = "no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"#missing-element\"}"
@@ -19,9 +18,8 @@ module Selenium::Command
     it "raises exceptions when trying to find element within element that no longer exists" do
       TestServer.route "/home", "<div id=\"parent\"><a href=\"/about\">Click</a></div>"
       TestServer.route "/about", "<h1>The Title</h1>"
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         parent_element = session.find_element(:css, "#parent")
         child_element = parent_element.find_child_element(:link_text, "Click")
@@ -36,9 +34,8 @@ module Selenium::Command
 
     it "raises exception when making get command" do
       TestServer.route "/home", "<h1 id=\"title\">Title</h1>"
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
 
         expected_message = "stale element reference: element is not attached to the page document"

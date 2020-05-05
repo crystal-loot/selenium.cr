@@ -4,9 +4,8 @@ module Selenium::Command
   describe "alerts", tags: "feature" do
     it "works" do
       TestServer.route "/home", "<h1>The Title</h1>"
-      driver = Driver.for(:chrome)
-
-      with_session(driver) do |session|
+      
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         document_manager = session.document_manager
         alert_manager = session.alert_manager

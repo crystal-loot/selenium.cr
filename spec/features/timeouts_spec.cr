@@ -3,9 +3,7 @@ require "../spec_helper"
 module Selenium::Command
   describe "timeoutes", tags: "feature" do
     it "works" do
-      driver = Driver.for(:chrome)
-
-      with_session(driver) do |session|
+      with_session do |session|
         timeout_configuration = TimeoutConfiguration.new(script: 15000)
         session.set_timeouts(timeout_configuration)
 

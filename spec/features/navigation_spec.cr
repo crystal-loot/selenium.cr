@@ -10,9 +10,8 @@ module Selenium::Command
       </head>
       <h1>About</h1>
       HTML
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         session.navigate_to("http://localhost:3002/about")
         navigation_manager = session.navigation_manager

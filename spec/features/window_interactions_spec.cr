@@ -3,10 +3,8 @@ require "../spec_helper"
 module Selenium::Command
   describe "window", tags: "feature" do
     it "can be interacted with" do
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
-        driver.status.ready?.should be_true
+      with_session do |session|
         window_manager = session.window_manager
         window_manager.maximize
         window_handle_a = window_manager.window_handle

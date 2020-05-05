@@ -7,9 +7,8 @@ module Selenium::Command
       <label id="label" for="foo">Foo</label>
       <input type="text" id="foo">
       HTML
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         session.find_element(:css, "#label").click
         input_action_sequence = InputSourceActionSequence.new(

@@ -14,9 +14,7 @@ module Selenium::Command
       </ul>
       HTML
 
-      driver = Driver.for(:chrome)
-
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:css, "[data-testid=\"item-1\"]")
         child_element = element.find_child_element(:css, "#words")
@@ -39,9 +37,7 @@ module Selenium::Command
       </ul>
       HTML
 
-      driver = Driver.for(:chrome)
-
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         elements = session.find_elements(:css, "#words")
         elements.size.should eq(2)
@@ -60,9 +56,7 @@ module Selenium::Command
       <button data-testid="btn">Click Me</button>
       HTML
 
-      driver = Driver.for(:chrome)
-
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:css, "[data-testid=\"btn\"]")
         element.click

@@ -6,9 +6,8 @@ module Selenium::Command
 
     it "can be taken of whole page" do
       TestServer.route "/home", "<h1>The Title</h1>"
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         session.screenshot("result.png")
         File.exists?("result.png").should be_true
@@ -22,9 +21,8 @@ module Selenium::Command
         <p id="target">Second Element</p>
       </div>
       HTML
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:css, "#target")
         element.screenshot("result.png")
