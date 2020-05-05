@@ -73,6 +73,12 @@ class Selenium::Element
     ElementRect.from_json(data["value"].to_json)
   end
 
+  def enabled?
+    data = command_handler.execute(:is_element_enabled, path_variables)
+
+    data["value"].as_bool
+  end
+
   private def path_variables
     {":session_id" => session_id, ":element_id" => id.to_s}
   end

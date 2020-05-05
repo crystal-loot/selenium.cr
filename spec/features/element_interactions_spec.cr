@@ -45,5 +45,21 @@ module Selenium::Command
         element.attribute("value").should eq("Jenny Smith")
       end
     end
+
+    it "can determine if element is enabled" do
+      TestServer.route "/home", <<-HTML
+        <input type="text" id="enabled-input" value="">
+        <input type="text" id="disabled-input" value="" disabled>
+      HTML
+      driver = Driver.new
+
+      with_session(driver) do |session|
+        session.navigate_to("localhost:3002/home")
+        element = session.find_element(LocationStrategy::CSS, "#enabled-input")
+        element.enabled?.should be_true
+        element = session.find_element(LocationStrategy::CSS, "#disabled-input")
+        element.enabled?.should be_false
+      end
+    end
   end
 end
