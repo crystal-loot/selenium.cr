@@ -1,4 +1,4 @@
-class Selenium::Capability
+class Selenium::Capabilities
   include JSON::Serializable
 
   def initialize
@@ -22,7 +22,7 @@ class Selenium::Capability
   property proxy : ProxyConfiguration?
 
   @[JSON::Field(key: "setWindowRect")]
-  property set_window_rect : String?
+  property set_window_rect : Bool?
 
   property timeouts : TimeoutConfiguration?
 
@@ -58,20 +58,5 @@ class Selenium::Capability
 
     @[JSON::Field(key: "socksVersion")]
     property socks_version : Int32?
-  end
-
-  class TimeoutConfiguration
-    include JSON::Serializable
-
-    @[JSON::Field(emit_null: true)]
-    property script : Int32?
-    @script = 30_000
-
-    @[JSON::Field(key: "pageLoad")]
-    property page_load : Int32?
-    @page_load = 300_000
-
-    property implicit : Int32?
-    @implicit = 0
   end
 end
