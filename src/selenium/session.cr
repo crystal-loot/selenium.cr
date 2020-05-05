@@ -57,6 +57,13 @@ class Selenium::Session
     element_ids.map { |element_id| Element.new(command_handler, id, element_id) }
   end
 
+  def active_element
+    data = command_handler.execute(:get_active_element, path_variables)
+    entry = data["value"].as_h
+    element_id = ElementId.new(entry.first_value.as_s)
+    Element.new(command_handler, id, element_id)
+  end
+
   def current_url
     data = command_handler.execute(:get_current_url, path_variables)
     data["value"].as_s

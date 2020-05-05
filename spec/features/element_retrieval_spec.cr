@@ -53,5 +53,21 @@ module Selenium::Command
         child_element_texts.should contain("Sub Text")
       end
     end
+
+    it "can retrieve active element" do
+      TestServer.route "/home", <<-HTML
+      <button data-testid="btn">Click Me</button>
+      HTML
+
+      driver = Driver.new
+
+      with_session(driver) do |session|
+        session.navigate_to("localhost:3002/home")
+        element = session.find_element(LocationStrategy::CSS, "[data-testid=\"btn\"]")
+        element.click
+        active_element = session.active_element
+        active_element.text.should eq("Click Me")
+      end
+    end
   end
 end
