@@ -17,8 +17,11 @@ spawn do
   server.listen
 end
 
-def with_session(driver : Selenium::Driver)
-  session = driver.create_session
+CHROME_HEADLESS = Selenium::Chrome::Capabilities.new
+CHROME_HEADLESS.args(["--no-sandbox", "--headless", "--disable-gpu"])
+
+def with_session(driver : Selenium::Driver, capabilities = CHROME_HEADLESS)
+  session = driver.create_session(capabilities)
   yield(session)
 ensure
   session.delete unless session.nil?
