@@ -55,6 +55,11 @@ class Selenium::WindowManager
     WindowRect.from_json(data["value"].to_json)
   end
 
+  def window_rect
+    data = command_handler.execute(:get_window_rect, path_variables)
+    WindowRect.from_json(data["value"].to_json)
+  end
+
   def close_window
     command_handler.execute(:close_window, path_variables)
   end
