@@ -24,6 +24,11 @@ class Selenium::Element
     data["value"].as_s
   end
 
+  def css_value(property_name)
+    data = command_handler.execute(:get_element_css_value, path_variables.merge({":property_name" => property_name}))
+    data["value"].as_s
+  end
+
   def send_keys(keys)
     parameters = {text: SendKeyConverter.encode(keys)}.to_json
     command_handler.execute(:element_send_keys, path_variables, parameters)

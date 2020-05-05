@@ -9,7 +9,7 @@ module Selenium::Command
           <p id="words">First Item</p>
         </li>
         <li data-testid="item-1">
-          <p id="words">Second Item</p>
+          <p id="words" style="text-align:center;">Second Item</p>
         </li>
       </ul>
       HTML
@@ -22,6 +22,7 @@ module Selenium::Command
         child_element = element.find_child_element(LocationStrategy::CSS, "#words")
         child_element.text.should eq("Second Item")
         child_element.tag_name.should eq("p")
+        child_element.css_value("text-align").should eq("center")
       end
     end
 
