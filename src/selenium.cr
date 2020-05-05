@@ -6,5 +6,5 @@ require "./selenium/default_commands"
 require "./selenium/**"
 
 module Selenium
-  VERSION = "0.3.0"
+  VERSION = "0.3.1"
 end
