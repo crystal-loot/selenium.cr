@@ -79,5 +79,21 @@ module Selenium::Command
         element.selected?.should be_true
       end
     end
+
+    it "can determine if element is displayed" do
+      TestServer.route "/home", <<-HTML
+      <input type="text" id="visible-input" value="">
+      <input type="hidden" id="hidden-input" value="">
+      HTML
+      driver = Driver.new
+
+      with_session(driver) do |session|
+        session.navigate_to("http://localhost:3002/home")
+        element = session.find_element(LocationStrategy::CSS, "#visible-input")
+        element.displayed?.should be_true
+        element = session.find_element(LocationStrategy::CSS, "#hidden-input")
+        element.displayed?.should be_false
+      end
+    end
   end
 end

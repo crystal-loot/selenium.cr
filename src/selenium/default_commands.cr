@@ -36,6 +36,7 @@ module Selenium::DefaultCommands
     get_element_tag_name:       {:get, "/session/:session_id/element/:element_id/name"},
     get_element_rect:           {:get, "/session/:session_id/element/:element_id/rect"},
     is_element_enabled:         {:get, "/session/:session_id/element/:element_id/enabled"},
+    is_element_displayed:       {:get, "/session/:session_id/element/:element_id/displayed"},
     element_click:              {:post, "/session/:session_id/element/:element_id/click"},
     element_clear:              {:post, "/session/:session_id/element/:element_id/clear"},
     element_send_keys:          {:post, "/session/:session_id/element/:element_id/value"},
