@@ -88,6 +88,11 @@ class Selenium::Session
     command_handler.execute(:set_timeouts, path_variables, timeouts.to_json)
   end
 
+  def perform_actions(action_sequence)
+    parameters = {actions: action_sequence}.to_json
+    command_handler.execute(:perform_actions, path_variables, parameters)
+  end
+
   private def path_variables
     {":session_id" => id}
   end
