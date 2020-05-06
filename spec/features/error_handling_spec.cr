@@ -8,8 +8,7 @@ module Selenium::Command
       with_session do |session|
         session.navigate_to("http://localhost:3002/home")
 
-        expected_message = "no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"#missing-element\"}"
-        expect_raises(Error, expected_message) do
+        expect_raises(Error, /Unable to locate element/) do
           session.find_element(:css, "#missing-element")
         end
       end
@@ -25,32 +24,29 @@ module Selenium::Command
         child_element = parent_element.find_child_element(:link_text, "Click")
         child_element.click
 
-        expected_message = "stale element reference: element is not attached to the page document"
-        expect_raises(Error, expected_message) do
+        expect_raises(Error, /stale/) do
           parent_element.find_child_element(:link_text, "Click")
         end
       end
     end
 
-    it "raises exception when making get command" do
+    it "can raise exception when accessing unknown element" do
       TestServer.route "/home", "<h1 id=\"title\">Title</h1>"
 
       with_session do |session|
         session.navigate_to("http://localhost:3002/home")
 
-        expected_message = "stale element reference: element is not attached to the page document"
-        expect_raises(Error, expected_message) do
+        expect_raises(Error) do
           Element.new(session.command_handler, session.id, ElementId.random).property("id")
         end
       end
     end
 
     it "raises exception when making delete command" do
-      driver = Driver.for(:chrome)
-      command_handler = CommandHandler.new(driver.http_client)
-
-      expect_raises(Error, "invalid session id") do
-        Session.new(driver.http_client, command_handler, "invalidsessionid").window_manager.close_window
+      with_session do |session|
+        expect_raises(Error, /session id/) do
+          Session.new(session.http_client, session.command_handler, "invalidsessionid").window_manager.close_window
+        end
       end
     end
   end

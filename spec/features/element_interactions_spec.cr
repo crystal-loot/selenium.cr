@@ -17,13 +17,12 @@ module Selenium::Command
       end
     end
 
-    it "can clear" do
+    it "can clear", tags: "firefox" do
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="John">
       HTML
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:css, "#name")
         element.clear
@@ -31,7 +30,7 @@ module Selenium::Command
       end
     end
 
-    it "can send keys" do
+    it "can send keys", tags: "firefox" do
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="">
       HTML
@@ -50,9 +49,8 @@ module Selenium::Command
       <input type="text" id="enabled-input" value="">
       <input type="text" id="disabled-input" value="" disabled>
       HTML
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:css, "#enabled-input")
         element.enabled?.should be_true
@@ -68,9 +66,8 @@ module Selenium::Command
         <option id="option-b" value="bar" selected>Option B</option>
       </select>
       HTML
-      driver = Driver.for(:chrome)
 
-      with_session(driver) do |session|
+      with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:css, "#option-a")
         element.selected?.should be_false

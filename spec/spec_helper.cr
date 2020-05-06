@@ -21,32 +21,24 @@ def browser
   ENV["SELENIUM_BROWSER"]? || "chrome"
 end
 
-def build_capabilities
+def build_session
   if browser == "chrome"
+    driver = Selenium::Driver.for(:chrome)
     capabilities = Selenium::Chrome::Capabilities.new
     capabilities.args(["no-sandbox", "headless", "disable-gpu"])
-    capabilities
+    driver.create_session(capabilities)
   elsif browser == "firefox"
+    driver = Selenium::Driver.for(:firefox, {base_url: "http://localhost:4444"})
     capabilities = Selenium::Firefox::Capabilities.new
     capabilities.args(["-headless"])
-    capabilities
+    driver.create_session(capabilities)
   else
     raise ArgumentError.new("unknown browser for running tests: #{browser}")
   end
 end
 
-def build_driver
-  if browser == "chrome"
-    Selenium::Driver.for(:chrome)
-  elsif browser == "firefox"
-    Selenium::Driver.for(:firefox, {base_url: "http://localhost:4444"})
-  else
-    raise ArgumentError.new("unknown browser for running tests: #{browser}")
-  end
-end
-
-def with_session(driver = build_driver, capabilities = build_capabilities)
-  session = driver.create_session(capabilities)
+def with_session
+  session = build_session
   yield(session)
 ensure
   session.delete unless session.nil?
