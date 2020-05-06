@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Start Chromedriver
-      run: $CHROMEWEBDRIVER --port=4444 --url-base=/wd/hub
+      run: chromedriver --port=4444 --url-base=/wd/hub
     - name: Setup Crystal
       run: curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
     - name: Install Crystal
@@ -26,7 +26,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Start Geckodriver
-      run: $GECKOWEBDRIVER --port=4444
+      run: geckodriver --port=4444
     - name: Setup Crystal
       run: curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
     - name: Install Crystal
