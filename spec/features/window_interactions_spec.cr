@@ -18,6 +18,7 @@ module Selenium::Command
         window_manager.resize_window(width: 1600, height: 700)
         window_manager.window_rect.width.should eq(1600)
         window_manager.close_window
+        window_manager.window_handles.size.should eq(1)
       end
     end
   end
