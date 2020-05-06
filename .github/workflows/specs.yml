@@ -20,7 +20,9 @@ jobs:
     - name: Install dependencies
       run: shards install
     - name: Run tests
-      run: crystal spec
+      run: crystal spec --tag "~chrome"
+      env:
+        SELENIUM_BROWSER: chrome
   verify-firefox:
     runs-on: ubuntu-latest
     steps:
@@ -34,4 +36,6 @@ jobs:
     - name: Install dependencies
       run: shards install
     - name: Run tests
-      run: crystal spec
+      run: crystal spec --tag "~firefox"
+      env:
+        SELENIUM_BROWSER: firefox
