@@ -1,7 +1,8 @@
 module Selenium::Driver
   DEFAULT_CONFIGURATION = {
-    base_url: "http://localhost:4444/wd/hub"
+    base_url: "http://localhost:4444/wd/hub",
   }
+
   def self.for(browser, opts = DEFAULT_CONFIGURATION)
     options = DEFAULT_CONFIGURATION.merge(opts)
     case browser

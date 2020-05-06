@@ -4,7 +4,7 @@ module Selenium::Command
   describe "alerts", tags: "feature" do
     it "works" do
       TestServer.route "/home", "<h1>The Title</h1>"
-      
+
       with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         document_manager = session.document_manager
