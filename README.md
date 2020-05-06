@@ -1,6 +1,8 @@
 # selenium.cr
 
-Selenium client for interacting with webpages using webdrivers.
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/matthewmcgarvey/selenium.cr)
+
+Selenium client for interacting with web pages for browser automation.
 
 ## Installation
 
@@ -20,11 +22,40 @@ Selenium client for interacting with webpages using webdrivers.
 require "selenium"
 ```
 
-TODO: Write usage instructions here
+### Creating a Driver
+
+```crystal
+driver = Selenium::Driver.for(:chrome)
+```
+
+Available drivers:
+
+- :chrome (using chromedriver)
+- :firefox (using geckodriver)
+- :remote (general purpose)
+
+### Creating a Session
+
+```crystal
+capabilities = Selenium::Chrome::Capabilities.new
+capabilities.args(["no-sandbox", "headless", "disable-gpu"])
+driver.create_session(capabilities)
+```
+
+Use the appropriate `Capabilities` class for whichever browser you choose.
 
 ## Development
 
-TODO: Write development instructions here
+To run the tests you must have the appropriate driver running.
+The tests use chrome by default. The command to start chromedriver as the tests expect is:
+
+```bash
+chromedriver --port=4444 --url-base=/wd/hub
+```
+
+Run `crystal spec` to run the tests. It will run the tests in headless mode.
+
+To run the tests with firefox you will need to have the geckodriver running and run `SELENIUM_BROWSER=firefox crystal spec`
 
 ## Contributing
 
