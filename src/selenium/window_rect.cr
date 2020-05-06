@@ -1,9 +1,9 @@
-struct Selenium::Rect
+struct Selenium::WindowRect
   JSON.mapping(
-    x: Int32?,
-    y: Int32?,
-    width: Int32?,
-    height: Int32?
+    x: Int64?,
+    y: Int64?,
+    width: Int64?,
+    height: Int64?
   )
 
   def initialize(@x = nil, @y = nil, @width = nil, @height = nil)

@@ -46,16 +46,16 @@ class Selenium::WindowManager
   end
 
   def set_window_rect(
-    width : Int32? = nil,
-    height : Int32? = nil,
-    x : Int32? = nil,
-    y : Int32? = nil
+    width : Int64? = nil,
+    height : Int64? = nil,
+    x : Int64? = nil,
+    y : Int64? = nil
   ) : WindowRect
     window_rect = WindowRect.new(width: width, height: height, x: x, y: y)
     set_window_rect(window_rect)
   end
 
-  def resize_window(width : Int32? = nil, height : Int32? = nil)
+  def resize_window(width : Int64? = nil, height : Int64? = nil)
     set_window_rect(width, height)
   end
 
