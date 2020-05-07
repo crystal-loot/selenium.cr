@@ -28,7 +28,7 @@ def build_session
     capabilities.args(["no-sandbox", "headless", "disable-gpu"])
     driver.create_session(capabilities)
   elsif browser == "firefox"
-    driver = Selenium::Driver.for(:firefox, {base_url: "http://localhost:4444"})
+    driver = Selenium::Driver.for(:firefox, base_url: "http://localhost:4444")
     capabilities = Selenium::Firefox::Capabilities.new
     capabilities.args(["-headless"])
     driver.create_session(capabilities)

@@ -3,7 +3,7 @@ module Selenium::Driver
     base_url: "http://localhost:4444/wd/hub",
   }
 
-  def self.for(browser, opts = DEFAULT_CONFIGURATION)
+  def self.for(browser, **opts)
     options = DEFAULT_CONFIGURATION.merge(opts)
     case browser
     when :chrome
