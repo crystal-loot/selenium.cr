@@ -1,4 +1,4 @@
-class Selenium::Firefox::Driver < Selenium::Remote::Driver
+class Selenium::Firefox::Driver < Selenium::Driver
   def create_session(capabilities : Firefox::Capabilities) : Session
     super(capabilities)
   end
