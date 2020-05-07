@@ -55,7 +55,9 @@ chromedriver --port=4444 --url-base=/wd/hub
 
 Run `crystal spec` to run the tests. It will run the tests in headless mode.
 
-To run the tests with firefox you will need to have the geckodriver running and run `SELENIUM_BROWSER=firefox crystal spec`
+To run the tests with firefox you will need to have the geckodriver running and run `SELENIUM_BROWSER=firefox crystal spec --tag "~firefox"`
+
+Using the tag `~firefox` is to avoid running the tests that are known to break the specified browser. Please feel free to attemp a fix for them.
 
 ## Contributing
 
