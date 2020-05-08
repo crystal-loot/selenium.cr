@@ -1,17 +1,12 @@
 class Selenium::Driver
-  DEFAULT_CONFIGURATION = {
-    base_url: "http://localhost:4444/wd/hub",
-  }
-
   def self.for(browser, **opts)
-    options = DEFAULT_CONFIGURATION.merge(opts)
     case browser
     when :chrome
-      Chrome::Driver.new(options)
+      Chrome::Driver.new(**opts)
     when :firefox, :gecko
-      Firefox::Driver.new(options)
+      Firefox::Driver.new(**opts)
     when :remote
-      Remote::Driver.new(options)
+      Remote::Driver.new(**opts)
     else
       raise ArgumentError.new "unknown driver: #{browser}"
     end
@@ -20,8 +15,8 @@ class Selenium::Driver
   getter http_client : HttpClient
   getter command_handler : CommandHandler
 
-  def initialize(opts)
-    @http_client = HttpClient.new(base_url: opts[:base_url])
+  def initialize(base_url : String)
+    @http_client = HttpClient.new(base_url: base_url)
     @command_handler = CommandHandler.new(@http_client)
   end
 

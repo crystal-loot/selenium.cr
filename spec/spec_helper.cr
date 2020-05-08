@@ -23,7 +23,7 @@ end
 
 def build_session
   if browser == "chrome"
-    driver = Selenium::Driver.for(:chrome)
+    driver = Selenium::Driver.for(:chrome, base_url: "http://localhost:9515")
     capabilities = Selenium::Chrome::Capabilities.new
     capabilities.args(["no-sandbox", "headless", "disable-gpu"])
     driver.create_session(capabilities)
