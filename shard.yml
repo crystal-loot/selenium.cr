@@ -4,3 +4,7 @@ authors:
   - Matthew McGarvey <matthewmcgarvey14@gmail.com>
 crystal: 0.34.0
 license: MIT
+development_dependencies:
+  webdrivers:
+    github: matthewmcgarvey/webdrivers.cr
+    branch: master
