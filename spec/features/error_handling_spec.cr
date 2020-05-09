@@ -37,7 +37,7 @@ module Selenium::Command
         session.navigate_to("http://localhost:3002/home")
 
         expect_raises(Error) do
-          Element.new(session.command_handler, session.id, ElementId.random).property("id")
+          Element.new(session.command_handler, session.id, "unknown-element-id").property("id")
         end
       end
     end

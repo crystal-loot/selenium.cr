@@ -45,8 +45,7 @@ class Selenium::Element
     }.to_json
     data = command_handler.execute(:find_element_from_element, path_variables, parameters)
     entry = data["value"].as_h
-    element_id = ElementId.new(entry.first_value.as_s)
-    Element.new(command_handler, session_id, element_id)
+    Element.new(command_handler, session_id, entry.first_value.as_s)
   end
 
   def find_child_element(using : Symbol, value)
@@ -61,7 +60,7 @@ class Selenium::Element
     data = command_handler.execute(:find_elements_from_element, path_variables, parameters)
     data["value"]
       .as_a
-      .map { |entry| ElementId.new(entry.as_h.first_value.as_s) }
+      .map { |entry| entry.as_h.first_value.as_s }
       .map { |element_id| Element.new(command_handler, session_id, element_id) }
   end
 

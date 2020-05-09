@@ -41,8 +41,7 @@ class Selenium::Session
     }.to_json)
 
     entry = data["value"].as_h
-    element_id = ElementId.new(entry.first_value.as_s)
-    Element.new(command_handler, id, element_id)
+    Element.new(command_handler, id, entry.first_value.as_s)
   end
 
   def find_element(using : Symbol, value)
@@ -57,7 +56,7 @@ class Selenium::Session
 
     element_ids = data["value"]
       .as_a
-      .map { |entry| ElementId.new(entry.as_h.first_value.as_s) }
+      .map { |entry| entry.as_h.first_value.as_s }
     element_ids.map { |element_id| Element.new(command_handler, id, element_id) }
   end
 
@@ -68,8 +67,7 @@ class Selenium::Session
   def active_element
     data = command_handler.execute(:get_active_element, path_variables)
     entry = data["value"].as_h
-    element_id = ElementId.new(entry.first_value.as_s)
-    Element.new(command_handler, id, element_id)
+    Element.new(command_handler, id, entry.first_value.as_s)
   end
 
   def current_url
