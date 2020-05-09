@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Start Chromedriver	
+    - name: Start Chromedriver
       run: chromedriver &
     - name: Setup Crystal
       run: curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
