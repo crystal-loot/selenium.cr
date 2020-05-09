@@ -7,6 +7,8 @@ class Selenium::TestDriverFactory
       build_firefox_driver
     when "chrome-no-service"
       build_chrome_driver_no_service
+    when "safari"
+      build_safari_driver
     else
       raise ArgumentError.new("unknown browser for running tests: #{browser}")
     end
@@ -33,11 +35,8 @@ class Selenium::TestDriverFactory
     {driver, capabilities}
   end
 
-  private def self.chrome?(browser)
-    browser == "chrome"
-  end
-
-  private def self.firefox?(browser)
-    browser == "firefox"
+  def self.build_safari_driver : Tuple(Driver, Capabilities)
+    driver = Driver.for(:safari, service: Service.safari(driver_path: "/usr/bin/safaridriver"))
+    {driver, Safari::Capabilities.new}
   end
 end

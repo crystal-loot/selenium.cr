@@ -7,6 +7,8 @@ class Selenium::Driver
       Firefox::Driver.new(**opts)
     when :remote
       Remote::Driver.new(**opts)
+    when :safari
+      Safari::Driver.new(**opts)
     else
       raise ArgumentError.new "unknown driver: #{browser}"
     end

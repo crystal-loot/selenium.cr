@@ -17,7 +17,7 @@ module Selenium::Command
       end
     end
 
-    it "can clear", tags: "firefox" do
+    it "can clear", tags: ["firefox", "safari"] do
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="John">
       HTML
@@ -30,7 +30,7 @@ module Selenium::Command
       end
     end
 
-    it "can send keys", tags: "firefox" do
+    it "can send keys", tags: ["firefox", "safari"] do
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="">
       HTML
@@ -76,7 +76,7 @@ module Selenium::Command
       end
     end
 
-    it "can determine if element is displayed" do
+    it "can determine if element is displayed", tags: "safari" do
       TestServer.route "/home", <<-HTML
       <input type="text" id="visible-input" value="">
       <input type="hidden" id="hidden-input" value="">

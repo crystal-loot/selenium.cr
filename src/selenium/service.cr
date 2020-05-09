@@ -10,6 +10,10 @@ abstract class Selenium::Service
     Firefox::Service.new(**opts)
   end
 
+  def self.safari(**opts)
+    Safari::Service.new(**opts)
+  end
+
   private property process : Process?
 
   def initialize(@driver_path : String, @port : Int32 = default_port, @args = [] of String)

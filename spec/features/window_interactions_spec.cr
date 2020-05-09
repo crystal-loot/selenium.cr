@@ -2,7 +2,7 @@ require "../spec_helper"
 
 module Selenium::Command
   describe "window", tags: "feature" do
-    it "can be interacted with" do
+    it "can be interacted with", tags: "safari" do
       with_session do |session|
         window_manager = session.window_manager
         window_manager.maximize

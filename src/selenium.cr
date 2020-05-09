@@ -7,6 +7,7 @@ require "./selenium/*"
 require "./selenium/remote/**"
 require "./selenium/firefox/**"
 require "./selenium/chrome/**"
+require "./selenium/safari/**"
 
 module Selenium
   VERSION = "0.4.0"

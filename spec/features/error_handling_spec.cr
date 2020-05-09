@@ -14,7 +14,7 @@ module Selenium::Command
       end
     end
 
-    it "raises exceptions when trying to find element within element that no longer exists" do
+    it "raises exceptions when trying to find element within element that no longer exists", tags: "safari" do
       TestServer.route "/home", "<div id=\"parent\"><a href=\"/about\">Click</a></div>"
       TestServer.route "/about", "<h1>The Title</h1>"
 
