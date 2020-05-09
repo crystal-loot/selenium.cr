@@ -25,7 +25,7 @@ require "selenium"
 ### Creating a Driver
 
 ```crystal
-driver = Selenium::Driver.for(:chrome)
+driver = Selenium::Driver.for(:chrome, base_url: "http://localhost:9515")
 ```
 
 Available drivers:
@@ -33,6 +33,17 @@ Available drivers:
 - :chrome (using chromedriver)
 - :firefox (using geckodriver)
 - :remote (general purpose)
+
+### Running with a service
+
+Rather than running chromedriver yourself, you can give the driver a service which will run the process for you.
+
+```crystal
+driver = Selenium::Driver.for(:chrome, service: Service.chrome(driver_path: "~/.webdrivers/chromedriver"))
+```
+
+You must call `driver.stop` when you are finished or it will leave the service running.
+Consider using [webdrivers.cr](https://github.com/matthewmcgarvey/webdrivers.cr) for automatically installing drivers and managing the driver path for you.
 
 ### Creating a Session
 
@@ -46,18 +57,23 @@ Use the appropriate `Capabilities` class for whichever browser you choose.
 
 ## Development
 
-To run the tests you must have the appropriate driver running.
-The tests use chrome by default. The command to start chromedriver as the tests expect is:
-
-```bash
-chromedriver --port=4444 --url-base=/wd/hub
-```
-
 Run `crystal spec` to run the tests. It will run the tests in headless mode.
 
-To run the tests with firefox you will need to have the geckodriver running and run `SELENIUM_BROWSER=firefox crystal spec --tag "~firefox"`
+To run the tests with chrome headlessly:
 
-Using the tag `~firefox` is to avoid running the tests that are known to break the specified browser. Please feel free to attemp a fix for them.
+```crystal
+SELENIUM_BROWSER=chrome crystal spec --tag "~chrome"
+```
+
+To run the tests with firefox headlessly:
+
+```crystal
+SELENIUM_BROWSER=firefox crystal spec --tag "~firefox"
+
+```
+
+The tag skips any specs that are know to break with those browsers.
+Running just `crystal spec` will use chrome.
 
 ## Contributing
 
