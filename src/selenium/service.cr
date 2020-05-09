@@ -22,9 +22,9 @@ abstract class Selenium::Service
 
   def stop
     send_shutdown_command
-    @process.try &.wait
+    process.try &.wait
   ensure
-    stop_process(@process)
+    stop_process(process)
   end
 
   def base_url : String
@@ -34,12 +34,12 @@ abstract class Selenium::Service
   abstract def default_port : Int32
 
   private def start_process
-    err_output = {% if flag?(:DEBUG) %} STDERR {% else %} Process::Redirect::Close {% end %}
     @process = Process.new(
       @driver_path,
       ["--port=#{@port}"] | @args,
       shell: spawn_in_shell?,
-      error: err_output
+      output: {% if flag?(:DEBUG) %} STDOUT {% else %} Process::Redirect::Close {% end %},
+      error: {% if flag?(:DEBUG) %} STDERR {% else %} Process::Redirect::Close {% end %}
     )
   end
 
