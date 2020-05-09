@@ -21,6 +21,22 @@ jobs:
       run: crystal spec --tag "~chrome"
       env:
         SELENIUM_BROWSER: chrome
+  verify-chrome-external-process:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Start Chromedriver	
+      run: chromedriver &
+    - name: Setup Crystal
+      run: curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
+    - name: Install Crystal
+      run: sudo apt install crystal
+    - name: Install dependencies
+      run: shards install
+    - name: Run tests
+      run: crystal spec --tag "~chrome"
+      env:
+        SELENIUM_BROWSER: chrome
   verify-firefox:
     runs-on: ubuntu-latest
     steps:
