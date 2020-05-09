@@ -1,7 +1,29 @@
 require "spec"
 require "http"
+require "webdrivers"
 require "../src/selenium"
 require "./support/**"
+
+class Global
+  @@driver : Selenium::Driver?
+  @@cap : Selenium::Capabilities?
+
+  def self.set(driver, cap)
+    @@driver = driver
+    @@cap = cap
+  end
+
+  def self.create_session
+    @@driver.not_nil!.create_session(@@cap)
+  end
+
+  def self.stop
+    @@driver.not_nil!.stop
+  end
+end
+
+driver, capabilities = Selenium::TestDriverFactory.build(ENV["SELENIUM_BROWSER"]? || "chrome")
+Global.set(driver, capabilities)
 
 server = TestServer.new(3002)
 
@@ -11,34 +33,15 @@ end
 
 Spec.after_suite do
   server.close
+  Global.stop
 end
 
 spawn do
   server.listen
 end
 
-def browser
-  ENV["SELENIUM_BROWSER"]? || "chrome"
-end
-
-def build_session
-  if browser == "chrome"
-    driver = Selenium::Driver.for(:chrome)
-    capabilities = Selenium::Chrome::Capabilities.new
-    capabilities.args(["no-sandbox", "headless", "disable-gpu"])
-    driver.create_session(capabilities)
-  elsif browser == "firefox"
-    driver = Selenium::Driver.for(:firefox, base_url: "http://localhost:4444")
-    capabilities = Selenium::Firefox::Capabilities.new
-    capabilities.args(["-headless"])
-    driver.create_session(capabilities)
-  else
-    raise ArgumentError.new("unknown browser for running tests: #{browser}")
-  end
-end
-
 def with_session
-  session = build_session
+  session = Global.create_session
   yield(session)
 ensure
   session.delete unless session.nil?
