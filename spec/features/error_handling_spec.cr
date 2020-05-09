@@ -8,7 +8,7 @@ module Selenium::Command
       with_session do |session|
         session.navigate_to("http://localhost:3002/home")
 
-        expect_raises(Error, /Unable to locate element/) do
+        expect_raises(Error) do
           session.find_element(:css, "#missing-element")
         end
       end
@@ -24,7 +24,7 @@ module Selenium::Command
         child_element = parent_element.find_child_element(:link_text, "Click")
         child_element.click
 
-        expect_raises(Error, /stale/) do
+        expect_raises(Error) do
           parent_element.find_child_element(:link_text, "Click")
         end
       end
