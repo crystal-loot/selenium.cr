@@ -30,8 +30,9 @@ class Selenium::WindowManager
     data["value"].as_a.map &.as_s
   end
 
-  def new_window
-    data = command_handler.execute(:new_window, path_variables)
+  def new_window(type : Symbol = :tab)
+    parameters = {type: type}.to_json
+    data = command_handler.execute(:new_window, path_variables, parameters)
     data.dig("value", "handle").as_s
   end
 
