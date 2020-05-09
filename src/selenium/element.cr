@@ -76,7 +76,7 @@ class Selenium::Element
 
   def tag_name
     data = command_handler.execute(:get_element_tag_name, path_variables)
-    data["value"].as_s
+    data["value"].as_s.downcase
   end
 
   def screenshot(file_path : String | File)
