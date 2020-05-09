@@ -7,6 +7,6 @@ class Selenium::Error < Exception
   )
 
   def message
-    @error_message
+    [@error, @error_message].reject(&.blank?).join(": ")
   end
 end
