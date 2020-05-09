@@ -23,11 +23,17 @@ class Selenium::Driver
     @command_handler = CommandHandler.new(@http_client)
   end
 
-  def create_session(capabilities) : Session
+  def create_session(capabilities, retry = true) : Session
     parameters = {capabilities: {alwaysMatch: capabilities}}.to_json
     data = command_handler.execute(:new_session, parameters: parameters)
 
     Session.new(http_client, command_handler, data.dig("value", "sessionId").as_s)
+  rescue ex : Error
+    if retry
+      create_session(capabilities, retry: false)
+    else
+      raise ex
+    end
   end
 
   def status : Status
