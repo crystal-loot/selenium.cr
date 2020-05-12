@@ -17,7 +17,7 @@ module Selenium::Command
       end
     end
 
-    it "can clear", tags: ["firefox", "safari"] do
+    it "can clear" do
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="John">
       HTML
@@ -26,11 +26,11 @@ module Selenium::Command
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:css, "#name")
         element.clear
-        element.attribute("value").should be_empty
+        element.property("value").should be_empty
       end
     end
 
-    it "can send keys", tags: ["firefox", "safari"] do
+    it "can send keys" do
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="">
       HTML
@@ -38,9 +38,21 @@ module Selenium::Command
       with_session do |session|
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:css, "#name")
-        element.send_keys(["Jenny", :space])
-        element.send_keys("Smith")
-        element.attribute("value").should eq("Jenny Smith")
+        element.send_keys("Joe")
+        element.property("value").should eq("Joe")
+      end
+    end
+
+    it "can send keys with unicode", tags: ["firefox"] do
+      TestServer.route "/home", <<-HTML
+        <input type="text" id="name" value="">
+      HTML
+
+      with_session do |session|
+        session.navigate_to("http://localhost:3002/home")
+        element = session.find_element(:css, "#name")
+        element.send_keys(["Montana", :add, "Joe"])
+        element.property("value").should eq("Montana+Joe")
       end
     end
 
