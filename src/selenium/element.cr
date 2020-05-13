@@ -30,7 +30,7 @@ class Selenium::Element
   end
 
   def send_keys(keys : Array(String | Symbol))
-    parameters = {text: SendKeyConverter.encode(keys)}.to_json
+    parameters = {text: SendKeyConverter.encode(keys)}
     command_handler.execute(:element_send_keys, path_variables, parameters)
   end
 
@@ -42,7 +42,7 @@ class Selenium::Element
     parameters = {
       using: using,
       value: value,
-    }.to_json
+    }
     data = command_handler.execute(:find_element_from_element, path_variables, parameters)
     entry = data["value"].as_h
     Element.new(command_handler, session_id, entry.first_value.as_s)
@@ -56,7 +56,7 @@ class Selenium::Element
     parameters = {
       using: using,
       value: value,
-    }.to_json
+    }
     data = command_handler.execute(:find_elements_from_element, path_variables, parameters)
     data["value"]
       .as_a

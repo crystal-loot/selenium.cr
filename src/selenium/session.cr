@@ -31,14 +31,14 @@ class Selenium::Session
   end
 
   def navigate_to(url)
-    command_handler.execute(:navigate_to, path_variables, {url: url}.to_json)
+    command_handler.execute(:navigate_to, path_variables, {url: url})
   end
 
   def find_element(using : LocationStrategy, value)
     data = command_handler.execute(:find_element, path_variables, {
       using: using,
       value: value,
-    }.to_json)
+    })
 
     entry = data["value"].as_h
     Element.new(command_handler, id, entry.first_value.as_s)
@@ -52,7 +52,7 @@ class Selenium::Session
     data = command_handler.execute(:find_elements, path_variables, {
       using: using,
       value: value,
-    }.to_json)
+    })
 
     element_ids = data["value"]
       .as_a
@@ -91,11 +91,11 @@ class Selenium::Session
   end
 
   def set_timeouts(timeouts)
-    command_handler.execute(:set_timeouts, path_variables, timeouts.to_json)
+    command_handler.execute(:set_timeouts, path_variables, timeouts)
   end
 
   def perform_actions(action_sequence)
-    parameters = {actions: action_sequence}.to_json
+    parameters = {actions: action_sequence}
     command_handler.execute(:perform_actions, path_variables, parameters)
   end
 
@@ -108,7 +108,7 @@ class Selenium::Session
   # - what a frame is
   # - what switching frames will do
   def switch_to_frame(id)
-    parameters = {id: id}.to_json
+    parameters = {id: id}
     command_handler.execute(:switch_to_frame, path_variables, parameters)
   end
 

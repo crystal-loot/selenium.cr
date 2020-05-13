@@ -31,17 +31,17 @@ class Selenium::WindowManager
   end
 
   def new_window(type : Symbol = :tab)
-    parameters = {type: type}.to_json
+    parameters = {type: type}
     data = command_handler.execute(:new_window, path_variables, parameters)
     data.dig("value", "handle").as_s
   end
 
   def switch_to_window(window_handle)
-    command_handler.execute(:switch_to_window, path_variables, {handle: window_handle}.to_json)
+    command_handler.execute(:switch_to_window, path_variables, {handle: window_handle})
   end
 
   def set_window_rect(window_rect)
-    parameters = window_rect.to_json
+    parameters = window_rect
     data = command_handler.execute(:set_window_rect, path_variables, parameters)
     WindowRect.from_json(data["value"].to_json)
   end

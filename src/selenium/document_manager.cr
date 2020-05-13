@@ -14,7 +14,7 @@ class Selenium::DocumentManager
     parameters = {
       script: script,
       args:   args,
-    }.to_json
+    }
     data = command_handler.execute(:execute_script, path_variables, parameters)
     data["value"].as_s? || data["value"].to_json
   end
@@ -23,7 +23,7 @@ class Selenium::DocumentManager
     parameters = {
       script: script,
       args:   args,
-    }.to_json
+    }
     data = command_handler.execute(:execute_async_script, path_variables, parameters)
     data["value"].as_s? || data["value"].to_json
   end

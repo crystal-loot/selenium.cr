@@ -18,7 +18,7 @@ class Selenium::CookieManager
   end
 
   def add_cookie(cookie)
-    parameters = {cookie: cookie}.to_json
+    parameters = {cookie: cookie}
     command_handler.execute(:add_cookie, path_variables, parameters)
   end
 

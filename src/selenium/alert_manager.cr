@@ -6,7 +6,7 @@ class Selenium::AlertManager
   end
 
   def send_alert_text(text)
-    parameters = {text: text}.to_json
+    parameters = {text: text}
     command_handler.execute(:send_alert_text, path_variables, parameters)
   end
 

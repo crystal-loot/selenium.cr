@@ -26,7 +26,7 @@ class Selenium::Driver
   end
 
   def create_session(capabilities, retry = true) : Session
-    parameters = {capabilities: {alwaysMatch: capabilities}}.to_json
+    parameters = {capabilities: {alwaysMatch: capabilities}}
     data = command_handler.execute(:new_session, parameters: parameters)
 
     Session.new(http_client, command_handler, data.dig("value", "sessionId").as_s)
