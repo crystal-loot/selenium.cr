@@ -1,4 +1,4 @@
-class TimeoutConfiguration
+class Selenium::TimeoutConfiguration
   include JSON::Serializable
 
   @[JSON::Field(emit_null: true)]
