@@ -1,4 +1,10 @@
 class Selenium::Driver
+  # The entry-point for interacting with a browser
+  # *browser* options:
+  # - :chrome (see `Selenium::Chrome::Driver`)
+  # - :firefox or :gecko (see `Selenium::Firefox::Driver`)
+  # - :safari (see `Selenium::Safari::Driver`)
+  # - :remote (see `Selenium::Remote::Driver`)
   def self.for(browser, **opts)
     case browser
     when :chrome
