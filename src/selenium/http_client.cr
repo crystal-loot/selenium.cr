@@ -10,7 +10,7 @@ class Selenium::HttpClient
     parsed_response = JSON.parse(response.body)
 
     if has_error?(parsed_response)
-      raise Error.from_json(parsed_response["value"].to_json).to_exception
+      raise Error.from_json(parsed_response["value"].to_json)
     end
     parsed_response
   end
@@ -20,7 +20,7 @@ class Selenium::HttpClient
     parsed_response = JSON.parse(response.body)
 
     if has_error?(parsed_response)
-      raise Error.from_json(parsed_response["value"].to_json).to_exception
+      raise Error.from_json(parsed_response["value"].to_json)
     end
     parsed_response
   end
@@ -30,7 +30,7 @@ class Selenium::HttpClient
     parsed_response = JSON.parse(response.body)
 
     if has_error?(parsed_response)
-      raise Error.from_json(parsed_response["value"].to_json).to_exception
+      raise Error.from_json(parsed_response["value"].to_json)
     end
     parsed_response
   end

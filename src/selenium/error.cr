@@ -1,15 +1,26 @@
-class Selenium::Error
-  include JSON::Serializable
+class Selenium::Error < Exception
 
-  property error : String
-  property stacktrace : String
-  property data : JSON::Any?
+  def self.from_json(json)
+    new(InternalData.from_json(json))
+  end
 
-  @[JSON::Field(key: "message")]
-  property error_message : String
+  private getter internal_data : InternalData
 
-  def to_exception
-    message = [error, error_message].reject(&.blank?).join(": ")
-    Exception.new(message)
+  def initialize(@internal_data)
+  end
+
+  def message
+    [internal_data.error, internal_data.error_message].reject(&.blank?).join(": ")
+  end
+  
+  class InternalData
+    include JSON::Serializable
+
+    property error : String
+    property stacktrace : String
+    property data : JSON::Any?
+  
+    @[JSON::Field(key: "message")]
+    property error_message : String
   end
 end
