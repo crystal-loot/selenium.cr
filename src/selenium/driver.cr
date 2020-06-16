@@ -42,7 +42,7 @@ class Selenium::Driver
     data = command_handler.execute(:new_session, parameters: parameters)
 
     Session.new(http_client, command_handler, data.dig("value", "sessionId").as_s)
-  rescue ex : Error
+  rescue ex : Exception
     if retry
       create_session(capabilities, retry: false)
     else
