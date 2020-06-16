@@ -89,7 +89,7 @@ abstract class Selenium::Service
   private def stop_process(process)
     return if process.nil? || process.terminated?
 
-    process.kill
+    process.signal(Signal::KILL)
   end
 
   private def spawn_in_shell?
