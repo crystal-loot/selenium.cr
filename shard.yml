@@ -2,9 +2,9 @@ name: selenium
 version: 0.5.0
 authors:
   - Matthew McGarvey <matthewmcgarvey14@gmail.com>
-crystal: 0.34.0
+crystal: 0.35.0
 license: MIT
 development_dependencies:
   webdrivers:
     github: matthewmcgarvey/webdrivers.cr
-    branch: master
+    version: ~> 0.3.0

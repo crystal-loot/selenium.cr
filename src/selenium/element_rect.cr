@@ -1,11 +1,8 @@
 struct Selenium::ElementRect
-  JSON.mapping(
-    x: Float64?,
-    y: Float64?,
-    width: Float64?,
-    height: Float64?
-  )
+  include JSON::Serializable
 
-  def initialize(@x = nil, @y = nil, @width = nil, @height = nil)
-  end
+  property x : Float64?
+  property y : Float64?
+  property width : Float64?
+  property height : Float64?
 end

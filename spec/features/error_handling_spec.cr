@@ -8,7 +8,7 @@ module Selenium::Command
       with_session do |session|
         session.navigate_to("http://localhost:3002/home")
 
-        expect_raises(Error) do
+        expect_raises(Exception) do
           session.find_element(:css, "#missing-element")
         end
       end
@@ -24,7 +24,7 @@ module Selenium::Command
         child_element = parent_element.find_child_element(:link_text, "Click")
         child_element.click
 
-        expect_raises(Error) do
+        expect_raises(Exception) do
           parent_element.find_child_element(:link_text, "Click")
         end
       end
@@ -36,7 +36,7 @@ module Selenium::Command
       with_session do |session|
         session.navigate_to("http://localhost:3002/home")
 
-        expect_raises(Error) do
+        expect_raises(Exception) do
           Element.new(session.command_handler, session.id, "unknown-element-id").property("id")
         end
       end
@@ -44,7 +44,7 @@ module Selenium::Command
 
     it "raises exception when making delete command" do
       with_session do |session|
-        expect_raises(Error, /session id/) do
+        expect_raises(Exception, /session id/) do
           Session.new(session.http_client, session.command_handler, "invalidsessionid").window_manager.close_window
         end
       end
