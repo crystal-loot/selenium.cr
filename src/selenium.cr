@@ -10,5 +10,5 @@ require "./selenium/chrome/**"
 require "./selenium/safari/**"
 
 module Selenium
-  VERSION = "0.5.0"
+  VERSION = "0.6.0"
 end
