@@ -1,5 +1,7 @@
 require "base64"
+require "http"
 require "json"
+require "socket"
 require "uuid"
 require "uuid/json"
 require "./selenium/default_commands"
