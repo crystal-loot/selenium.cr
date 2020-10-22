@@ -38,6 +38,7 @@ abstract class Selenium::Service
   abstract def default_port : Int32
 
   private def start_process
+    puts "STARTING PROCESS AT #{@driver_path}"
     @process = Process.new(
       @driver_path,
       ["--port=#{@port}"] | @args,
