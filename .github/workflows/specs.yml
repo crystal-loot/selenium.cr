@@ -26,7 +26,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install Chrome dependencies
-      run: apt install -y libnss3-dev
+      run: apt update && apt install -y chromium-browser
     - name: Install dependencies
       run: shards install --ignore-crystal-version
     - name: Run tests
