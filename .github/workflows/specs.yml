@@ -25,6 +25,8 @@ jobs:
       image: crystallang/crystal:0.35.1
     steps:
     - uses: actions/checkout@v2
+    - name: Install Chrome dependencies
+      run: sudo apt install libnss3-dev
     - name: Install dependencies
       run: shards install --ignore-crystal-version
     - name: Run tests
