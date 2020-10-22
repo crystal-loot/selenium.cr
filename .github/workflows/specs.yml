@@ -7,47 +7,29 @@ on:
     branches: [ master ]
 
 jobs:
+  check-format:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:0.35.1
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install shards
+        run: shards install --ignore-crystal-version
+      - name: Format
+        run: crystal tool format --check
+      - name: Lint
+        run: ./bin/ameba
   verify-chrome:
     runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:0.35.1
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Crystal
-      run: curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
-    - name: Install Crystal
-      run: sudo apt install crystal
+    - name: Install Chrome browser
+      run: apt update && apt install -y chromium-browser
     - name: Install dependencies
-      run: shards install
+      run: shards install --ignore-crystal-version
     - name: Run tests
       run: crystal spec --tag "~chrome"
       env:
         SELENIUM_BROWSER: chrome
-  verify-chrome-external-process:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Start Chromedriver
-      run: chromedriver &
-    - name: Setup Crystal
-      run: curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
-    - name: Install Crystal
-      run: sudo apt install crystal
-    - name: Install dependencies
-      run: shards install
-    - name: Run tests
-      run: crystal spec --tag "~chrome"
-      env:
-        SELENIUM_BROWSER: chrome
-  verify-firefox:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup Crystal
-      run: curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
-    - name: Install Crystal
-      run: sudo apt install crystal
-    - name: Install dependencies
-      run: shards install
-    - name: Run tests
-      run: crystal spec --tag "~firefox"
-      env:
-        SELENIUM_BROWSER: firefox
