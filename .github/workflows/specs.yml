@@ -33,18 +33,3 @@ jobs:
       run: crystal spec --tag "~chrome"
       env:
         SELENIUM_BROWSER: chrome
-  verify-firefox:
-    runs-on: ubuntu-latest
-    container:
-      image: crystallang/crystal:0.35.1
-      options: --user 1001
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install Firefox browser
-      run: apt update && apt install -y firefox
-    - name: Install dependencies
-      run: shards install --ignore-crystal-version
-    - name: Run tests
-      run: crystal spec --tag "~firefox" -D DEBUG
-      env:
-        SELENIUM_BROWSER: firefox
