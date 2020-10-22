@@ -25,7 +25,7 @@ jobs:
       image: crystallang/crystal:0.35.1
     steps:
     - uses: actions/checkout@v2
-    - name: Install Chrome dependencies
+    - name: Install Chrome browser
       run: apt update && apt install -y chromium-browser
     - name: Install dependencies
       run: shards install --ignore-crystal-version
@@ -39,6 +39,8 @@ jobs:
       image: crystallang/crystal:0.35.1
     steps:
     - uses: actions/checkout@v2
+    - name: Install Firefox browser
+      run: apt update && apt install -y firefox
     - name: Install dependencies
       run: shards install --ignore-crystal-version
     - name: Run tests
