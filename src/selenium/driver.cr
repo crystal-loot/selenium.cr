@@ -5,7 +5,6 @@
 # If you passed in a `Selenium::Service` you *MUST* call `Selenium::Driver#stop` when you are done to stop the service
 # or else the process it starts will continue running on your computer after the program ends
 class Selenium::Driver
-
   # *browser* options:
   # - :chrome (see `Selenium::Chrome::Driver`)
   # - :firefox or :gecko (see `Selenium::Firefox::Driver`)
