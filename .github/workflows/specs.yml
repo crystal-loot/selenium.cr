@@ -30,7 +30,7 @@ jobs:
     - name: Install dependencies
       run: shards install --ignore-crystal-version
     - name: Run tests
-      run: crystal spec --tag "~chrome" -D DEBUG
+      run: crystal spec --tag "~chrome"
       env:
         SELENIUM_BROWSER: chrome
   verify-firefox:
@@ -44,6 +44,6 @@ jobs:
     - name: Install dependencies
       run: shards install --ignore-crystal-version
     - name: Run tests
-      run: crystal spec --tag "~firefox"
+      run: crystal spec --tag "~firefox" -D DEBUG
       env:
         SELENIUM_BROWSER: firefox
