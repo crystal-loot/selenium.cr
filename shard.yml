@@ -1,5 +1,5 @@
 name: selenium
-version: 0.6.2
+version: 0.7.0
 authors:
   - Matthew McGarvey <matthewmcgarvey14@gmail.com>
 crystal: 0.35.0
