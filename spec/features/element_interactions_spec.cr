@@ -101,5 +101,24 @@ module Selenium::Command
         element.displayed?.should be_false
       end
     end
+
+    it "can move the cursor to an element" do
+      TestServer.route "/home", <<-HTML
+      <style>
+        #text:hover {
+          color: rgba(83, 137, 4, 0.6);
+        }
+      </style>
+      <p id="text">Hello, world!</p>
+      HTML
+
+      with_session do |session|
+        session.navigate_to("http://localhost:3002/home")
+        element = session.find_element(:css, "#text")
+        element.css_value("color").should_not eq("rgba(83, 137, 4, 0.6)")
+        session.move_to(element)
+        session.find_element(:css, "#text").css_value("color").should eq("rgba(83, 137, 4, 0.6)")
+      end
+    end
   end
 end
