@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.34.0">
+<meta name="crystal_docs.project_version" content="0.7.0">
+<meta name="crystal_docs.project_name" content="selenium">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="selenium">
+  <title>Selenium::Session - selenium 0.7.0</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          selenium
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.7.0
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="selenium/Selenium" data-name="selenium">
+      <a href="../Selenium.html">Selenium</a>
+      
+        <ul>
+  
+  <li class=" " data-id="selenium/Selenium/Action" data-name="selenium::action">
+      <a href="../Selenium/Action.html">Action</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/ActionSequence" data-name="selenium::actionsequence">
+      <a href="../Selenium/ActionSequence.html">ActionSequence</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/AlertManager" data-name="selenium::alertmanager">
+      <a href="../Selenium/AlertManager.html">AlertManager</a>
+      
+    </li>
+  
+  <li class="parent " data-id="selenium/Selenium/Capabilities" data-name="selenium::capabilities">
+      <a href="../Selenium/Capabilities.html">Capabilities</a>
+      
+        <ul>
+  
+  <li class=" " data-id="selenium/Selenium/Capabilities/ProxyConfiguration" data-name="selenium::capabilities::proxyconfiguration">
+      <a href="../Selenium/Capabilities/ProxyConfiguration.html">ProxyConfiguration</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="selenium/Selenium/Chrome" data-name="selenium::chrome">
+      <a href="../Selenium/Chrome.html">Chrome</a>
+      
+        <ul>
+  
+  <li class=" " data-id="selenium/Selenium/Chrome/Capabilities" data-name="selenium::chrome::capabilities">
+      <a href="../Selenium/Chrome/Capabilities.html">Capabilities</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/Chrome/Driver" data-name="selenium::chrome::driver">
+      <a href="../Selenium/Chrome/Driver.html">Driver</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/Chrome/Service" data-name="selenium::chrome::service">
+      <a href="../Selenium/Chrome/Service.html">Service</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/CommandHandler" data-name="selenium::commandhandler">
+      <a href="../Selenium/CommandHandler.html">CommandHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/Cookie" data-name="selenium::cookie">
+      <a href="../Selenium/Cookie.html">Cookie</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/CookieManager" data-name="selenium::cookiemanager">
+      <a href="../Selenium/CookieManager.html">CookieManager</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/DefaultCommands" data-name="selenium::defaultcommands">
+      <a href="../Selenium/DefaultCommands.html">DefaultCommands</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/DocumentManager" data-name="selenium::documentmanager">
+      <a href="../Selenium/DocumentManager.html">DocumentManager</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/Driver" data-name="selenium::driver">
+      <a href="../Selenium/Driver.html">Driver</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/Element" data-name="selenium::element">
+      <a href="../Selenium/Element.html">Element</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/ElementId" data-name="selenium::elementid">
+      <a href="../Selenium/ElementId.html">ElementId</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/ElementRect" data-name="selenium::elementrect">
+      <a href="../Selenium/ElementRect.html">ElementRect</a>
+      
+    </li>
+  
+  <li class="parent " data-id="selenium/Selenium/Error" data-name="selenium::error">
+      <a href="../Selenium/Error.html">Error</a>
+      
+        <ul>
+  
+  <li class=" " data-id="selenium/Selenium/Error/InternalData" data-name="selenium::error::internaldata">
+      <a href="../Selenium/Error/InternalData.html">InternalData</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="selenium/Selenium/Firefox" data-name="selenium::firefox">
+      <a href="../Selenium/Firefox.html">Firefox</a>
+      
+        <ul>
+  
+  <li class=" " data-id="selenium/Selenium/Firefox/Capabilities" data-name="selenium::firefox::capabilities">
+      <a href="../Selenium/Firefox/Capabilities.html">Capabilities</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/Firefox/Driver" data-name="selenium::firefox::driver">
+      <a href="../Selenium/Firefox/Driver.html">Driver</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/Firefox/Service" data-name="selenium::firefox::service">
+      <a href="../Selenium/Firefox/Service.html">Service</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/HttpClient" data-name="selenium::httpclient">
+      <a href="../Selenium/HttpClient.html">HttpClient</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/InputSourceActionSequence" data-name="selenium::inputsourceactionsequence">
+      <a href="../Selenium/InputSourceActionSequence.html">InputSourceActionSequence</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/LocationStrategy" data-name="selenium::locationstrategy">
+      <a href="../Selenium/LocationStrategy.html">LocationStrategy</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/NavigationManager" data-name="selenium::navigationmanager">
+      <a href="../Selenium/NavigationManager.html">NavigationManager</a>
+      
+    </li>
+  
+  <li class="parent " data-id="selenium/Selenium/Remote" data-name="selenium::remote">
+      <a href="../Selenium/Remote.html">Remote</a>
+      
+        <ul>
+  
+  <li class=" " data-id="selenium/Selenium/Remote/Driver" data-name="selenium::remote::driver">
+      <a href="../Selenium/Remote/Driver.html">Driver</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="selenium/Selenium/Safari" data-name="selenium::safari">
+      <a href="../Selenium/Safari.html">Safari</a>
+      
+        <ul>
+  
+  <li class=" " data-id="selenium/Selenium/Safari/Capabilities" data-name="selenium::safari::capabilities">
+      <a href="../Selenium/Safari/Capabilities.html">Capabilities</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/Safari/Driver" data-name="selenium::safari::driver">
+      <a href="../Selenium/Safari/Driver.html">Driver</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/Safari/Service" data-name="selenium::safari::service">
+      <a href="../Selenium/Safari/Service.html">Service</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/SendKeyConverter" data-name="selenium::sendkeyconverter">
+      <a href="../Selenium/SendKeyConverter.html">SendKeyConverter</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/Service" data-name="selenium::service">
+      <a href="../Selenium/Service.html">Service</a>
+      
+    </li>
+  
+  <li class=" current" data-id="selenium/Selenium/Session" data-name="selenium::session">
+      <a href="../Selenium/Session.html">Session</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/SessionId" data-name="selenium::sessionid">
+      <a href="../Selenium/SessionId.html">SessionId</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/Status" data-name="selenium::status">
+      <a href="../Selenium/Status.html">Status</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/TimeoutConfiguration" data-name="selenium::timeoutconfiguration">
+      <a href="../Selenium/TimeoutConfiguration.html">TimeoutConfiguration</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/WindowHandle" data-name="selenium::windowhandle">
+      <a href="../Selenium/WindowHandle.html">WindowHandle</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/WindowManager" data-name="selenium::windowmanager">
+      <a href="../Selenium/WindowManager.html">WindowManager</a>
+      
+    </li>
+  
+  <li class=" " data-id="selenium/Selenium/WindowRect" data-name="selenium::windowrect">
+      <a href="../Selenium/WindowRect.html">WindowRect</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Selenium::Session
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Selenium/Session.html">Selenium::Session</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(http_client,command_handler,id)-class-method" class="signature"><strong>.new</strong>(http_client, command_handler, id)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#active_element-instance-method" class="signature"><strong>#active_element</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#alert_manager-instance-method" class="signature"><strong>#alert_manager</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#command_handler:CommandHandler-instance-method" class="signature"><strong>#command_handler</strong> : CommandHandler</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cookie_manager-instance-method" class="signature"><strong>#cookie_manager</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#current_url-instance-method" class="signature"><strong>#current_url</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete-instance-method" class="signature"><strong>#delete</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#document_manager-instance-method" class="signature"><strong>#document_manager</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#find_element(using:LocationStrategy,value)-instance-method" class="signature"><strong>#find_element</strong>(using : LocationStrategy, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#find_element(using:Symbol,value)-instance-method" class="signature"><strong>#find_element</strong>(using : Symbol, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#find_elements(using:LocationStrategy,value)-instance-method" class="signature"><strong>#find_elements</strong>(using : LocationStrategy, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#find_elements(using:Symbol,value)-instance-method" class="signature"><strong>#find_elements</strong>(using : Symbol, value)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#http_client:HttpClient-instance-method" class="signature"><strong>#http_client</strong> : HttpClient</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#id:SessionId-instance-method" class="signature"><strong>#id</strong> : SessionId</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#move_to(element)-instance-method" class="signature"><strong>#move_to</strong>(element)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#navigate_to(url)-instance-method" class="signature"><strong>#navigate_to</strong>(url)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#navigation_manager-instance-method" class="signature"><strong>#navigation_manager</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#perform_actions(action_sequence)-instance-method" class="signature"><strong>#perform_actions</strong>(action_sequence)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#release_actions-instance-method" class="signature"><strong>#release_actions</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#screenshot(file_path:String%7CFile)-instance-method" class="signature"><strong>#screenshot</strong>(file_path : String | File)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_timeouts(timeouts)-instance-method" class="signature"><strong>#set_timeouts</strong>(timeouts)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#switch_to_frame(id)-instance-method" class="signature"><strong>#switch_to_frame</strong>(id)</a>
+        
+          <div class="summary"><p><span class="flag orange">TODO</span>  write test once it is understood: - how to know/acquire the frame id - what a frame is - what switching frames will do</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#switch_to_parent_frame-instance-method" class="signature"><strong>#switch_to_parent_frame</strong></a>
+        
+          <div class="summary"><p><span class="flag orange">TODO</span>  reference switch_to_frame</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#timeouts-instance-method" class="signature"><strong>#timeouts</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#title-instance-method" class="signature"><strong>#title</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#window_manager-instance-method" class="signature"><strong>#window_manager</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(http_client,command_handler,id)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(http_client, command_handler, id)
+
+        <a class="method-permalink" href="#new(http_client,command_handler,id)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="active_element-instance-method">
+      <div class="signature">
+        
+        def <strong>active_element</strong>
+
+        <a class="method-permalink" href="#active_element-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="alert_manager-instance-method">
+      <div class="signature">
+        
+        def <strong>alert_manager</strong>
+
+        <a class="method-permalink" href="#alert_manager-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="command_handler:CommandHandler-instance-method">
+      <div class="signature">
+        
+        def <strong>command_handler</strong> : <a href="../Selenium/CommandHandler.html">CommandHandler</a>
+
+        <a class="method-permalink" href="#command_handler:CommandHandler-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cookie_manager-instance-method">
+      <div class="signature">
+        
+        def <strong>cookie_manager</strong>
+
+        <a class="method-permalink" href="#cookie_manager-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="current_url-instance-method">
+      <div class="signature">
+        
+        def <strong>current_url</strong>
+
+        <a class="method-permalink" href="#current_url-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>
+
+        <a class="method-permalink" href="#delete-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="document_manager-instance-method">
+      <div class="signature">
+        
+        def <strong>document_manager</strong>
+
+        <a class="method-permalink" href="#document_manager-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="find_element(using:LocationStrategy,value)-instance-method">
+      <div class="signature">
+        
+        def <strong>find_element</strong>(using : <a href="../Selenium/LocationStrategy.html">LocationStrategy</a>, value)
+
+        <a class="method-permalink" href="#find_element(using:LocationStrategy,value)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="find_element(using:Symbol,value)-instance-method">
+      <div class="signature">
+        
+        def <strong>find_element</strong>(using : Symbol, value)
+
+        <a class="method-permalink" href="#find_element(using:Symbol,value)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="find_elements(using:LocationStrategy,value)-instance-method">
+      <div class="signature">
+        
+        def <strong>find_elements</strong>(using : <a href="../Selenium/LocationStrategy.html">LocationStrategy</a>, value)
+
+        <a class="method-permalink" href="#find_elements(using:LocationStrategy,value)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="find_elements(using:Symbol,value)-instance-method">
+      <div class="signature">
+        
+        def <strong>find_elements</strong>(using : Symbol, value)
+
+        <a class="method-permalink" href="#find_elements(using:Symbol,value)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="http_client:HttpClient-instance-method">
+      <div class="signature">
+        
+        def <strong>http_client</strong> : <a href="../Selenium/HttpClient.html">HttpClient</a>
+
+        <a class="method-permalink" href="#http_client:HttpClient-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="id:SessionId-instance-method">
+      <div class="signature">
+        
+        def <strong>id</strong> : <a href="../Selenium/SessionId.html">SessionId</a>
+
+        <a class="method-permalink" href="#id:SessionId-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="move_to(element)-instance-method">
+      <div class="signature">
+        
+        def <strong>move_to</strong>(element)
+
+        <a class="method-permalink" href="#move_to(element)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="navigate_to(url)-instance-method">
+      <div class="signature">
+        
+        def <strong>navigate_to</strong>(url)
+
+        <a class="method-permalink" href="#navigate_to(url)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="navigation_manager-instance-method">
+      <div class="signature">
+        
+        def <strong>navigation_manager</strong>
+
+        <a class="method-permalink" href="#navigation_manager-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="perform_actions(action_sequence)-instance-method">
+      <div class="signature">
+        
+        def <strong>perform_actions</strong>(action_sequence)
+
+        <a class="method-permalink" href="#perform_actions(action_sequence)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="release_actions-instance-method">
+      <div class="signature">
+        
+        def <strong>release_actions</strong>
+
+        <a class="method-permalink" href="#release_actions-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="screenshot(file_path:String|File)-instance-method">
+      <div class="signature">
+        
+        def <strong>screenshot</strong>(file_path : String | File)
+
+        <a class="method-permalink" href="#screenshot(file_path:String%7CFile)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_timeouts(timeouts)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_timeouts</strong>(timeouts)
+
+        <a class="method-permalink" href="#set_timeouts(timeouts)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="switch_to_frame(id)-instance-method">
+      <div class="signature">
+        
+        def <strong>switch_to_frame</strong>(id)
+
+        <a class="method-permalink" href="#switch_to_frame(id)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><span class="flag orange">TODO</span>  write test once it is understood:</p>
+
+<ul><li>how to know/acquire the frame id</li><li>what a frame is</li><li>what switching frames will do</li></ul>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="switch_to_parent_frame-instance-method">
+      <div class="signature">
+        
+        def <strong>switch_to_parent_frame</strong>
+
+        <a class="method-permalink" href="#switch_to_parent_frame-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><span class="flag orange">TODO</span>  reference switch_to_frame</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="timeouts-instance-method">
+      <div class="signature">
+        
+        def <strong>timeouts</strong>
+
+        <a class="method-permalink" href="#timeouts-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="title-instance-method">
+      <div class="signature">
+        
+        def <strong>title</strong>
+
+        <a class="method-permalink" href="#title-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="window_manager-instance-method">
+      <div class="signature">
+        
+        def <strong>window_manager</strong>
+
+        <a class="method-permalink" href="#window_manager-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
