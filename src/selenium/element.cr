@@ -14,6 +14,8 @@ class Selenium::Element
     command_handler.execute(:element_clear, path_variables)
   end
 
+  # meant to reference static fields
+  # if you are trying to access fields that change you should use `property`
   def attribute(name)
     data = command_handler.execute(:get_element_attribute, path_variables.merge({":name" => name}))
     data["value"].as_s
