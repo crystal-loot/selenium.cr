@@ -128,7 +128,7 @@ class Selenium::Session
     return if rect_width.nil?
     return if rect_y.nil?
     return if rect_height.nil?
-  
+
     move_to_x = (rect_x + (rect_width / 2)).to_i
     move_to_y = (rect_y + (rect_height / 2)).to_i
 
