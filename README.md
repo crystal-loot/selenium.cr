@@ -1,8 +1,8 @@
 # selenium.cr
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/matthewmcgarvey/selenium.cr)
-
 Selenium client for interacting with web pages for browser automation.
+
+[API Documentation](https://matthewmcgarvey.github.io/selenium.cr/)
 
 ## Installation
 
