@@ -118,21 +118,10 @@ class Selenium::Session
   end
 
   def move_to(element : Selenium::Element)
-    rect = element.rect
-    rect_x = rect.try(&.x)
-    rect_width = rect.try(&.width)
-    rect_y = rect.try(&.y)
-    rect_height = rect.try(&.height)
+    midpoint = element.rect.try(&.midpoint)
+    return if midpoint.nil?
 
-    return if rect_x.nil?
-    return if rect_width.nil?
-    return if rect_y.nil?
-    return if rect_height.nil?
-
-    move_to_x = (rect_x + (rect_width / 2)).to_i
-    move_to_y = (rect_y + (rect_height / 2)).to_i
-
-    move_to(x: move_to_x, y: move_to_y)
+    move_to(x: midpoint.x, y: midpoint.y)
   end
 
   def move_to(x : Int32, y : Int32)
