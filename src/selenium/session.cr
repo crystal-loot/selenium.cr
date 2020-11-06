@@ -117,7 +117,7 @@ class Selenium::Session
     command_handler.execute(:switch_to_parent_frame, path_variables)
   end
 
-  def move_to(element)
+  def move_to(element : Selenium::Element)
     rect = element.rect
     rect_x = rect.try(&.x)
     rect_width = rect.try(&.width)
@@ -132,10 +132,14 @@ class Selenium::Session
     move_to_x = (rect_x + (rect_width / 2)).to_i
     move_to_y = (rect_y + (rect_height / 2)).to_i
 
+    move_to(x: move_to_x, y: move_to_y)
+  end
+
+  def move_to(x : Int32, y : Int32)
     sequence = Selenium::InputSourceActionSequence.new(
       type: "pointer",
       id: "action-sequence-key",
-      actions: [Selenium::Action.new("pointerMove", x: move_to_x, y: move_to_y)]
+      actions: [Selenium::Action.new("pointerMove", x: x, y: y)]
     )
     perform_actions([sequence])
   end
