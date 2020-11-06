@@ -1,3 +1,5 @@
+# TODO: I don't remember why I made the properties floats nor why they are nilable.
+# If they were Int64, this could be combined with `Selenium::WindowRect`
 struct Selenium::ElementRect
   include JSON::Serializable
 
