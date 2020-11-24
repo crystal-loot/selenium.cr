@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="selenium">
-  <title>Selenium::DocumentManager - selenium 0.7.0</title>
+  <title>Selenium::InvalidTagError - selenium 0.7.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -141,7 +141,7 @@
       
     </li>
   
-  <li class=" current" data-id="selenium/Selenium/DocumentManager" data-name="selenium::documentmanager">
+  <li class=" " data-id="selenium/Selenium/DocumentManager" data-name="selenium::documentmanager">
       <a href="../Selenium/DocumentManager.html">DocumentManager</a>
       
     </li>
@@ -231,7 +231,7 @@
       
     </li>
   
-  <li class=" " data-id="selenium/Selenium/InvalidTagError" data-name="selenium::invalidtagerror">
+  <li class=" current" data-id="selenium/Selenium/InvalidTagError" data-name="selenium::invalidtagerror">
       <a href="../Selenium/InvalidTagError.html">InvalidTagError</a>
       
     </li>
@@ -350,12 +350,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Selenium::DocumentManager
+  <span class="kind">class</span> Selenium::InvalidTagError
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Selenium/DocumentManager.html">Selenium::DocumentManager</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Selenium/InvalidTagError.html">Selenium::InvalidTagError</a></li><li class="superclass"><a href="../Selenium/BaseError.html">Selenium::BaseError</a></li><li class="superclass">Exception</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -398,7 +398,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(command_handler,session_id)-class-method" class="signature"><strong>.new</strong>(command_handler, session_id)</a>
+        <a href="#new(expected:String,got:String)-class-method" class="signature"><strong>.new</strong>(expected : String, got : String)</a>
         
       </li>
     
@@ -407,54 +407,32 @@
 
 
 
-
-  <h2>
-    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Summary
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#command_handler:CommandHandler-instance-method" class="signature"><strong>#command_handler</strong> : CommandHandler</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#execute_async_script(script,args:Array(_)=[]ofString)-instance-method" class="signature"><strong>#execute_async_script</strong>(script, args : Array(_) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#execute_script(script,args:Array(_)=[]ofString)-instance-method" class="signature"><strong>#execute_script</strong>(script, args : Array(_) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#page_source-instance-method" class="signature"><strong>#page_source</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#path_variables-instance-method" class="signature"><strong>#path_variables</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#session_id:SessionId-instance-method" class="signature"><strong>#session_id</strong> : SessionId</a>
-        
-      </li>
-    
-  </ul>
 
 
 
 
 
 <div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
   
     
 
@@ -488,12 +466,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(command_handler,session_id)-class-method">
+    <div class="entry-detail" id="new(expected:String,got:String)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(command_handler, session_id)
+        def self.<strong>new</strong>(expected : String, got : String)
 
-        <a class="method-permalink" href="#new(command_handler,session_id)-class-method">#</a>
+        <a class="method-permalink" href="#new(expected:String,got:String)-class-method">#</a>
       </div>
       
       <br/>
@@ -506,100 +484,6 @@
 
 
 
-
-  <h2>
-    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="command_handler:CommandHandler-instance-method">
-      <div class="signature">
-        
-        def <strong>command_handler</strong> : <a href="../Selenium/CommandHandler.html">CommandHandler</a>
-
-        <a class="method-permalink" href="#command_handler:CommandHandler-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="execute_async_script(script,args:Array(_)=[]ofString)-instance-method">
-      <div class="signature">
-        
-        def <strong>execute_async_script</strong>(script, args : Array(_) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)
-
-        <a class="method-permalink" href="#execute_async_script(script,args:Array(_)=[]ofString)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="execute_script(script,args:Array(_)=[]ofString)-instance-method">
-      <div class="signature">
-        
-        def <strong>execute_script</strong>(script, args : Array(_) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)
-
-        <a class="method-permalink" href="#execute_script(script,args:Array(_)=[]ofString)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="page_source-instance-method">
-      <div class="signature">
-        
-        def <strong>page_source</strong>
-
-        <a class="method-permalink" href="#page_source-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="path_variables-instance-method">
-      <div class="signature">
-        
-        def <strong>path_variables</strong>
-
-        <a class="method-permalink" href="#path_variables-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="session_id:SessionId-instance-method">
-      <div class="signature">
-        
-        def <strong>session_id</strong> : <a href="../Selenium/SessionId.html">SessionId</a>
-
-        <a class="method-permalink" href="#session_id:SessionId-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
 
 
 
