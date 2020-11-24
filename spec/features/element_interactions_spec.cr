@@ -25,7 +25,7 @@ module Selenium::Command
         session.navigate_to("http://localhost:3002/home")
         element = session.find_element(:css, "#name")
         element.clear
-        element.property("value").should be_empty
+        element.property("value").should eq("")
       end
     end
 

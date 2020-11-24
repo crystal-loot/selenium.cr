@@ -14,21 +14,21 @@ class Selenium::Element
     command_handler.execute(:element_clear, path_variables)
   end
 
-  # meant to reference static fields
+  # `attribute` is for referencing static fields
   # if you are trying to access fields that change you should use `property`
   def attribute(name)
     data = command_handler.execute(:get_element_attribute, path_variables.merge({":name" => name}))
-    data["value"].as_s
+    data["value"].as_s?
   end
 
   def property(name)
     data = command_handler.execute(:get_element_property, path_variables.merge({":name" => name}))
-    data["value"].as_s
+    data["value"].as_s?
   end
 
   def css_value(property_name)
     data = command_handler.execute(:get_element_css_value, path_variables.merge({":property_name" => property_name}))
-    data["value"].as_s
+    data["value"].as_s?
   end
 
   def send_keys(keys : Array(String | Symbol))
