@@ -10,6 +10,7 @@ require "./selenium/remote/**"
 require "./selenium/firefox/**"
 require "./selenium/chrome/**"
 require "./selenium/safari/**"
+require "./selenium/helpers/**"
 
 module Selenium
   VERSION = "0.7.0"
