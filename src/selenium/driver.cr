@@ -4,7 +4,7 @@
 #
 # If you passed in a `Selenium::Service` you *MUST* call `Selenium::Driver#stop` when you are done to stop the service
 # or else the process it starts will continue running on your computer after the program ends
-class Selenium::Driver
+abstract class Selenium::Driver
   # *browser* options:
   # - :chrome (see `Selenium::Chrome::Driver`)
   # - :firefox or :gecko (see `Selenium::Firefox::Driver`)
@@ -35,6 +35,8 @@ class Selenium::Driver
     @http_client = HttpClient.new(base_url: base_url)
     @command_handler = CommandHandler.new(@http_client)
   end
+
+  abstract def create_session(args : Array(String)) : Session
 
   def create_session(capabilities, retry = true) : Session
     parameters = {capabilities: {alwaysMatch: capabilities}}
