@@ -6,15 +6,13 @@ require "./support/**"
 
 class Global
   @@driver : Selenium::Driver?
-  @@cap : Selenium::Capabilities?
+  @@args : Array(String)?
 
-  def self.set(driver, cap)
-    @@driver = driver
-    @@cap = cap
+  def self.set(@@driver, @@args)
   end
 
   def self.create_session
-    @@driver.not_nil!.create_session(@@cap)
+    @@driver.not_nil!.create_session(args: @@args.not_nil!)
   end
 
   def self.stop
@@ -22,8 +20,8 @@ class Global
   end
 end
 
-driver, capabilities = Selenium::TestDriverFactory.build(ENV["SELENIUM_BROWSER"]? || "chrome")
-Global.set(driver, capabilities)
+driver, args = Selenium::TestDriverFactory.build(ENV["SELENIUM_BROWSER"]? || "chrome")
+Global.set(driver, args)
 
 server = TestServer.new(3002)
 
