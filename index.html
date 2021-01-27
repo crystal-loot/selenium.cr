@@ -3,21 +3,16 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.34.0">
+<meta name="generator" content="Crystal Docs 0.35.1">
 <meta name="crystal_docs.project_version" content="0.9.0">
 <meta name="crystal_docs.project_name" content="selenium">
+
 
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/doc.js"></script>
 
-<svg class="hidden">
-  <symbol id="octicon-link" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
-  </symbol>
-</svg>
-
-  <meta id="repository-name" content="selenium">
+  <meta name="repository-name" content="selenium">
   <title>selenium 0.9.0</title>
   <script type="text/javascript">
   CrystalDocs.base_path = "";
@@ -25,6 +20,11 @@
 </head>
 <body>
 
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
 <div class="sidebar">
   <div class="sidebar-header">
     <div class="search-box">
@@ -44,7 +44,7 @@
     </div>
   </div>
 
-  <div class="search-results" class="hidden">
+  <div class="search-results hidden">
     <ul class="search-list"></ul>
   </div>
 
@@ -376,7 +376,7 @@
 
 <p>Selenium client for interacting with web pages for browser automation.</p>
 
-<p><a href="https://matthewmcgarvey.github.io/selenium.cr/" target="_blank">API Documentation</a></p>
+<p><a href="https://matthewmcgarvey.github.io/selenium.cr/">API Documentation</a></p>
 
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
@@ -389,8 +389,8 @@
 <p><code></code>`yaml
    dependencies:</p>
 
-<pre><code> selenium:
-   github: matthewmcgarvey<span class="s">/selenium.cr</span></code></pre>
+<pre><code class="language-crystal"> selenium:
+   github: matthewmcgarvey/selenium.cr</code></pre>
 
 <p><code></code>`</p>
 
@@ -427,7 +427,7 @@
 <pre><code class="language-crystal">driver <span class="o">=</span> <span class="t">Selenium</span><span class="t">::</span><span class="t">Driver</span>.<span class="k">for</span>(<span class="n">:chrome</span>, service: <span class="t">Service</span>.chrome(driver_path: <span class="s">&quot;~/.webdrivers/chromedriver&quot;</span>))</code></pre>
 
 <p>You must call <code>driver.stop</code> when you are finished or it will leave the service running.
-Consider using <a href="https://github.com/matthewmcgarvey/webdrivers.cr" target="_blank">webdrivers.cr</a> for automatically installing drivers and managing the driver path for you.</p>
+Consider using <a href="https://github.com/matthewmcgarvey/webdrivers.cr">webdrivers.cr</a> for automatically installing drivers and managing the driver path for you.</p>
 
 <h3><a id="creating-a-session" class="anchor" href="#creating-a-session">
   <svg class="octicon-link" aria-hidden="true">
@@ -451,11 +451,12 @@ driver.create_session(capabilities)</code></pre>
 
 <p>To run the tests with chrome headlessly:</p>
 
-<pre><code class="language-crystal"><span class="t">SELENIUM_BROWSER</span><span class="o">=</span>chrome crystal spec </code></pre>
+<pre><code class="language-crystal">SELENIUM_BROWSER=chrome crystal spec --tag "~chrome"</code></pre>
 
 <p>To run the tests with firefox headlessly:</p>
 
-<pre><code class="language-crystal"><span class="t">SELENIUM_BROWSER</span><span class="o">=</span>firefox crystal spec </code></pre>
+<pre><code class="language-crystal">SELENIUM_BROWSER=firefox crystal spec --tag "~firefox"
+</code></pre>
 
 <p>The tag skips any specs that are know to break with those browsers.
 Running just <code>crystal spec</code> will use chrome.</p>
@@ -474,7 +475,7 @@ Running just <code>crystal spec</code> will use chrome.</p>
   </svg>
 </a>Contributors</h2>
 
-<ul><li><a href="https://github.com/matthewmcgarvey" target="_blank">Matthew McGarvey</a> - creator and maintainer</li></ul>
+<ul><li><a href="https://github.com/matthewmcgarvey">Matthew McGarvey</a> - creator and maintainer</li></ul>
 </div>
 </body>
 </html>
