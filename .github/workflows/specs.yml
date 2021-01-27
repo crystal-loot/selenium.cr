@@ -9,24 +9,36 @@ on:
 jobs:
   check-format:
     runs-on: ubuntu-latest
-    container:
-      image: crystallang/crystal:0.35.1
     steps:
       - uses: actions/checkout@v1
+      - name: Install Crystal
+        uses: oprypin/install-crystal@v1
+        with:
+          crystal: latest
       - name: Install shards
-        run: shards install --ignore-crystal-version
+        run: shards install
       - name: Format
         run: crystal tool format --check
       - name: Lint
         run: ./bin/ameba
   verify-chrome:
-    runs-on: ubuntu-latest
-    container:
-      image: crystallang/crystal:0.35.1
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            crystal: latest
+          - os: ubuntu-latest
+            crystal: nightly
+          - os: macos-latest
+            crystal: latest
+    runs-on: ${{matrix.os}}
     steps:
     - uses: actions/checkout@v2
-    - name: Install Chrome browser
-      run: apt update && apt install -y chromium-browser
+    - name: Install Crystal
+      uses: oprypin/install-crystal@v1
+      with:
+        crystal: ${{matrix.crystal}}
     - name: Install dependencies
       run: shards install --ignore-crystal-version
     - name: Run tests
