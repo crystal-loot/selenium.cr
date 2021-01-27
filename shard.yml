@@ -7,7 +7,7 @@ license: MIT
 development_dependencies:
   webdrivers:
     github: matthewmcgarvey/webdrivers.cr
-    version: ~> 0.3.0
+    version: ~> 0.3.2
   ameba:
     github: crystal-ameba/ameba
     version: ~> 0.13.2
