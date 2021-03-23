@@ -1,6 +1,6 @@
 class Selenium::SendKeyConverter
   def self.encode(keys : Array(String | Symbol)) : String
-    keys.map { |key| encode(key) }.join
+    keys.join { |key| encode(key) }
   end
 
   private def self.encode(key : String)

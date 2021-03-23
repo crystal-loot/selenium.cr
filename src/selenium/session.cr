@@ -56,7 +56,7 @@ class Selenium::Session
 
     element_ids = data["value"]
       .as_a
-      .map { |entry| entry.as_h.first_value.as_s }
+      .map(&.as_h.first_value.as_s)
     element_ids.map { |element_id| Element.new(command_handler, id, element_id) }
   end
 

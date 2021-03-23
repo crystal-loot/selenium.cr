@@ -62,7 +62,7 @@ class Selenium::Element
     data = command_handler.execute(:find_elements_from_element, path_variables, parameters)
     data["value"]
       .as_a
-      .map { |entry| entry.as_h.first_value.as_s }
+      .map(&.as_h.first_value.as_s)
       .map { |element_id| Element.new(command_handler, session_id, element_id) }
   end
 
