@@ -51,6 +51,7 @@ class Selenium::Element
   end
 
   def find_child_element(using : Symbol, value)
+    using, value = LocationStrategy.transform_extra_strategies(using, value)
     find_child_element(LocationStrategy.from_symbol(using), value)
   end
 
@@ -67,6 +68,7 @@ class Selenium::Element
   end
 
   def find_child_elements(using : Symbol, value)
+    using, value = LocationStrategy.transform_extra_strategies(using, value)
     find_child_elements(LocationStrategy.from_symbol(using), value)
   end
 

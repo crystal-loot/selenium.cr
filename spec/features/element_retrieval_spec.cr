@@ -24,6 +24,28 @@ module Selenium::Command
       end
     end
 
+    it "can retrieve a single element by extra strategies" do
+      TestServer.route "/home", <<-HTML
+      <ul>
+        <li name="item-0">
+          <p id="word0">First Item</p>
+        </li>
+        <li name="item-1">
+          <p id="word1" style="text-align:center;">Second Item</p>
+        </li>
+      </ul>
+      HTML
+
+      with_session do |session|
+        session.navigate_to("http://localhost:3002/home")
+        element = session.find_element(:name, "item-1")
+        child_element = element.find_child_element(:id, "word1")
+        child_element.text.should eq("Second Item")
+        child_element.tag_name.should eq("p")
+        child_element.css_value("text-align").should eq("center")
+      end
+    end
+
     it "can retrieve multiple elements" do
       TestServer.route "/home", <<-HTML
       <ul>
@@ -44,6 +66,33 @@ module Selenium::Command
 
         element = session.find_element(:css, "[data-testid=\"item-0\"]")
         child_elements = element.find_child_elements(:css, "p")
+        child_elements.size.should eq(2)
+        child_element_texts = child_elements.map &.text
+        child_element_texts.should contain("First Item")
+        child_element_texts.should contain("Sub Text")
+      end
+    end
+
+    it "can retrieve multiple elements by extra strategies" do
+      TestServer.route "/home", <<-HTML
+      <ul>
+        <li class="item-0">
+          <p name="child" id="words">First Item</p>
+          <p name="child">Sub Text</p>
+        </li>
+        <li class="item-1">
+          <p name="child" id="words">Second Item</p>
+        </li>
+      </ul>
+      HTML
+
+      with_session do |session|
+        session.navigate_to("http://localhost:3002/home")
+        elements = session.find_elements(:id, "words")
+        elements.size.should eq(2)
+
+        element = session.find_element(:class, "item-0")
+        child_elements = element.find_child_elements(:name, "child")
         child_elements.size.should eq(2)
         child_element_texts = child_elements.map &.text
         child_element_texts.should contain("First Item")

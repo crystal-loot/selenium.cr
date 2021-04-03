@@ -5,6 +5,21 @@ enum Selenium::LocationStrategy
   TAG_NAME
   XPATH
 
+  def self.transform_extra_strategies(symbol : Symbol, value : String) : {Symbol, String}
+    case symbol
+    when :class
+      symbol = :css
+      value = ".#{value}"
+    when :id
+      symbol = :css
+      value = "##{value}"
+    when :name
+      symbol = :xpath
+      value = ".//*[@name='#{value}']"
+    end
+    {symbol, value}
+  end
+
   def self.from_symbol(symbol)
     case symbol
     when :css
@@ -18,7 +33,7 @@ enum Selenium::LocationStrategy
     when :xpath
       XPATH
     else
-      raise ArgumentError.new
+      raise ArgumentError.new("Unsupported location strategy: #{symbol}")
     end
   end
 
