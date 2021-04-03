@@ -45,6 +45,7 @@ class Selenium::Session
   end
 
   def find_element(using : Symbol, value)
+    using, value = LocationStrategy.transform_extra_strategies(using, value)
     find_element(LocationStrategy.from_symbol(using), value)
   end
 
@@ -61,6 +62,7 @@ class Selenium::Session
   end
 
   def find_elements(using : Symbol, value)
+    using, value = LocationStrategy.transform_extra_strategies(using, value)
     find_elements(LocationStrategy.from_symbol(using), value)
   end
 
