@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.36.1">
+<meta name="generator" content="Crystal Docs 1.6.2">
 <meta name="crystal_docs.project_version" content="0.10.0">
 <meta name="crystal_docs.project_name" content="selenium">
 
@@ -423,7 +423,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(command_handler,session_id)-class-method" class="signature"><strong>.new</strong>(command_handler, session_id)</a>
+        <a href="#new%28command_handler%3ASelenium%3A%3ACommandHandler%2Csession_id%3AString%29-class-method" class="signature"><strong>.new</strong>(command_handler : Selenium::CommandHandler, session_id : String)</a>
         
       </li>
     
@@ -449,7 +449,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#command_handler:CommandHandler-instance-method" class="signature"><strong>#command_handler</strong> : CommandHandler</a>
+        <a href="#command_handler%3ACommandHandler-instance-method" class="signature"><strong>#command_handler</strong> : CommandHandler</a>
         
       </li>
     
@@ -469,32 +469,32 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#new_window(type:Symbol=:tab)-instance-method" class="signature"><strong>#new_window</strong>(type : Symbol = <span class="n">:tab</span>)</a>
+        <a href="#new_window%28type%3ASymbol%3D%3Atab%29-instance-method" class="signature"><strong>#new_window</strong>(type : Symbol = <span class="n">:tab</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#resize_window(width:Int64?=nil,height:Int64?=nil)-instance-method" class="signature"><strong>#resize_window</strong>(width : Int64? = <span class="n">nil</span>, height : Int64? = <span class="n">nil</span>)</a>
+        <a href="#resize_window%28width%3AInt64%7CNil%3Dnil%2Cheight%3AInt64%7CNil%3Dnil%29-instance-method" class="signature"><strong>#resize_window</strong>(width : Int64 | Nil = <span class="n">nil</span>, height : Int64 | Nil = <span class="n">nil</span>)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#session_id:SessionId-instance-method" class="signature"><strong>#session_id</strong> : SessionId</a>
+        <a href="#session_id%3ASessionId-instance-method" class="signature"><strong>#session_id</strong> : SessionId</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#set_window_rect(width:Int64?=nil,height:Int64?=nil,x:Int64?=nil,y:Int64?=nil):WindowRect-instance-method" class="signature"><strong>#set_window_rect</strong>(width : Int64? = <span class="n">nil</span>, height : Int64? = <span class="n">nil</span>, x : Int64? = <span class="n">nil</span>, y : Int64? = <span class="n">nil</span>) : WindowRect</a>
+        <a href="#set_window_rect%28width%3AInt64%7CNil%3Dnil%2Cheight%3AInt64%7CNil%3Dnil%2Cx%3AInt64%7CNil%3Dnil%2Cy%3AInt64%7CNil%3Dnil%29%3AWindowRect-instance-method" class="signature"><strong>#set_window_rect</strong>(width : Int64 | Nil = <span class="n">nil</span>, height : Int64 | Nil = <span class="n">nil</span>, x : Int64 | Nil = <span class="n">nil</span>, y : Int64 | Nil = <span class="n">nil</span>) : WindowRect</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#set_window_rect(window_rect)-instance-method" class="signature"><strong>#set_window_rect</strong>(window_rect)</a>
+        <a href="#set_window_rect%28window_rect%29-instance-method" class="signature"><strong>#set_window_rect</strong>(window_rect)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#switch_to_window(window_handle)-instance-method" class="signature"><strong>#switch_to_window</strong>(window_handle)</a>
+        <a href="#switch_to_window%28window_handle%29-instance-method" class="signature"><strong>#switch_to_window</strong>(window_handle)</a>
         
       </li>
     
@@ -553,12 +553,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(command_handler,session_id)-class-method">
+    <div class="entry-detail" id="new(command_handler:Selenium::CommandHandler,session_id:String)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(command_handler, session_id)
+        def self.<strong>new</strong>(command_handler : <a href="../Selenium/CommandHandler.html">Selenium::CommandHandler</a>, session_id : String)
 
-        <a class="method-permalink" href="#new(command_handler,session_id)-class-method">#</a>
+        <a class="method-permalink" href="#new%28command_handler%3ASelenium%3A%3ACommandHandler%2Csession_id%3AString%29-class-method">#</a>
       </div>
       
       <br/>
@@ -600,7 +600,7 @@
         
         def <strong>command_handler</strong> : <a href="../Selenium/CommandHandler.html">CommandHandler</a>
 
-        <a class="method-permalink" href="#command_handler:CommandHandler-instance-method">#</a>
+        <a class="method-permalink" href="#command_handler%3ACommandHandler-instance-method">#</a>
       </div>
       
       <br/>
@@ -656,7 +656,7 @@
         
         def <strong>new_window</strong>(type : Symbol = <span class="n">:tab</span>)
 
-        <a class="method-permalink" href="#new_window(type:Symbol=:tab)-instance-method">#</a>
+        <a class="method-permalink" href="#new_window%28type%3ASymbol%3D%3Atab%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -665,12 +665,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="resize_window(width:Int64?=nil,height:Int64?=nil)-instance-method">
+    <div class="entry-detail" id="resize_window(width:Int64|Nil=nil,height:Int64|Nil=nil)-instance-method">
       <div class="signature">
         
-        def <strong>resize_window</strong>(width : Int64? = <span class="n">nil</span>, height : Int64? = <span class="n">nil</span>)
+        def <strong>resize_window</strong>(width : Int64 | Nil = <span class="n">nil</span>, height : Int64 | Nil = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#resize_window(width:Int64?=nil,height:Int64?=nil)-instance-method">#</a>
+        <a class="method-permalink" href="#resize_window%28width%3AInt64%7CNil%3Dnil%2Cheight%3AInt64%7CNil%3Dnil%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -684,7 +684,7 @@
         
         def <strong>session_id</strong> : <a href="../Selenium/SessionId.html">SessionId</a>
 
-        <a class="method-permalink" href="#session_id:SessionId-instance-method">#</a>
+        <a class="method-permalink" href="#session_id%3ASessionId-instance-method">#</a>
       </div>
       
       <br/>
@@ -693,12 +693,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="set_window_rect(width:Int64?=nil,height:Int64?=nil,x:Int64?=nil,y:Int64?=nil):WindowRect-instance-method">
+    <div class="entry-detail" id="set_window_rect(width:Int64|Nil=nil,height:Int64|Nil=nil,x:Int64|Nil=nil,y:Int64|Nil=nil):WindowRect-instance-method">
       <div class="signature">
         
-        def <strong>set_window_rect</strong>(width : Int64? = <span class="n">nil</span>, height : Int64? = <span class="n">nil</span>, x : Int64? = <span class="n">nil</span>, y : Int64? = <span class="n">nil</span>) : <a href="../Selenium/WindowRect.html">WindowRect</a>
+        def <strong>set_window_rect</strong>(width : Int64 | Nil = <span class="n">nil</span>, height : Int64 | Nil = <span class="n">nil</span>, x : Int64 | Nil = <span class="n">nil</span>, y : Int64 | Nil = <span class="n">nil</span>) : <a href="../Selenium/WindowRect.html">WindowRect</a>
 
-        <a class="method-permalink" href="#set_window_rect(width:Int64?=nil,height:Int64?=nil,x:Int64?=nil,y:Int64?=nil):WindowRect-instance-method">#</a>
+        <a class="method-permalink" href="#set_window_rect%28width%3AInt64%7CNil%3Dnil%2Cheight%3AInt64%7CNil%3Dnil%2Cx%3AInt64%7CNil%3Dnil%2Cy%3AInt64%7CNil%3Dnil%29%3AWindowRect-instance-method">#</a>
       </div>
       
       <br/>
@@ -712,7 +712,7 @@
         
         def <strong>set_window_rect</strong>(window_rect)
 
-        <a class="method-permalink" href="#set_window_rect(window_rect)-instance-method">#</a>
+        <a class="method-permalink" href="#set_window_rect%28window_rect%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -726,7 +726,7 @@
         
         def <strong>switch_to_window</strong>(window_handle)
 
-        <a class="method-permalink" href="#switch_to_window(window_handle)-instance-method">#</a>
+        <a class="method-permalink" href="#switch_to_window%28window_handle%29-instance-method">#</a>
       </div>
       
       <br/>

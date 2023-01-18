@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.36.1">
+<meta name="generator" content="Crystal Docs 1.6.2">
 <meta name="crystal_docs.project_version" content="0.10.0">
 <meta name="crystal_docs.project_name" content="selenium">
 
@@ -368,114 +368,99 @@
 
 
 <div class="main-content">
-<h1><a id="selenium.cr" class="anchor" href="#selenium.cr">
-  <svg class="octicon-link" aria-hidden="true">
+<h1><a id="selenium.cr" class="anchor" href="#selenium.cr">  <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>selenium.cr</h1>
-
 <p>Selenium client for interacting with web pages for browser automation.</p>
-
 <p><a href="https://matthewmcgarvey.github.io/selenium.cr/">API Documentation</a></p>
-
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Installation</h2>
-
-<ol><li>Add the dependency to your <code>shard.yml</code>:</li></ol>
-
-<p><code></code>`yaml
-   dependencies:</p>
-
-<pre><code class="language-crystal"> selenium:
-   github: matthewmcgarvey/selenium.cr</code></pre>
-
-<p><code></code>`</p>
-
-<ol><li>Run <code>shards install</code></li></ol>
-
+<ol>
+<li>
+<p>Add the dependency to your <code>shard.yml</code>:</p>
+<pre><code class="language-yaml">dependencies:
+  selenium:
+    github: matthewmcgarvey/selenium.cr</code></pre>
+</li>
+<li>
+<p>Run <code>shards install</code></p>
+</li>
+</ol>
 <h2><a id="usage" class="anchor" href="#usage">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Usage</h2>
-
 <pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;selenium&quot;</span></code></pre>
-
 <h3><a id="creating-a-driver" class="anchor" href="#creating-a-driver">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Creating a Driver</h3>
-
 <pre><code class="language-crystal">driver <span class="o">=</span> <span class="t">Selenium</span><span class="t">::</span><span class="t">Driver</span>.<span class="k">for</span>(<span class="n">:chrome</span>, base_url: <span class="s">&quot;http://localhost:9515&quot;</span>)</code></pre>
-
+<p>Creating a driver this way assumes that you have the driver running already.</p>
 <p>Available drivers:</p>
-
-<ul><li>:chrome (using chromedriver)</li><li>:firefox (using geckodriver)</li><li>:remote (general purpose)</li></ul>
-
+<ul>
+<li>:chrome (using chromedriver)</li>
+<li>:firefox (using geckodriver)</li>
+<li>:remote (general purpose)</li>
+</ul>
 <h3><a id="running-with-a-service" class="anchor" href="#running-with-a-service">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Running with a service</h3>
-
 <p>Rather than running chromedriver yourself, you can give the driver a service which will run the process for you.</p>
-
-<pre><code class="language-crystal">driver <span class="o">=</span> <span class="t">Selenium</span><span class="t">::</span><span class="t">Driver</span>.<span class="k">for</span>(<span class="n">:chrome</span>, service: <span class="t">Service</span>.chrome(driver_path: <span class="s">&quot;~/.webdrivers/chromedriver&quot;</span>))</code></pre>
-
+<pre><code class="language-crystal">service <span class="o">=</span> <span class="t">Selenium</span><span class="t">::</span><span class="t">Service</span>.chrome(driver_path: <span class="t">File</span>.expand_path(<span class="s">&quot;~/.webdrivers/chromedriver&quot;</span>, home: <span class="n">true</span>))
+driver <span class="o">=</span> <span class="t">Selenium</span><span class="t">::</span><span class="t">Driver</span>.<span class="k">for</span>(<span class="n">:chrome</span>, service: service)</code></pre>
 <p>You must call <code>driver.stop</code> when you are finished or it will leave the service running.
 Consider using <a href="https://github.com/matthewmcgarvey/webdrivers.cr">webdrivers.cr</a> for automatically installing drivers and managing the driver path for you.</p>
-
 <h3><a id="creating-a-session" class="anchor" href="#creating-a-session">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Creating a Session</h3>
-
-<pre><code class="language-crystal">capabilities <span class="o">=</span> <span class="t">Selenium</span><span class="t">::</span><span class="t">Chrome</span><span class="t">::</span><span class="t">Capabilities</span>.<span class="k">new</span>
+<pre><code class="language-crystal">capabilities <span class="o">=</span> <span class="t">Selenium</span><span class="t">::</span><span class="t">Chrome</span><span class="t">::</span><span class="t">Capabilities</span>.new
 capabilities.args([<span class="s">&quot;no-sandbox&quot;</span>, <span class="s">&quot;headless&quot;</span>, <span class="s">&quot;disable-gpu&quot;</span>])
 driver.create_session(capabilities)</code></pre>
-
 <p>Use the appropriate <code>Capabilities</code> class for whichever browser you choose.</p>
-
 <h2><a id="development" class="anchor" href="#development">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Development</h2>
-
 <p>Run <code>crystal spec</code> to run the tests. It will run the tests in headless mode.</p>
-
 <p>To run the tests with chrome headlessly:</p>
-
-<pre><code class="language-crystal">SELENIUM_BROWSER=chrome crystal spec --tag "~chrome"</code></pre>
-
+<pre><code class="language-crystal">SELENIUM_BROWSER=chrome crystal spec --tag &quot;~chrome&quot;</code></pre>
 <p>To run the tests with firefox headlessly:</p>
-
-<pre><code class="language-crystal">SELENIUM_BROWSER=firefox crystal spec --tag "~firefox"
+<pre><code class="language-crystal">SELENIUM_BROWSER=firefox crystal spec --tag &quot;~firefox&quot;
 </code></pre>
-
 <p>The tag skips any specs that are know to break with those browsers.
 Running just <code>crystal spec</code> will use chrome.</p>
-
 <h2><a id="contributing" class="anchor" href="#contributing">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Contributing</h2>
-
-<ol><li>Fork it (&lt;https://github.com/matthewmcgarvey/selenium.cr/fork>)</li><li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li><li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li><li>Push to the branch (<code>git push origin my-new-feature</code>)</li><li>Create a new Pull Request</li></ol>
-
+<ol>
+<li>Fork it (<a href="https://github.com/matthewmcgarvey/selenium.cr/fork">https://github.com/matthewmcgarvey/selenium.cr/fork</a>)</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+</ol>
 <h2><a id="contributors" class="anchor" href="#contributors">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Contributors</h2>
-
-<ul><li><a href="https://github.com/matthewmcgarvey">Matthew McGarvey</a> - creator and maintainer</li></ul>
+<ul>
+<li><a href="https://github.com/matthewmcgarvey">Matthew McGarvey</a> - creator and maintainer</li>
+</ul>
 </div>
 </body>
 </html>
