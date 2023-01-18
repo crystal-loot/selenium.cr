@@ -28,6 +28,8 @@ require "selenium"
 driver = Selenium::Driver.for(:chrome, base_url: "http://localhost:9515")
 ```
 
+Creating a driver this way assumes that you have the driver running already.
+
 Available drivers:
 
 - :chrome (using chromedriver)
@@ -39,7 +41,8 @@ Available drivers:
 Rather than running chromedriver yourself, you can give the driver a service which will run the process for you.
 
 ```crystal
-driver = Selenium::Driver.for(:chrome, service: Service.chrome(driver_path: "~/.webdrivers/chromedriver"))
+service = Selenium::Service.chrome(driver_path: File.expand_path("~/.webdrivers/chromedriver", home: true))
+driver = Selenium::Driver.for(:chrome, service: service)
 ```
 
 You must call `driver.stop` when you are finished or it will leave the service running.
