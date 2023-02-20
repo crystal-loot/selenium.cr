@@ -3,11 +3,38 @@ class Selenium::Element
   getter session_id : SessionId
   getter id : ElementId
 
+  ELEMENT_KEY = "element-6066-11e4-a52e-4f735466cecf"
+
   def initialize(@command_handler, @session_id, @id)
   end
 
   def click
     command_handler.execute(:element_click, path_variables)
+  end
+
+  def submit
+    script = <<-JS
+      /* submitForm */ var form = arguments[0];
+      while (form.nodeName != "FORM" && form.parentNode) {
+        form = form.parentNode;
+      }
+      if (!form) { throw Error('Unable to find containing form element'); }
+      if (!form.ownerDocument) { throw Error('Unable to find owning document'); }
+      var e = form.ownerDocument.createEvent('Event');
+      e.initEvent('submit', true, true);
+      if (form.dispatchEvent(e)) { HTMLFormElement.prototype.submit.call(form) }
+      JS
+
+    args = [{ELEMENT_KEY => id}]
+
+    parameters = {
+      script: script,
+      args:   args,
+    }
+
+    command_handler.execute(:execute_script, path_variables, parameters)
+  rescue Selenium::Error
+    raise UnsupportedOperationError.new("To submit an element, it must be nested inside a form element")
   end
 
   def clear

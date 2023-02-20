@@ -16,6 +16,39 @@ module Selenium::Command
       end
     end
 
+    it "can submit inside a form element" do
+      TestServer.route "/form", <<-HTML
+        <form action="/post">
+          <input type="text" id="search" name="q">
+        </form>
+      HTML
+      TestServer.route "/post", "<h1>You made it!</h1>"
+
+      with_session do |session|
+        session.navigate_to("http://localhost:3002/form")
+        element = session.find_element(:name, "q")
+        element.send_keys("foobar")
+        element.submit
+        session.current_url.should eq("http://localhost:3002/post?q=foobar")
+      end
+    end
+
+    it "raise an error on submit the element which is not inside a form" do
+      TestServer.route "/form", <<-HTML
+        <input type="text" id="search" name="q">
+      HTML
+      TestServer.route "/post", "<h1>You made it!</h1>"
+
+      with_session do |session|
+        session.navigate_to("http://localhost:3002/form")
+        element = session.find_element(:name, "q")
+        element.send_keys("foobar")
+        expect_raises Selenium::UnsupportedOperationError, "To submit an element, it must be nested inside a form element" do
+          element.submit
+        end
+      end
+    end
+
     it "can clear" do
       TestServer.route "/home", <<-HTML
         <input type="text" id="name" value="John">
