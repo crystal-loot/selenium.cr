@@ -52,7 +52,7 @@ abstract class Selenium::Service
     raise "Unable to connect to driver process. Try running in DEBUG mode to find more information." unless result
   end
 
-  private def with_timeout
+  private def with_timeout(&)
     max_time = Time.utc + CONNECTION_TIMEOUT
 
     until Time.utc > max_time
