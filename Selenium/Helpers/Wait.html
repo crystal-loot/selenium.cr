@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="selenium">
-  <title>Selenium::Safari::Capabilities - selenium 0.10.0</title>
+  <title>Selenium::Helpers::Wait - selenium 0.10.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -226,7 +226,7 @@
       
     </li>
   
-  <li class="parent " data-id="selenium/Selenium/Helpers" data-name="selenium::helpers">
+  <li class="parent open current" data-id="selenium/Selenium/Helpers" data-name="selenium::helpers">
       <a href="../../Selenium/Helpers.html">Helpers</a>
       
         <ul>
@@ -236,7 +236,7 @@
       
     </li>
   
-  <li class=" " data-id="selenium/Selenium/Helpers/Wait" data-name="selenium::helpers::wait">
+  <li class=" current" data-id="selenium/Selenium/Helpers/Wait" data-name="selenium::helpers::wait">
       <a href="../../Selenium/Helpers/Wait.html">Wait</a>
       
     </li>
@@ -286,12 +286,12 @@
       
     </li>
   
-  <li class="parent open current" data-id="selenium/Selenium/Safari" data-name="selenium::safari">
+  <li class="parent " data-id="selenium/Selenium/Safari" data-name="selenium::safari">
       <a href="../../Selenium/Safari.html">Safari</a>
       
         <ul>
   
-  <li class=" current" data-id="selenium/Selenium/Safari/Capabilities" data-name="selenium::safari::capabilities">
+  <li class=" " data-id="selenium/Selenium/Safari/Capabilities" data-name="selenium::safari::capabilities">
       <a href="../../Selenium/Safari/Capabilities.html">Capabilities</a>
       
     </li>
@@ -375,12 +375,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Selenium::Safari::Capabilities
+  <span class="kind">class</span> Selenium::Helpers::Wait
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Selenium/Safari/Capabilities.html">Selenium::Safari::Capabilities</a></li><li class="superclass"><a href="../../Selenium/Capabilities.html">Selenium::Capabilities</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Selenium/Helpers/Wait.html">Selenium::Helpers::Wait</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -408,7 +408,7 @@
   </h2>
   
     
-      selenium/safari/capabilities.cr
+      selenium/helpers/wait.cr
     
     <br/>
   
@@ -428,7 +428,9 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        <a href="#new%28timeout%3ATime%3A%3ASpan%3D5.seconds%2Cinterval%3ATime%3A%3ASpan%3D0.2.seconds%2Cignored%3AArray%28Exception%29%7CArray%28%3A%3ASelenium%3A%3AError.class%29%3D%5BSelenium%3A%3AError%5D%2Cmessage%3AString%7CNil%3Dnil%29-class-method" class="signature"><strong>.new</strong>(timeout : Time::Span = <span class="n">5</span>.seconds, interval : Time::Span = <span class="n">0.2</span>.seconds, ignored : Array(Exception) | Array(<span class="t">::</span><span class="t">Selenium</span><span class="t">::</span><span class="t">Error</span>.<span class="k">class</span>) = [<span class="t">Selenium</span><span class="t">::</span><span class="t">Error</span>], message : String | Nil = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Create a new <code><a href="../../Selenium/Helpers/Wait.html">Wait</a></code> instance.</p></div>
         
       </li>
     
@@ -438,144 +440,30 @@
 
 
 
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#until%28%26%29%3ANil-instance-method" class="signature"><strong>#until</strong>(&) : Nil</a>
+        
+          <div class="summary"><p>Wait until the given block returns a <code>true</code> value.</p></div>
+        
+      </li>
+    
+  </ul>
+
 
 
 
 
 <div class="methods-inherited">
-  
-    
-
-  <h3>Instance methods inherited from class <code><a href="../../Selenium/Capabilities.html">Selenium::Capabilities</a></code></h3>
-  
-  
-    <a href="../../Selenium/Capabilities.html#accept_insecure_certs%3ABool%7CNil-instance-method" class="tooltip">
-      <span>accept_insecure_certs : Bool | Nil</span>
-    accept_insecure_certs</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#accept_insecure_certs%3D%28accept_insecure_certs%3ABool%7CNil%29-instance-method" class="tooltip">
-      <span>accept_insecure_certs=(accept_insecure_certs : Bool | Nil)</span>
-    accept_insecure_certs=</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#browser_name%3AString%7CNil-instance-method" class="tooltip">
-      <span>browser_name : String | Nil</span>
-    browser_name</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#browser_name%3D%28browser_name%3AString%7CNil%29-instance-method" class="tooltip">
-      <span>browser_name=(browser_name : String | Nil)</span>
-    browser_name=</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#browser_version%3AString%7CNil-instance-method" class="tooltip">
-      <span>browser_version : String | Nil</span>
-    browser_version</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#browser_version%3D%28browser_version%3AString%7CNil%29-instance-method" class="tooltip">
-      <span>browser_version=(browser_version : String | Nil)</span>
-    browser_version=</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#page_load_strategy%3AString%7CNil-instance-method" class="tooltip">
-      <span>page_load_strategy : String | Nil</span>
-    page_load_strategy</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#page_load_strategy%3D%28page_load_strategy%3AString%7CNil%29-instance-method" class="tooltip">
-      <span>page_load_strategy=(page_load_strategy : String | Nil)</span>
-    page_load_strategy=</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#platform_name%3AString%7CNil-instance-method" class="tooltip">
-      <span>platform_name : String | Nil</span>
-    platform_name</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#platform_name%3D%28platform_name%3AString%7CNil%29-instance-method" class="tooltip">
-      <span>platform_name=(platform_name : String | Nil)</span>
-    platform_name=</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#proxy%3AProxyConfiguration%7CNil-instance-method" class="tooltip">
-      <span>proxy : ProxyConfiguration | Nil</span>
-    proxy</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#proxy%3D%28proxy%3AProxyConfiguration%7CNil%29-instance-method" class="tooltip">
-      <span>proxy=(proxy : ProxyConfiguration | Nil)</span>
-    proxy=</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#set_window_rect%3ABool%7CNil-instance-method" class="tooltip">
-      <span>set_window_rect : Bool | Nil</span>
-    set_window_rect</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#set_window_rect%3D%28set_window_rect%3ABool%7CNil%29-instance-method" class="tooltip">
-      <span>set_window_rect=(set_window_rect : Bool | Nil)</span>
-    set_window_rect=</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#strict_file_interactability%3ABool%7CNil-instance-method" class="tooltip">
-      <span>strict_file_interactability : Bool | Nil</span>
-    strict_file_interactability</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#strict_file_interactability%3D%28strict_file_interactability%3ABool%7CNil%29-instance-method" class="tooltip">
-      <span>strict_file_interactability=(strict_file_interactability : Bool | Nil)</span>
-    strict_file_interactability=</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#timeouts%3ATimeoutConfiguration%7CNil-instance-method" class="tooltip">
-      <span>timeouts : TimeoutConfiguration | Nil</span>
-    timeouts</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#timeouts%3D%28timeouts%3ATimeoutConfiguration%7CNil%29-instance-method" class="tooltip">
-      <span>timeouts=(timeouts : TimeoutConfiguration | Nil)</span>
-    timeouts=</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#unhandled_prompt_behavior%3AString%7CNil-instance-method" class="tooltip">
-      <span>unhandled_prompt_behavior : String | Nil</span>
-    unhandled_prompt_behavior</a>, 
-    
-  
-    <a href="../../Selenium/Capabilities.html#unhandled_prompt_behavior%3D%28unhandled_prompt_behavior%3AString%7CNil%29-instance-method" class="tooltip">
-      <span>unhandled_prompt_behavior=(unhandled_prompt_behavior : String | Nil)</span>
-    unhandled_prompt_behavior=</a>
-    
-  
-
-
-    
-
-  <h3>Constructor methods inherited from class <code><a href="../../Selenium/Capabilities.html">Selenium::Capabilities</a></code></h3>
-  
-  
-    <a href="../../Selenium/Capabilities.html#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="tooltip">
-      <span>new(pull : JSON::PullParser)<br/>new</span>
-    new</a>
-    
-  
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
   
     
 
@@ -609,13 +497,22 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
+    <div class="entry-detail" id="new(timeout:Time::Span=5.seconds,interval:Time::Span=0.2.seconds,ignored:Array(Exception)|Array(::Selenium::Error.class)=[Selenium::Error],message:String|Nil=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(pull : JSON::PullParser)
+        def self.<strong>new</strong>(timeout : Time::Span = <span class="n">5</span>.seconds, interval : Time::Span = <span class="n">0.2</span>.seconds, ignored : Array(Exception) | Array(<span class="t">::</span><span class="t">Selenium</span><span class="t">::</span><span class="t">Error</span>.<span class="k">class</span>) = [<span class="t">Selenium</span><span class="t">::</span><span class="t">Error</span>], message : String | Nil = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new%28pull%3AJSON%3A%3APullParser%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28timeout%3ATime%3A%3ASpan%3D5.seconds%2Cinterval%3ATime%3A%3ASpan%3D0.2.seconds%2Cignored%3AArray%28Exception%29%7CArray%28%3A%3ASelenium%3A%3AError.class%29%3D%5BSelenium%3A%3AError%5D%2Cmessage%3AString%7CNil%3Dnil%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Create a new <code><a href="../../Selenium/Helpers/Wait.html">Wait</a></code> instance.</p>
+<p><code>timeout</code> - seconds to wait before timing out
+<code>interval</code> - seconds to sleep between polls
+<code>message</code> - exception mesage if timed out
+<code>ignored</code> - exceptions to ignore while polling</p>
+        </div>
       
       <br/>
       <div>
@@ -627,6 +524,38 @@
 
 
 
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="until(&amp;):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>until</strong>(&) : Nil
+
+        <a class="method-permalink" href="#until%28%26%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Wait until the given block returns a <code>true</code> value.
+Otherwise raise an exception <code>IO::TimeoutError</code>.</p>
+<pre><code class="language-crystal">wait <span class="o">=</span> <span class="t">Selenium</span><span class="t">::</span><span class="t">Helpers</span><span class="t">::</span><span class="t">Wait</span>.new(timeout: <span class="n">10</span>.seconds, interval: <span class="n">1</span>.second)
+wait.<span class="k">until</span> { session.document_manager.execute_script(<span class="s">&quot;return document.readyState;&quot;</span>) <span class="o">==</span> <span class="s">&quot;complete&quot;</span> }</code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
