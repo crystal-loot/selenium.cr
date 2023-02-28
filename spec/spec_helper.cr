@@ -38,7 +38,7 @@ spawn do
   server.listen
 end
 
-def with_session
+def with_session(&)
   session = Global.create_session
   yield(session)
 ensure
