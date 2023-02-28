@@ -430,7 +430,7 @@ Consider using <a href="https://github.com/matthewmcgarvey/webdrivers.cr">webdri
   </svg>
 </a>Creating a Session</h3>
 <pre><code class="language-crystal">capabilities <span class="o">=</span> <span class="t">Selenium</span><span class="t">::</span><span class="t">Chrome</span><span class="t">::</span><span class="t">Capabilities</span>.new
-capabilities.args([<span class="s">&quot;no-sandbox&quot;</span>, <span class="s">&quot;headless&quot;</span>, <span class="s">&quot;disable-gpu&quot;</span>])
+capabilities.chrome_options.args <span class="o">=</span> [<span class="s">&quot;no-sandbox&quot;</span>, <span class="s">&quot;headless&quot;</span>, <span class="s">&quot;disable-gpu&quot;</span>]
 driver.create_session(capabilities)</code></pre>
 <p>Use the appropriate <code>Capabilities</code> class for whichever browser you choose.</p>
 <h2><a id="development" class="anchor" href="#development">
