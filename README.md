@@ -52,7 +52,7 @@ Consider using [webdrivers.cr](https://github.com/matthewmcgarvey/webdrivers.cr)
 
 ```crystal
 capabilities = Selenium::Chrome::Capabilities.new
-capabilities.args(["no-sandbox", "headless", "disable-gpu"])
+capabilities.chrome_options.args = ["no-sandbox", "headless", "disable-gpu"]
 driver.create_session(capabilities)
 ```
 
