@@ -9,9 +9,9 @@ module Selenium::Command
         session.navigate_to("http://localhost:3002/home")
         local_storage_manager = session.local_storage_manager
 
-        local_storage_manager.item("foo", "null")
+        local_storage_manager.item("foo", "barr")
         item = local_storage_manager.item("foo")
-        item.should eq("null")
+        item.should eq("barr")
 
         local_storage_manager.size.should eq(1)
 
@@ -28,10 +28,6 @@ module Selenium::Command
         names = local_storage_manager.keys
         names.should eq(["foo", "fizz"])
 
-        # local_storage_manager.remove("fizz")
-        # item = local_storage_manager.item("fizz")
-        # item.should be_nil
-
         local_storage_manager.clear
         local_storage_manager.size.should eq(0)
       end
@@ -44,9 +40,9 @@ module Selenium::Command
         session.navigate_to("http://localhost:3002/home")
         session_storage_manager = session.session_storage_manager
 
-        session_storage_manager.item("foo", "null")
+        session_storage_manager.item("foo", "barr")
         item = session_storage_manager.item("foo")
-        item.should eq("null")
+        item.should eq("barr")
 
         session_storage_manager.size.should eq(1)
 
@@ -62,10 +58,6 @@ module Selenium::Command
 
         names = session_storage_manager.keys
         names.should eq(["foo", "fizz"])
-
-        # session_storage_manager.remove("fizz")
-        # item = session_storage_manager.item("fizz")
-        # item.should be_nil
 
         session_storage_manager.clear
         session_storage_manager.size.should eq(0)

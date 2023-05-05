@@ -28,8 +28,9 @@ class Selenium::WebStorageManager
   end
 
   # Retrieve the list of keys from the Storage
-  def keys
-    document_manager.execute_script("return Object.keys(#{storage_type_in_js})")
+  def keys : JSON::Any
+    str = document_manager.execute_script("return Object.keys(#{storage_type_in_js})")
+    JSON.parse(str)
   end
 
   # Remove the item specified in `name` from the Storage
