@@ -31,7 +31,7 @@ class Selenium::Session
   end
 
   def session_storage_manager
-    WebStorageManager.new(document_manager, WebStorageManager::StorageType::LocalStorage)
+    WebStorageManager.new(document_manager, WebStorageManager::StorageType::SessionStorage)
   end
 
   def delete
