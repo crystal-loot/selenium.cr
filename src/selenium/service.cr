@@ -20,6 +20,7 @@ abstract class Selenium::Service
   end
 
   def start
+    find_free_port
     start_process
     verify_running
   end
@@ -36,6 +37,12 @@ abstract class Selenium::Service
   end
 
   abstract def default_port : Int32
+
+  private def find_free_port
+    while listening?
+      @port += 1
+    end
+  end
 
   private def start_process
     @process = Process.new(
