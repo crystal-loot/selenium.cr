@@ -11,9 +11,9 @@ module Selenium::Command
 
       begin
         driver1, args1 = Selenium::TestDriverFactory.build(ENV["SELENIUM_BROWSER"]? || "chrome")
-        session1 = driver1.not_nil!.create_session(args: args1.not_nil!)
+        session1 = driver1.create_session(args: args1)
         driver2, args2 = Selenium::TestDriverFactory.build(ENV["SELENIUM_BROWSER"]? || "chrome")
-        session2 = driver2.not_nil!.create_session(args: args2.not_nil!)
+        session2 = driver2.create_session(args: args2)
 
         session1.navigate_to("http://localhost:3002/home")
         session2.navigate_to("http://localhost:3002/action-page")
