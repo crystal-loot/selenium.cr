@@ -13,5 +13,5 @@ require "./selenium/safari/**"
 require "./selenium/helpers/**"
 
 module Selenium
-  VERSION = "0.10.0"
+  VERSION = "0.11.0"
 end
