@@ -26,6 +26,14 @@ class Selenium::Session
     AlertManager.new(command_handler, id)
   end
 
+  def local_storage_manager
+    WebStorageManager.new(document_manager, WebStorageManager::StorageType::LocalStorage)
+  end
+
+  def session_storage_manager
+    WebStorageManager.new(document_manager, WebStorageManager::StorageType::SessionStorage)
+  end
+
   def delete
     command_handler.execute(:delete_session, path_variables)
   end
