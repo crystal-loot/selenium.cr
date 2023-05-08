@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="selenium">
-  <title>Selenium::Action - selenium 0.10.0</title>
+  <title>Selenium::WebStorageManager - selenium 0.10.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -56,7 +56,7 @@
       
         <ul>
   
-  <li class=" current" data-id="selenium/Selenium/Action" data-name="selenium::action">
+  <li class=" " data-id="selenium/Selenium/Action" data-name="selenium::action">
       <a href="../Selenium/Action.html">Action</a>
       
     </li>
@@ -346,7 +346,7 @@
       
     </li>
   
-  <li class="parent " data-id="selenium/Selenium/WebStorageManager" data-name="selenium::webstoragemanager">
+  <li class="parent open current" data-id="selenium/Selenium/WebStorageManager" data-name="selenium::webstoragemanager">
       <a href="../Selenium/WebStorageManager.html">WebStorageManager</a>
       
         <ul>
@@ -390,45 +390,19 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Selenium::Action
+  <span class="kind">class</span> Selenium::WebStorageManager
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Selenium/Action.html">Selenium::Action</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
-
-
-
-
-  <h2>
-    <a id="overview" class="anchor" href="#overview">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Overview
-  </h2>
-
-  <p>I want to have seperate actions for each type (pause, pointer, key)
-but when I did that, I wasn't able to get the type union or inheritance working for some reason</p>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Selenium/WebStorageManager.html">Selenium::WebStorageManager</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
 
 
-  <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Included Modules
-  </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type">JSON::Serializable</li>
-    
-  </ul>
+
+
 
 
 
@@ -449,7 +423,7 @@ but when I did that, I wasn't able to get the type union or inheritance working 
   </h2>
   
     
-      selenium/action.cr
+      selenium/web_storage_manager.cr
     
     <br/>
   
@@ -469,12 +443,7 @@ but when I did that, I wasn't able to get the type union or inheritance working 
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new%28type%3AString%2Cduration%3AInt32%7CNil%3Dnil%2Cvalue%3AChar%7CNil%3Dnil%2Cbutton%3AInt32%7CNil%3Dnil%2Corigin%3ANil%7CString%3Dnil%2Cx%3AInt32%7CNil%3Dnil%2Cy%3AInt32%7CNil%3Dnil%29-class-method" class="signature"><strong>.new</strong>(type : String, duration : Int32 | Nil = <span class="n">nil</span>, value : Char | Nil = <span class="n">nil</span>, button : Int32 | Nil = <span class="n">nil</span>, origin : Nil | String = <span class="n">nil</span>, x : Int32 | Nil = <span class="n">nil</span>, y : Int32 | Nil = <span class="n">nil</span>)</a>
+        <a href="#new%28document_manager%3ASelenium%3A%3ADocumentManager%2Cstorage%3AStorageType%3DStorageType%3A%3ALocalStorage%29-class-method" class="signature"><strong>.new</strong>(document_manager : Selenium::DocumentManager, storage : StorageType = <span class="t">StorageType</span><span class="t">::</span><span class="t">LocalStorage</span>)</a>
         
       </li>
     
@@ -495,37 +464,42 @@ but when I did that, I wasn't able to get the type union or inheritance working 
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#button%3AInt32%7CNil-instance-method" class="signature"><strong>#button</strong> : Int32 | Nil</a>
+        <a href="#clear-instance-method" class="signature"><strong>#clear</strong></a>
+        
+          <div class="summary"><p>Clear all items from the Storage</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#duration%3AInt32%7CNil-instance-method" class="signature"><strong>#duration</strong> : Int32 | Nil</a>
+        <a href="#document_manager%3ADocumentManager-instance-method" class="signature"><strong>#document_manager</strong> : DocumentManager</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#origin%3AString%7CNil-instance-method" class="signature"><strong>#origin</strong> : String | Nil</a>
+        <a href="#item%28name%3AString%2Cvalue%3Dnil%29%3AString%7CNil-instance-method" class="signature"><strong>#item</strong>(name : String, value = <span class="n">nil</span>) : String | Nil</a>
+        
+          <div class="summary"><p>Retrieve and insert item from/into the Storage.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#type%3AString-instance-method" class="signature"><strong>#type</strong> : String</a>
+        <a href="#keys%3AJSON%3A%3AAny-instance-method" class="signature"><strong>#keys</strong> : JSON::Any</a>
+        
+          <div class="summary"><p>Retrieve the list of keys from the Storage</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#value%3AChar%7CNil-instance-method" class="signature"><strong>#value</strong> : Char | Nil</a>
+        <a href="#remove%28name%3AString%29-instance-method" class="signature"><strong>#remove</strong>(name : String)</a>
+        
+          <div class="summary"><p>Remove the item specified in <code>name</code> from the Storage</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#x%3AInt32%7CNil-instance-method" class="signature"><strong>#x</strong> : Int32 | Nil</a>
+        <a href="#size%3AInt-instance-method" class="signature"><strong>#size</strong> : Int</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#y%3AInt32%7CNil-instance-method" class="signature"><strong>#y</strong> : Int32 | Nil</a>
+          <div class="summary"><p>Retrieve the number of items in the Storage</p></div>
         
       </li>
     
@@ -533,19 +507,26 @@ but when I did that, I wasn't able to get the type union or inheritance working 
 
 
 
+  <h2>
+    <a id="macro-summary" class="anchor" href="#macro-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#method_missing%28call%29-macro" class="signature"><strong>method_missing</strong>(call)</a>
+        
+      </li>
+    
+  </ul>
+
 
 
 <div class="methods-inherited">
-  
-    
-
-
-    
-
-
-    
-
-
   
     
 
@@ -579,26 +560,12 @@ but when I did that, I wasn't able to get the type union or inheritance working 
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
+    <div class="entry-detail" id="new(document_manager:Selenium::DocumentManager,storage:StorageType=StorageType::LocalStorage)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(pull : JSON::PullParser)
+        def self.<strong>new</strong>(document_manager : <a href="../Selenium/DocumentManager.html">Selenium::DocumentManager</a>, storage : <a href="../Selenium/WebStorageManager/StorageType.html">StorageType</a> = <span class="t">StorageType</span><span class="t">::</span><span class="t">LocalStorage</span>)
 
-        <a class="method-permalink" href="#new%28pull%3AJSON%3A%3APullParser%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(type:String,duration:Int32|Nil=nil,value:Char|Nil=nil,button:Int32|Nil=nil,origin:Nil|String=nil,x:Int32|Nil=nil,y:Int32|Nil=nil)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(type : String, duration : Int32 | Nil = <span class="n">nil</span>, value : Char | Nil = <span class="n">nil</span>, button : Int32 | Nil = <span class="n">nil</span>, origin : Nil | String = <span class="n">nil</span>, x : Int32 | Nil = <span class="n">nil</span>, y : Int32 | Nil = <span class="n">nil</span>)
-
-        <a class="method-permalink" href="#new%28type%3AString%2Cduration%3AInt32%7CNil%3Dnil%2Cvalue%3AChar%7CNil%3Dnil%2Cbutton%3AInt32%7CNil%3Dnil%2Corigin%3ANil%7CString%3Dnil%2Cx%3AInt32%7CNil%3Dnil%2Cy%3AInt32%7CNil%3Dnil%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28document_manager%3ASelenium%3A%3ADocumentManager%2Cstorage%3AStorageType%3DStorageType%3A%3ALocalStorage%29-class-method">#</a>
       </div>
       
       <br/>
@@ -621,12 +588,31 @@ but when I did that, I wasn't able to get the type union or inheritance working 
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="button:Int32|Nil-instance-method">
+    <div class="entry-detail" id="clear-instance-method">
       <div class="signature">
         
-        def <strong>button</strong> : Int32 | Nil
+        def <strong>clear</strong>
 
-        <a class="method-permalink" href="#button%3AInt32%7CNil-instance-method">#</a>
+        <a class="method-permalink" href="#clear-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Clear all items from the Storage</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="document_manager:DocumentManager-instance-method">
+      <div class="signature">
+        
+        def <strong>document_manager</strong> : <a href="../Selenium/DocumentManager.html">DocumentManager</a>
+
+        <a class="method-permalink" href="#document_manager%3ADocumentManager-instance-method">#</a>
       </div>
       
       <br/>
@@ -635,12 +621,102 @@ but when I did that, I wasn't able to get the type union or inheritance working 
       </div>
     </div>
   
-    <div class="entry-detail" id="duration:Int32|Nil-instance-method">
+    <div class="entry-detail" id="item(name:String,value=nil):String|Nil-instance-method">
       <div class="signature">
         
-        def <strong>duration</strong> : Int32 | Nil
+        def <strong>item</strong>(name : String, value = <span class="n">nil</span>) : String | Nil
 
-        <a class="method-permalink" href="#duration%3AInt32%7CNil-instance-method">#</a>
+        <a class="method-permalink" href="#item%28name%3AString%2Cvalue%3Dnil%29%3AString%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Retrieve and insert item from/into the Storage.
+If no value is given, it will return the item specified in <code>name</code>.
+For a given <code>value</code>, it will be added or updated for the item specified in <code>name</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="keys:JSON::Any-instance-method">
+      <div class="signature">
+        
+        def <strong>keys</strong> : JSON::Any
+
+        <a class="method-permalink" href="#keys%3AJSON%3A%3AAny-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Retrieve the list of keys from the Storage</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remove(name:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>remove</strong>(name : String)
+
+        <a class="method-permalink" href="#remove%28name%3AString%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Remove the item specified in <code>name</code> from the Storage</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size:Int-instance-method">
+      <div class="signature">
+        
+        def <strong>size</strong> : Int
+
+        <a class="method-permalink" href="#size%3AInt-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Retrieve the number of items in the Storage</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>
+    <a id="macro-detail" class="anchor" href="#macro-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Detail
+  </h2>
+  
+    <div class="entry-detail" id="method_missing(call)-macro">
+      <div class="signature">
+        
+        macro <strong>method_missing</strong>(call)
+
+        <a class="method-permalink" href="#method_missing%28call%29-macro">#</a>
       </div>
       
       <br/>
@@ -649,78 +725,6 @@ but when I did that, I wasn't able to get the type union or inheritance working 
       </div>
     </div>
   
-    <div class="entry-detail" id="origin:String|Nil-instance-method">
-      <div class="signature">
-        
-        def <strong>origin</strong> : String | Nil
-
-        <a class="method-permalink" href="#origin%3AString%7CNil-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="type:String-instance-method">
-      <div class="signature">
-        
-        def <strong>type</strong> : String
-
-        <a class="method-permalink" href="#type%3AString-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="value:Char|Nil-instance-method">
-      <div class="signature">
-        
-        def <strong>value</strong> : Char | Nil
-
-        <a class="method-permalink" href="#value%3AChar%7CNil-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="x:Int32|Nil-instance-method">
-      <div class="signature">
-        
-        def <strong>x</strong> : Int32 | Nil
-
-        <a class="method-permalink" href="#x%3AInt32%7CNil-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="y:Int32|Nil-instance-method">
-      <div class="signature">
-        
-        def <strong>y</strong> : Int32 | Nil
-
-        <a class="method-permalink" href="#y%3AInt32%7CNil-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-
-
 
 
 </div>
