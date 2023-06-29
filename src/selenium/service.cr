@@ -96,7 +96,7 @@ abstract class Selenium::Service
   private def stop_process(process)
     return if process.nil? || process.terminated?
 
-    process.signal(Signal::KILL)
+    process.terminate(graceful: false)
   end
 
   private def spawn_in_shell?
