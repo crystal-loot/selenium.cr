@@ -42,6 +42,12 @@ jobs:
         with:
           crystal: ${{ matrix.crystal_version }}
       - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+        if: matrix.os == 'windows-latest'
+      - run: |
+          echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
+          ${{ steps.setup-chrome.outputs.chrome-path }} --version
         if: matrix.os == 'windows-latest'
       - name: Install dependencies
         run: shards install --ignore-crystal-version --skip-postinstall --skip-executables
