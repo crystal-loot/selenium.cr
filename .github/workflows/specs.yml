@@ -41,6 +41,8 @@ jobs:
       - uses: crystal-lang/install-crystal@v1
         with:
           crystal: ${{ matrix.crystal_version }}
+      - uses: browser-actions/setup-chrome@v1
+        if: matrix.os == 'windows-latest'
       - name: Install dependencies
         run: shards install --ignore-crystal-version --skip-postinstall --skip-executables
       - name: Run tests
