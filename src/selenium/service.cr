@@ -100,14 +100,18 @@ abstract class Selenium::Service
   end
 
   private def spawn_in_shell?
-    os != "linux"
+    os == "macos"
   end
 
   private def os
-    {% if flag?(:linux) %}
+    {% if flag?(:darwin) %}
+      "macos"
+    {% elsif flag?(:win32) %}
+      "windows"
+    {% elsif flag?(:linux) %}
       "linux"
     {% else %}
-      "macos"
+      "other"
     {% end %}
   end
 end
