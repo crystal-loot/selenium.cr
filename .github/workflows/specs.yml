@@ -7,14 +7,16 @@ on:
     branches: [ master ]
 
 jobs:
-  check-format:
+  check_format:
+    strategy:
+      fail-fast: false
     runs-on: ubuntu-latest
+    continue-on-error: false
     steps:
-      - uses: actions/checkout@v1
+      - name: Download source
+        uses: actions/checkout@v3
       - name: Install Crystal
-        uses: oprypin/install-crystal@v1
-        with:
-          crystal: latest
+        uses: crystal-lang/install-crystal@v1
       - name: Install shards
         run: shards install
       - name: Format
@@ -28,20 +30,24 @@ jobs:
         include:
           - os: ubuntu-latest
             crystal: latest
-          - os: ubuntu-latest
-            crystal: nightly
+          - os: windows-latest
+            crystal: latest
           - os: macos-latest
             crystal: latest
-    runs-on: ${{matrix.os}}
+    runs-on: ${{ matrix.os }}
+    continue-on-error: false
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Crystal
-      uses: oprypin/install-crystal@v1
-      with:
-        crystal: ${{matrix.crystal}}
-    - name: Install dependencies
-      run: shards install --ignore-crystal-version
-    - name: Run tests
-      run: crystal spec --tag "~chrome"
-      env:
-        SELENIUM_BROWSER: chrome
+      - uses: actions/checkout@v3
+      - uses: crystal-lang/install-crystal@v1
+        with:
+          crystal: ${{ matrix.crystal_version }}
+      - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+        if: matrix.os == 'windows-latest'
+      - name: Install dependencies
+        run: shards install --ignore-crystal-version --skip-executables --skip-postinstall
+      - name: Run tests
+        run: crystal spec --tag "~chrome"
+        env:
+          SELENIUM_BROWSER: chrome
