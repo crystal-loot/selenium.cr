@@ -58,6 +58,42 @@ driver.create_session(capabilities)
 
 Use the appropriate `Capabilities` class for whichever browser you choose.
 
+### Navigating and Interacting with Web pages
+
+```crystal
+# Navigate to Google's homepage
+session.navigate_to("https://www.google.com/")
+
+# Find the search input element by its name, which is "q"
+element = session.find_element(:name, "q")
+
+# Enter the text "Selenium library for Crystal" into the search input
+element.send_keys("Selenium library for Crystal")
+
+# Submit the form where the search input belongs to
+element.submit
+
+# Define a Selenium Wait object, which will help us to wait until a certain condition is met.
+# Here, we are setting a timeout of 5 seconds (the maximum time to wait) and a polling interval of 1 second (the time to wait between each check)
+wait = Selenium::Helpers::Wait.new(timeout: 5.seconds, interval: 1.second)
+
+# Use the wait object to wait until the search results are displayed.
+# We do this by checking if the element with the CSS selector "#search" is found on the page.
+wait.until { session.find_element(:css, "#search") }
+
+# Print the title of the current page
+puts session.title
+
+# Take a screenshot of the current state of the browser window and save it to a file named "result.png"
+session.screenshot("result.png")
+
+# Close the browser session
+session.delete
+
+# Stop the driver
+driver.stop
+```
+
 ## Development
 
 Run `crystal spec` to run the tests. It will run the tests in headless mode.
