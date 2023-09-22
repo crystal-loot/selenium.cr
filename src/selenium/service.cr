@@ -96,7 +96,11 @@ abstract class Selenium::Service
   private def stop_process(process)
     return if process.nil? || process.terminated?
 
-    process.terminate(graceful: false)
+    {% if compare_versions(Crystal::VERSION, "1.8.0") < 0 %}
+      process.terminate
+    {% else %}
+      process.terminate(graceful: false)
+    {% end %}
   end
 
   private def spawn_in_shell?
