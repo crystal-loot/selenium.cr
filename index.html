@@ -454,6 +454,42 @@ Consider using <a href="https://github.com/matthewmcgarvey/webdrivers.cr">webdri
 capabilities.chrome_options.args <span class="o">=</span> [<span class="s">&quot;no-sandbox&quot;</span>, <span class="s">&quot;headless&quot;</span>, <span class="s">&quot;disable-gpu&quot;</span>]
 driver.create_session(capabilities)</code></pre>
 <p>Use the appropriate <code>Capabilities</code> class for whichever browser you choose.</p>
+<h3><a id="navigating-and-interacting-with-web-pages" class="anchor" href="#navigating-and-interacting-with-web-pages">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Navigating and Interacting with Web pages</h3>
+<pre><code class="language-crystal"><span class="c"># Navigate to Google&#39;s homepage</span>
+session.navigate_to(<span class="s">&quot;https://www.google.com/&quot;</span>)
+
+<span class="c"># Find the search input element by its name, which is &quot;q&quot;</span>
+element <span class="o">=</span> session.find_element(<span class="n">:name</span>, <span class="s">&quot;q&quot;</span>)
+
+<span class="c"># Enter the text &quot;Selenium library for Crystal&quot; into the search input</span>
+element.send_keys(<span class="s">&quot;Selenium library for Crystal&quot;</span>)
+
+<span class="c"># Submit the form where the search input belongs to</span>
+element.submit
+
+<span class="c"># Define a Selenium Wait object, which will help us to wait until a certain condition is met.</span>
+<span class="c"># Here, we are setting a timeout of 5 seconds (the maximum time to wait) and a polling interval of 1 second (the time to wait between each check)</span>
+wait <span class="o">=</span> <span class="t">Selenium</span><span class="t">::</span><span class="t">Helpers</span><span class="t">::</span><span class="t">Wait</span>.new(timeout: <span class="n">5</span>.seconds, interval: <span class="n">1</span>.second)
+
+<span class="c"># Use the wait object to wait until the search results are displayed.</span>
+<span class="c"># We do this by checking if the element with the CSS selector &quot;#search&quot; is found on the page.</span>
+wait.<span class="k">until</span> { session.find_element(<span class="n">:css</span>, <span class="s">&quot;#search&quot;</span>) }
+
+<span class="c"># Print the title of the current page</span>
+puts session.title
+
+<span class="c"># Take a screenshot of the current state of the browser window and save it to a file named &quot;result.png&quot;</span>
+session.screenshot(<span class="s">&quot;result.png&quot;</span>)
+
+<span class="c"># Close the browser session</span>
+session.delete
+
+<span class="c"># Stop the driver</span>
+driver.stop</code></pre>
 <h2><a id="development" class="anchor" href="#development">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
