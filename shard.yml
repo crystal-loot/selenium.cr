@@ -7,4 +7,7 @@ license: MIT
 development_dependencies:
   webdrivers:
     github: crystal-loot/webdrivers.cr
-    version: ~> 0.4.2
+    version: ~> 0.4
+  ameba:
+    github: crystal-ameba/ameba
+    version: ~> 1.5

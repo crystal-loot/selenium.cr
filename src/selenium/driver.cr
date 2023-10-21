@@ -41,8 +41,13 @@ abstract class Selenium::Driver
   def create_session(capabilities, retry = true) : Session
     parameters = {capabilities: {alwaysMatch: capabilities}}
     data = command_handler.execute(:new_session, parameters: parameters)
+    session_id = data.dig?("value", "sessionId").try(&.as_s?)
 
-    Session.new(http_client, command_handler, data.dig("value", "sessionId").as_s)
+    if session_id.nil?
+      raise InvalidSessionError.new(data.dig("value", "message").as_s)
+    end
+
+    Session.new(http_client, command_handler, session_id)
   rescue ex : Error
     if retry
       create_session(capabilities, retry: false)

@@ -10,9 +10,9 @@ module Selenium::Command
       HTML
 
       begin
-        driver1, args1 = Selenium::TestDriverFactory.build(ENV["SELENIUM_BROWSER"]? || "chrome")
+        driver1, args1 = Selenium::TestDriverFactory.build(ENV["SELENIUM_BROWSER"]? || "chrome", 9222)
         session1 = driver1.create_session(args: args1)
-        driver2, args2 = Selenium::TestDriverFactory.build(ENV["SELENIUM_BROWSER"]? || "chrome")
+        driver2, args2 = Selenium::TestDriverFactory.build(ENV["SELENIUM_BROWSER"]? || "chrome", 9223)
         session2 = driver2.create_session(args: args2)
 
         session1.navigate_to("http://localhost:3002/home")
