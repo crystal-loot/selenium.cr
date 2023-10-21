@@ -1,8 +1,8 @@
 class Selenium::TestDriverFactory
-  def self.build(browser) : Tuple(Driver, Array(String))
+  def self.build(browser, debug_port = 9222) : Tuple(Driver, Array(String))
     case browser
     when "chrome"
-      build_chrome_driver
+      build_chrome_driver(debug_port)
     when "firefox"
       build_firefox_driver
     when "chrome-no-service"
@@ -14,9 +14,9 @@ class Selenium::TestDriverFactory
     end
   end
 
-  def self.build_chrome_driver : Tuple(Driver, Array(String))
+  def self.build_chrome_driver(debug_port) : Tuple(Driver, Array(String))
     driver = Driver.for(:chrome, service: Service.chrome(driver_path: Webdrivers::Chromedriver.install))
-    {driver, ["no-sandbox", "headless", "disable-gpu"]}
+    {driver, ["no-sandbox", "headless", "disable-gpu", "remote-debugging-port=#{debug_port}"]}
   end
 
   def self.build_firefox_driver : Tuple(Driver, Array(String))

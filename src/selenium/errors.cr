@@ -10,4 +10,7 @@ module Selenium
 
   class UnsupportedOperationError < BaseError
   end
+
+  class InvalidSessionError < BaseError
+  end
 end
