@@ -143,6 +143,24 @@ class Selenium::Session
     perform_actions([sequence])
   end
 
+  # Get available log types
+  def available_log_types : Array(String)
+    data = command_handler.execute(:get_available_log_types, path_variables)
+
+    data["value"].as_a.map(&.as_s)
+  end
+
+  # Get the log for a given log type. Log buffer is reset after each request
+  #
+  # List of common log types: "client", "driver", "browser", "server"
+  def log(type : String) : Array(Selenium::Chrome::LogEntry)
+    data = command_handler.execute(:get_log, path_variables, {"type" => type})
+
+    data.as_h["value"].as_a.map do |log|
+      Selenium::Chrome::LogEntry.from_json(log.to_json)
+    end
+  end
+
   private def path_variables
     {":session_id" => id}
   end

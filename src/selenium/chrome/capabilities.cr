@@ -4,6 +4,19 @@ class Selenium::Chrome::Capabilities < Selenium::Capabilities
   @[JSON::Field(key: "goog:chromeOptions")]
   property chrome_options = ChromeOptions.new
 
+  # Enable logging
+  #
+  # ```
+  # capabilities = Selenium::Chrome::Capabilities.new
+  # capabilities.logging_prefs = {
+  #   "browser"     => "ALL",
+  #   "driver"      => "ALL",
+  #   "performance" => "ALL",
+  # }
+  # ```
+  @[JSON::Field(key: "goog:loggingPrefs")]
+  property logging_prefs : Hash(String, String)?
+
   class ChromeOptions
     include JSON::Serializable
 
