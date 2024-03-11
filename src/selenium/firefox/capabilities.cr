@@ -11,5 +11,6 @@ class Selenium::Firefox::Capabilities < Selenium::Capabilities
     end
 
     property args = [] of String
+    property binary String?
   end
 end
