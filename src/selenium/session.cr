@@ -1,4 +1,8 @@
+require "json"
+
 class Selenium::Session
+  include JSON::Serializable
+
   getter http_client : HttpClient
   getter command_handler : CommandHandler
   getter id : SessionId
