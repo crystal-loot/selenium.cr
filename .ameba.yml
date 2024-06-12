@@ -13,3 +13,9 @@ Lint/NotNil:
   - src/selenium/driver.cr
   Enabled: true
   Severity: Warning
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Documentation/DocumentationAdmonition:
+  Enabled: false
