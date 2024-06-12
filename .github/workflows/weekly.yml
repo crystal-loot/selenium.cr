@@ -1,10 +1,9 @@
-name: Specs
+name: Selenium Weekly CI
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  schedule:
+    - cron: "0 1 * * MON"
+  workflow_dispatch:
 
 jobs:
   check_format:
@@ -31,11 +30,11 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            crystal: latest
+            crystal: nightly
           - os: windows-latest
-            crystal: latest
+            crystal: nightly
           - os: macos-latest
-            crystal: latest
+            crystal: nightly
     runs-on: ${{ matrix.os }}
     continue-on-error: false
     steps:
