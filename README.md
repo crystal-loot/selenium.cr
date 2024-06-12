@@ -2,7 +2,7 @@
 
 Selenium client for interacting with web pages for browser automation.
 
-[API Documentation](https://matthewmcgarvey.github.io/selenium.cr/)
+[API Documentation](https://crystal-loot.github.io/selenium.cr/)
 
 ## Installation
 
@@ -11,7 +11,7 @@ Selenium client for interacting with web pages for browser automation.
    ```yaml
    dependencies:
      selenium:
-       github: matthewmcgarvey/selenium.cr
+       github: crystal-loot/selenium.cr
    ```
 
 2. Run `shards install`
@@ -46,7 +46,7 @@ driver = Selenium::Driver.for(:chrome, service: service)
 ```
 
 You must call `driver.stop` when you are finished or it will leave the service running.
-Consider using [webdrivers.cr](https://github.com/matthewmcgarvey/webdrivers.cr) for automatically installing drivers and managing the driver path for you.
+Consider using [webdrivers.cr](https://github.com/crystal-loot/webdrivers.cr) for automatically installing drivers and managing the driver path for you.
 
 ### Creating a Session
 
@@ -116,7 +116,7 @@ Running just `crystal spec` will use chrome.
 
 ## Contributing
 
-1. Fork it (<https://github.com/matthewmcgarvey/selenium.cr/fork>)
+1. Fork it (<https://github.com/crystal-loot/selenium.cr/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
