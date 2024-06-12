@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.9.2">
+<meta name="generator" content="Crystal Docs 1.11.2">
 <meta name="crystal_docs.project_version" content="0.12.1">
 <meta name="crystal_docs.project_name" content="selenium">
 
@@ -404,7 +404,7 @@
   </svg>
 </a>selenium.cr</h1>
 <p>Selenium client for interacting with web pages for browser automation.</p>
-<p><a href="https://matthewmcgarvey.github.io/selenium.cr/">API Documentation</a></p>
+<p><a href="https://crystal-loot.github.io/selenium.cr/">API Documentation</a></p>
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -415,7 +415,7 @@
 <p>Add the dependency to your <code>shard.yml</code>:</p>
 <pre><code class="language-yaml">dependencies:
   selenium:
-    github: matthewmcgarvey/selenium.cr</code></pre>
+    github: crystal-loot/selenium.cr</code></pre>
 </li>
 <li>
 <p>Run <code>shards install</code></p>
@@ -449,7 +449,7 @@
 <pre><code class="language-crystal">service <span class="o">=</span> <span class="t">Selenium</span><span class="t">::</span><span class="t">Service</span>.chrome(driver_path: <span class="t">File</span>.expand_path(<span class="s">&quot;~/.webdrivers/chromedriver&quot;</span>, home: <span class="n">true</span>))
 driver <span class="o">=</span> <span class="t">Selenium</span><span class="t">::</span><span class="t">Driver</span>.<span class="k">for</span>(<span class="n">:chrome</span>, service: service)</code></pre>
 <p>You must call <code>driver.stop</code> when you are finished or it will leave the service running.
-Consider using <a href="https://github.com/matthewmcgarvey/webdrivers.cr">webdrivers.cr</a> for automatically installing drivers and managing the driver path for you.</p>
+Consider using <a href="https://github.com/crystal-loot/webdrivers.cr">webdrivers.cr</a> for automatically installing drivers and managing the driver path for you.</p>
 <h3><a id="creating-a-session" class="anchor" href="#creating-a-session">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -514,7 +514,7 @@ Running just <code>crystal spec</code> will use chrome.</p>
   </svg>
 </a>Contributing</h2>
 <ol>
-<li>Fork it (<a href="https://github.com/matthewmcgarvey/selenium.cr/fork">https://github.com/matthewmcgarvey/selenium.cr/fork</a>)</li>
+<li>Fork it (<a href="https://github.com/crystal-loot/selenium.cr/fork">https://github.com/crystal-loot/selenium.cr/fork</a>)</li>
 <li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
 <li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
 <li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
