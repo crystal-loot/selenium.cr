@@ -1,4 +1,7 @@
+require "json"
+
 class Selenium::CommandHandler
+  include JSON::Serializable
   include DefaultCommands
   getter http_client : HttpClient
 
