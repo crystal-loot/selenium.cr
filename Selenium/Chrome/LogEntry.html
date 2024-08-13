@@ -14,7 +14,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="selenium">
-  <title>Selenium::Firefox::Service - selenium master</title>
+  <title>Selenium::Chrome::LogEntry - selenium master</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -97,7 +97,7 @@
       
     </li>
   
-  <li class="parent " data-id="selenium/Selenium/Chrome" data-name="selenium::chrome">
+  <li class="parent open current" data-id="selenium/Selenium/Chrome" data-name="selenium::chrome">
       <a href="../../Selenium/Chrome.html">Chrome</a>
       
         <ul>
@@ -127,7 +127,7 @@
       
     </li>
   
-  <li class=" " data-id="selenium/Selenium/Chrome/LogEntry" data-name="selenium::chrome::logentry">
+  <li class=" current" data-id="selenium/Selenium/Chrome/LogEntry" data-name="selenium::chrome::logentry">
       <a href="../../Selenium/Chrome/LogEntry.html">LogEntry</a>
       
     </li>
@@ -207,7 +207,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="selenium/Selenium/Firefox" data-name="selenium::firefox">
+  <li class="parent " data-id="selenium/Selenium/Firefox" data-name="selenium::firefox">
       <a href="../../Selenium/Firefox.html">Firefox</a>
       
         <ul>
@@ -232,7 +232,7 @@
       
     </li>
   
-  <li class=" current" data-id="selenium/Selenium/Firefox/Service" data-name="selenium::firefox::service">
+  <li class=" " data-id="selenium/Selenium/Firefox/Service" data-name="selenium::firefox::service">
       <a href="../../Selenium/Firefox/Service.html">Service</a>
       
     </li>
@@ -411,12 +411,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Selenium::<wbr>Firefox::<wbr>Service
+  <span class="kind">class</span> Selenium::<wbr>Chrome::<wbr>LogEntry
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Selenium/Firefox/Service.html">Selenium::Firefox::Service</a></li><li class="superclass"><a href="../../Selenium/Service.html">Selenium::Service</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Selenium/Chrome/LogEntry.html">Selenium::Chrome::LogEntry</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -424,6 +424,20 @@
 
 
 
+
+  <h2>
+    <a id="included-modules" class="anchor" href="#included-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Included Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type">JSON::Serializable</li>
+    
+  </ul>
 
 
 
@@ -444,8 +458,8 @@
   </h2>
   
     
-      <a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/firefox/service.cr#L1" target="_blank">
-        selenium/firefox/service.cr
+      <a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/chrome/log_entry.cr#L1" target="_blank">
+        selenium/chrome/log_entry.cr
       </a>
     
     <br/>
@@ -454,6 +468,23 @@
 
 
 
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -472,12 +503,42 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#default_port%3AInt32-instance-method" class="signature"><strong>#default_port</strong> : Int32</a>
+        <a href="#level%3AString-instance-method" class="signature"><strong>#level</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#stop-instance-method" class="signature"><strong>#stop</strong></a>
+        <a href="#level%3D%28level%3AString%29-instance-method" class="signature"><strong>#level=</strong>(level : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message%3AString-instance-method" class="signature"><strong>#message</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message%3D%28message%3AString%29-instance-method" class="signature"><strong>#message=</strong>(message : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source%3AString%7CNil-instance-method" class="signature"><strong>#source</strong> : String | Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source%3D%28source%3AString%7CNil%29-instance-method" class="signature"><strong>#source=</strong>(source : String | Nil)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#timestamp%3AInt64-instance-method" class="signature"><strong>#timestamp</strong> : Int64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#timestamp%3D%28timestamp%3AInt64%29-instance-method" class="signature"><strong>#timestamp=</strong>(timestamp : Int64)</a>
         
       </li>
     
@@ -489,63 +550,11 @@
   
     
 
-  <h3>Instance methods inherited from class <code><a href="../../Selenium/Service.html">Selenium::Service</a></code></h3>
-  
-  
-    <a href="../../Selenium/Service.html#base_url%3AString-instance-method" class="tooltip">
-      <span>base_url : String</span>
-    base_url</a>, 
-    
-  
-    <a href="../../Selenium/Service.html#default_port%3AInt32-instance-method" class="tooltip">
-      <span>default_port : Int32</span>
-    default_port</a>, 
-    
-  
-    <a href="../../Selenium/Service.html#start-instance-method" class="tooltip">
-      <span>start</span>
-    start</a>, 
-    
-  
-    <a href="../../Selenium/Service.html#stop-instance-method" class="tooltip">
-      <span>stop</span>
-    stop</a>
-    
-  
-
 
     
 
-  <h3>Constructor methods inherited from class <code><a href="../../Selenium/Service.html">Selenium::Service</a></code></h3>
-  
-  
-    <a href="../../Selenium/Service.html#new%28driver_path%3AString%2Cport%3AInt32%3Ddefault_port%2Cargs%3AArray%28String%29%3D%5B%5DofString%29-class-method" class="tooltip">
-      <span>new(driver_path : String, port : Int32 = default_port, args : Array(String) = <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>)</span>
-    new</a>
-    
-  
-
 
     
-
-  <h3>Class methods inherited from class <code><a href="../../Selenium/Service.html">Selenium::Service</a></code></h3>
-  
-  
-    <a href="../../Selenium/Service.html#chrome%28%2A%2Aopts%29-class-method" class="tooltip">
-      <span>chrome(**opts)</span>
-    chrome</a>, 
-    
-  
-    <a href="../../Selenium/Service.html#firefox%28%2A%2Aopts%29-class-method" class="tooltip">
-      <span>firefox(**opts)</span>
-    firefox</a>, 
-    
-  
-    <a href="../../Selenium/Service.html#safari%28%2A%2Aopts%29-class-method" class="tooltip">
-      <span>safari(**opts)</span>
-    safari</a>
-    
-  
 
 
     
@@ -581,6 +590,32 @@
 </div>
 
 
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(pull : JSON::PullParser)
+
+        <a class="method-permalink" href="#new%28pull%3AJSON%3A%3APullParser%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/chrome/log_entry.cr#L2" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
 
 
@@ -596,34 +631,130 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="default_port:Int32-instance-method">
+    <div class="entry-detail" id="level:String-instance-method">
       <div class="signature">
         
-        def <strong>default_port</strong> : Int32
+        def <strong>level</strong> : String
 
-        <a class="method-permalink" href="#default_port%3AInt32-instance-method">#</a>
+        <a class="method-permalink" href="#level%3AString-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/firefox/service.cr#L2" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/chrome/log_entry.cr#L4" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="stop-instance-method">
+    <div class="entry-detail" id="level=(level:String)-instance-method">
       <div class="signature">
         
-        def <strong>stop</strong>
+        def <strong>level=</strong>(level : String)
 
-        <a class="method-permalink" href="#stop-instance-method">#</a>
+        <a class="method-permalink" href="#level%3D%28level%3AString%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/firefox/service.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/chrome/log_entry.cr#L4" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message:String-instance-method">
+      <div class="signature">
+        
+        def <strong>message</strong> : String
+
+        <a class="method-permalink" href="#message%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/chrome/log_entry.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message=(message:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>message=</strong>(message : String)
+
+        <a class="method-permalink" href="#message%3D%28message%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/chrome/log_entry.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source:String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>source</strong> : String | Nil
+
+        <a class="method-permalink" href="#source%3AString%7CNil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/chrome/log_entry.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source=(source:String|Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>source=</strong>(source : String | Nil)
+
+        <a class="method-permalink" href="#source%3D%28source%3AString%7CNil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/chrome/log_entry.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="timestamp:Int64-instance-method">
+      <div class="signature">
+        
+        def <strong>timestamp</strong> : Int64
+
+        <a class="method-permalink" href="#timestamp%3AInt64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/chrome/log_entry.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="timestamp=(timestamp:Int64)-instance-method">
+      <div class="signature">
+        
+        def <strong>timestamp=</strong>(timestamp : Int64)
+
+        <a class="method-permalink" href="#timestamp%3D%28timestamp%3AInt64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/crystal-loot/selenium.cr/blob/0b8cca4f157a693b3c7ef7642364a5efd7e99faf/src/selenium/chrome/log_entry.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
