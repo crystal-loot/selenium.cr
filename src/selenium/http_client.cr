@@ -1,4 +1,8 @@
+require "json"
+
 class Selenium::HttpClient
+  include JSON::Serializable
+
   getter base_url : String
 
   def initialize(@base_url)
