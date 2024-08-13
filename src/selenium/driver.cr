@@ -33,11 +33,7 @@ abstract class Selenium::Driver
     @service.try &.start
     base_url ||= @service.not_nil!.base_url
     @http_client = HttpClient.new(base_url: base_url)
-    @command_handler = command_handler
-  end
-
-  private def command_handler : CommandHandler
-    CommandHandler.new(@http_client)
+    @command_handler = CommandHandler.new(@http_client)
   end
 
   abstract def create_session(args : Array(String)) : Session
