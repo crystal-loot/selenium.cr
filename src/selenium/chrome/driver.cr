@@ -3,6 +3,10 @@ class Selenium::Chrome::Driver < Selenium::Driver
     super(capabilities)
   end
 
+  private def command_handler
+    Chrome::CommandHandler.new(@http_client)
+  end
+
   def create_session(args : Array(String)) : Session
     capabilities = Chrome::Capabilities.new
     capabilities.chrome_options.args = args

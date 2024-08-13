@@ -6,7 +6,7 @@ describe Selenium do
       file.gets_to_end
     end
 
-    version = /version\:(.*?)\n/.match(content).not_nil![1].strip
+    version = /version\:(.*?)\n/.match!(content)[1].strip
     version.should eq Selenium::VERSION
   end
 end
